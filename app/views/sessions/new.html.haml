@@ -1,0 +1,19 @@
+%body
+	%head
+		%link{:rel=> "stylesheet", :href=>"/stylesheets/blueprint/screen.css", :type=>"text/css", :media=>"screen"}
+		%link{:rel=> "stylesheet", :href=>"/stylesheets/login.css", :type=>"text/css", :media=>"screen"}
+	
+	%body
+		.login
+			-form_for :user, @user, :url => {:action => :create} do |form|
+				%fieldset
+					%p 
+						=form.label :login, "Email"
+						%br
+						=form.text_field :login, :class => 'text'
+					%p
+						=form.label :password 
+						%br
+						=form.password_field :password, :class => 'text'
+					%p
+						=form.submit "Login"

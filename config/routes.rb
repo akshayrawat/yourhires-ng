@@ -1,13 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resource :account, :controller => 'users'
+  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
+  map.login '/login', :controller => 'sessions', :action => 'new'
   map.resources :users
-  map.resources :password_resets
-  map.resource :user_session
-  map.login '/login', :controller => 'user_sessions', :action => 'new'
-  map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'
+  map.resource :session
   
-  map.root :controller => 'dashboard'
-
+  map.root :login
+  
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end

@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-  helper :all # include all helpers, all the time
+
+  helper :all
   helper_method :current_user_session, :current_user, :logged_in?, :current_user_is_admin?
   
   filter_parameter_logging :password, :password_confirmation
