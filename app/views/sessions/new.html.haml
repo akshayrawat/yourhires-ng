@@ -1,19 +1,23 @@
-%body
+%html
 	%head
-		%link{:rel=> "stylesheet", :href=>"/stylesheets/blueprint/screen.css", :type=>"text/css", :media=>"screen"}
-		%link{:rel=> "stylesheet", :href=>"/stylesheets/login.css", :type=>"text/css", :media=>"screen"}
-	
+		=stylesheet_link_tag("blueprint/screen.css", "login.css")
 	%body
 		.login
-			-form_for :user, @user, :url => {:action => :create} do |form|
+			-form_for :user, :url => {:action => :create} do |form|
 				%fieldset
+					-unless flash[:error].blank?
+						.error
+							=flash[:error]				
 					%p 
-						=form.label :login, "Email"
+						=form.label :login
 						%br
 						=form.text_field :login, :class => 'text'
 					%p
 						=form.label :password 
 						%br
 						=form.password_field :password, :class => 'text'
+					%p
+						=check_box_tag "remember_me"
+						=label_tag "Remember Me"
 					%p
 						=form.submit "Login"

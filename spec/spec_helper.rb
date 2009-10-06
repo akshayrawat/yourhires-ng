@@ -13,5 +13,6 @@ Spec::Runner.configure do |config|
   config.fixture_path = RAILS_ROOT + '/spec/fixtures/'
 
   config.include(::Lockdown::RspecHelper)
+  config.include(::Matcher)
   # config.mock_with :mocha
 end

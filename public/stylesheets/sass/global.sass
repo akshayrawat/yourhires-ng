@@ -1,0 +1,71 @@
+=round-top-corner(!radius)
+	-moz-border-radius-topright: #{!radius}
+	-moz-border-radius-topleft: #{!radius}
+	-webkit-border-top-left-radius: #{!radius}
+	-webkit-border-top-right-radius: #{!radius}
+
+=round-corner(!radius)
+	-moz-border-radius: #{!radius}
+	-webkit-border-radius: #{!radius}
+
+body
+	background-color: #DDDDDD
+	font-family: "Lucida Grande",verdana,arial,helvetica,sans-serif
+	
+a 
+	text-decoration: none
+	
+.banner
+	background-color: #990000
+	height: 79px
+	padding: 20px 10px 5px 80px
+	.title
+		font-size: 30px
+		color: #FFCC00
+	.user
+		font-size: 22px
+		color: #FFFFFF
+.navigation
+	margin-top: 15px
+	color:#FFFFFF
+	background-color: #990000
+	font-weight: bold 
+	text-align: center
+	a
+		color: #FFFFFF
+	.navigation-item
+		background-color: #CC0000
+		border-left: 1px #990000 solid
+		border-right: 1px #990000 solid
+		padding: 3px
+		float: left
+		width: 100px
+		+round-top-corner(5px)
+	.selected-navigation-item
+		background-color: #DDDDDD
+		color: #990000
+		padding: 3px
+		float: left
+		width: 100px
+		+round-top-corner(5px)
+		
+.content
+	margin: 15px
+	background-color: white
+	height: 600px
+	+round-corner(5px)
+	
+.content-section
+	.title
+		+round-top-corner(5px)
+		background-color: #FFFF99
+		color: #990000
+		font-size: 12px
+		font-weight: bold
+		padding: 5px 0 5px 35px
+
+.sidebar
+	margin: 15px
+	background-color: white
+	height: 600px
+	+round-corner(5px)

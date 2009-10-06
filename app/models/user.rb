@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
 
   def self.authenticate(login, password)
     return nil if login.blank? || password.blank?
-    u = find_by_login(login.downcase) # need to get the salt
+    u = find_by_login(login.downcase) 
     u && u.authenticated?(password) ? u : nil
   end
 
