@@ -2,24 +2,24 @@
 	%head
 		=stylesheet_link_tag("blueprint/screen.css", "global.css")
 	%body
-		.banner
-			%span.title
-				ThoughtWorks
-			%span.user
-				=current_user.name
-			.navigation
-				.selected-navigation-item
-					Dashboard
-				.navigation-item
-					=link_to("Candidates", candidates_url)
-				.navigation-item
-					%a{:href=> "#"}
-						Events
-				.navigation-item
-					%a{:href=> "#"}				
-						Inbox
-		.container
-			.content.span-16
-				=yield
-			.sidebar.span-6
-				Sidebar
+		.page
+			.container
+				%span.title
+					ThoughtWorks
+				%span.user
+					=current_user.name
+				.navigation
+					.selected-navigation-item
+						Dashboard
+					.navigation-item
+						=link_to("Candidates", candidates_url)
+					.navigation-item
+						%a{:href=> "#"}
+							Events
+					.navigation-item
+						%a{:href=> "#"}				
+							Inbox
+				.content.span-16
+					=yield
+				.sidebar.span-6
+					Sidebar

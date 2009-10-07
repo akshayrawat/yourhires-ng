@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # -*- coding: utf-8 -*-
 require File.dirname(__FILE__) + '/../spec_helper'
 
@@ -224,23 +223,5 @@ protected
     record = User.new({ :login => 'quire', :email => 'quire@example.com', :password => 'quire69', :password_confirmation => 'quire69' }.merge(options))
     record.save
     record
-=======
-require File.dirname(__FILE__) + '/../spec_helper'
-
-describe User do    
-  
-  it "company should nest within a user" do
-    user = User.new :email => 'foo@bar.com', :name => 'foo', :password => 'secret', :password_confirmation => "secret", 
-                    :company_attributes => {:name => 'bar'}
-    user.should be_valid
-    user.save.should be_true
-  end
-  
-  it "company should have error on missing name" do
-    user = User.new :email => 'foo@bar.com', :name => 'foo', :password => 'secret', :password_confirmation => "secret", 
-                    :company_attributes => {}
-    user.save.should be_false
-    user.company.should have(1).error_on(:name)
->>>>>>> 4c8ac615b1fd20621ffdfd3939f904126a274ef2
   end
 end

@@ -5,14 +5,14 @@ body {
 a {
   text-decoration: none; }
 
-.banner {
+.page {
   background-color: #990000;
   height: 79px;
-  padding: 20px 10px 5px 80px; }
-  .banner .title {
+  padding: 20px 10px 5px 0px; }
+  .page .title {
     font-size: 30px;
     color: #FFCC00; }
-  .banner .user {
+  .page .user {
     font-size: 22px;
     color: #FFFFFF; }
 
@@ -46,7 +46,7 @@ a {
     -webkit-border-top-right-radius: 5px; }
 
 .content {
-  margin: 15px;
+  margin: 15px 10px 10px 0px;
   background-color: white;
   height: 600px;
   -moz-border-radius: 5px;
