@@ -8,6 +8,10 @@
 	-moz-border-radius: #{!radius}
 	-webkit-border-radius: #{!radius}
 
+=shadow-side()
+	-webkit-box-shadow: 5px 5px 7px #999
+	-moz-box-shadow: 5px 5px 7px #999
+
 body
 	background-color: #DDDDDD
 	font-family: "Lucida Grande",verdana,arial,helvetica,sans-serif
@@ -32,8 +36,6 @@ a
 	background-color: #990000
 	font-weight: bold 
 	text-align: center
-	a
-		color: #FFFFFF
 	.navigation-item
 		background-color: #CC0000
 		border-left: 1px #990000 solid
@@ -41,32 +43,27 @@ a
 		padding: 3px
 		float: left
 		width: 100px
-		+round-top-corner(5px)
-	.selected-navigation-item
+		a
+			color: #FFFFFF
+	.selected
 		background-color: #DDDDDD
-		color: #990000
-		padding: 3px
-		float: left
-		width: 100px
-		+round-top-corner(5px)
+		a
+			color: #990000
 		
 .content
 	margin: 15px 10px 10px 0px
 	background-color: white
 	height: 600px
-	+round-corner(5px)
+	+shadow-side
 	
 .content-section
 	.title
-		+round-top-corner(5px)
 		background-color: #FFFF99
 		color: #990000
 		font-size: 12px
 		font-weight: bold
-		padding: 5px 0 5px 35px
+		padding: 5px 0 5px 20px
 
 .sidebar
 	margin: 15px
-	background-color: white
 	height: 600px
-	+round-corner(5px)

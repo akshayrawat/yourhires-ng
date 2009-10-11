@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
   include AuthenticatedSystem
+  before_filter :login_required, :except => [ :new, :create ]
+
   layout false
   
   def new

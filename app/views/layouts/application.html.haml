@@ -9,17 +9,19 @@
 				%span.user
 					=current_user.name
 				.navigation
-					.selected-navigation-item
-						Dashboard
-					.navigation-item
+					.navigation-item{:id=> 'dashboard-navigation-item'}
+						=link_to("Dashboard", dashboard_url)
+					.navigation-item{:id=> 'candidates-navigation-item'}
 						=link_to("Candidates", candidates_url)
-					.navigation-item
-						%a{:href=> "#"}
-							Events
-					.navigation-item
-						%a{:href=> "#"}				
-							Inbox
+					.navigation-item{:id=> 'events-navigation-item'}
+						=link_to("Events", "/")
+					.navigation-item{:id=> 'inbox-navigation-item'}
+						=link_to("Inbox", "/")
 				.content.span-16
 					=yield
 				.sidebar.span-6
 					Sidebar
+		:javascript
+			element= document.getElementById("#{controller.class.to_s.gsub('Controller', '').downcase}-navigation-item");
+			element.setAttribute("class", "navigation-item selected");
+
