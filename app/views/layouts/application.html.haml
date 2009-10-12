@@ -22,6 +22,7 @@
 				.sidebar.span-6
 					Sidebar
 		:javascript
-			element= document.getElementById("#{controller.class.to_s.gsub('Controller', '').downcase}-navigation-item");
+			navigation_item = "#{controller.class.to_s.gsub('Controller', '').downcase}-navigation-item";
+			element= document.getElementById(navigation_item);
 			element.setAttribute("class", "navigation-item selected");
 

@@ -1,2 +1,9 @@
 .content-section
-	.title Candidates
+	.title
+		%span Candidates
+		%span.title-links
+			=link_to("My Assignments", "#")
+			=link_to("Watchlist", "#")
+			=link_to("All", "#")
+	.candidates
+		=render  => @candidates

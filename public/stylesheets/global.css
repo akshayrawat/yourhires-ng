@@ -48,6 +48,9 @@ a {
   font-size: 12px;
   font-weight: bold;
   padding: 5px 0 5px 20px; }
+.content-section .title-links a {
+  padding-left: 10px;
+  font-size: 85%; }
 
 .sidebar {
   margin: 15px;

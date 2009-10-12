@@ -27,8 +27,17 @@ describe Candidate do
     Interviewer.create(:event => pairing, :participant => two)
     Interviewer.create(:event => interview, :participant => three)
     
-    candidate.all_interviewers.map(&:participant).should == [one, two, three]
+    candidate.interviewers.map(&:participant).should == [one, two, three]
   end
   
+  it "should know assigned recruiters" do
+      one = Recruiter.new(:name => "maria", :primary => true)
+      two = Recruiter.new(:name => "reshmi", :primary => false)
+      candidate = Candidate.create
+      candidate.recruiters << one
+      candidate.recruiters << two
+      
+      candidate.recruiters.should == [one, two]
+  end
   
 end

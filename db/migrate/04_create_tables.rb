@@ -33,17 +33,18 @@ class CreateTables < ActiveRecord::Migration
         
     create_table :recruiters, :force => true do |t|
       t.string :name
+      t.boolean :primary, :default => false
     end
     
-    create_table :recruiter_assignments, :force => true do |t|
-      t.references :recruiters
-      t.references :candidates
+    create_table :candidates_recruiters,:id => false, :force => true do |t|
+      t.references :recruiter
+      t.references :candidate
       t.timestamps
     end
   end
 
   def self.down
-    drop_table :recruiter_assignments
+    drop_table :candidates_recruiters
     drop_table :recruiters
     drop_table :interviewers
     drop_table :recruitment_step_types
