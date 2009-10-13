@@ -2,6 +2,9 @@ class CreateTables < ActiveRecord::Migration
   def self.up
     create_table :candidates, :force => true do |t|
       t.string :name
+      t.references :role
+      t.string :phone
+      t.string :email
       t.timestamps      
     end
     
@@ -47,9 +50,15 @@ class CreateTables < ActiveRecord::Migration
       t.references :candidate
       t.timestamps
     end
+    
+    create_table :roles, :force => true do |t|
+      t.string :name
+      t.timestamps
+    end
   end
 
   def self.down
+    drop_table :roles
     drop_table :candidates_recruiters
     drop_table :recruiters
     drop_table :interviewers

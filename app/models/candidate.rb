@@ -2,6 +2,7 @@ class Candidate < ActiveRecord::Base
   
   has_many :recruitment_steps
   has_and_belongs_to_many :recruiters
+  belongs_to :role
   
   def register_for(*step_types)
     step_types.each do |step_type|
