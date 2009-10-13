@@ -34,6 +34,12 @@ class CreateTables < ActiveRecord::Migration
     create_table :recruiters, :force => true do |t|
       t.string :name
       t.boolean :primary, :default => false
+      
+      t.string    :login,               :null => false 
+      t.string    :email,               :null => false 
+      t.string    :crypted_password,    :null => false 
+      t.string    :password_salt,       :null => false 
+      t.string    :persistence_token,   :null => false 
     end
     
     create_table :candidates_recruiters,:id => false, :force => true do |t|

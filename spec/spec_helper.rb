@@ -14,3 +14,5 @@ Spec::Runner.configure do |config|
   config.include(::Matcher)
   # config.mock_with :mocha
 end
+
+include AuthenticatedTestHelper

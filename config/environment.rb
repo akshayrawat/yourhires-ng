@@ -4,5 +4,7 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
   config.active_record.timestamped_migrations = false
-  config.time_zone = 'UTC'  
+  config.time_zone = 'UTC'
+
+  config.gem "authlogic"
 end

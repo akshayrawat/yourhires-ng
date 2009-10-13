@@ -3,7 +3,7 @@
 		=stylesheet_link_tag("blueprint/screen.css", "login.css")
 	%body
 		.login
-			-form_for :user, :url => {:action => :create} do |form|
+			-form_for :recruiter_session, :url => {:action => :create} do |form|
 				%fieldset
 					-unless flash[:error].blank?
 						.error
@@ -17,7 +17,7 @@
 						%br
 						=form.password_field :password, :class => 'text'
 					%p
-						=check_box_tag "remember_me"
-						=label_tag "Remember Me"
+						=form.check_box "remember_me"
+						=form.label "Remember Me"
 					%p
 						=form.submit "Login"

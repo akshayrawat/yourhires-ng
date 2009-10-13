@@ -1,1 +1,1 @@
-User.create!(:login => "maria", :name => "Maria Anita", :email => "manita@thoughtworks.com", :password => "yourhires", :password_confirmation => "yourhires")
+Recruiter.create!(:login => "maria", :name => "Maria Anita", :email => "manita@thoughtworks.com", :password => "yourhires", :password_confirmation => "yourhires")
