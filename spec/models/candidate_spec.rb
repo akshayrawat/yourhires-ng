@@ -31,8 +31,8 @@ describe Candidate do
   end
   
   it "should know assigned recruiters" do
-      one = Recruiter.new(:name => "maria", :primary => true)
-      two = Recruiter.new(:name => "reshmi", :primary => false)
+      one = RecruiterFactory.create(:name => "maria", :login => 'maria@tw', :email => "maria@tw.com", :primary => true)
+      two = RecruiterFactory.create(:name => "reshmi", :login => 'reshmi@tw', :email => "reshmi@tw.com", :primary => false)
       candidate = Candidate.create
       candidate.recruiters << one
       candidate.recruiters << two

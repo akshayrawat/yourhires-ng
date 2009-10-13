@@ -4,12 +4,9 @@ describe CandidatesController do
   
   context "for logged in recruiter" do
     it "should list candidates assigned" do
+      
       one = Recruiter.create(:candidates  => [Candidate.create(:name => "Foo"), Candidate.create(:name => "Bar")])
       two = Recruiter.create(:candidates  => [Candidate.create(:name => "Baz")])
-      
-      login_as(one) do
-        
-      end
     end
     
     it "should list all candidates" do
