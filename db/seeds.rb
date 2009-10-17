@@ -14,6 +14,5 @@ def create_recruiter_with_candidates
   
 end
 
-
 create_roles
 create_recruiter_with_candidates

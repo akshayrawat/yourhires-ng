@@ -55,3 +55,12 @@ a {
 .sidebar {
   margin: 15px;
   height: 600px; }
+
+.candidates {
+  margin: 20px 0 0 10px; }
+  .candidates .candidate {
+    background-color: #FFFDDF;
+    padding: 10px;
+    margin: 10px; }
+    .candidates .candidate ul {
+      list-style-type: none; }

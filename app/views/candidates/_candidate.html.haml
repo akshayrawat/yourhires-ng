@@ -1,6 +1,21 @@
-%p 
-	=candidate.name
-	=candidate.role.name
-	=candidate.email
-	=candidate.phone
-	=candidate.phone
+.candidate 
+	%ul
+		%li 
+			%b 
+				=candidate.name 
+		%li
+			%i
+				=candidate.role.name
+		%li 
+			%b Email:
+			=mail_to candidate.email, candidate.email
+		%li
+			%b Phone:
+			=candidate.phone
+		%li
+			%b Recruiters:
+			=candidate.recruiters.collect(&:name).join(", ")
+		%li
+			%b Participants:
+			=candidate.interviewers.collect(&:name).join(", ")
+	
