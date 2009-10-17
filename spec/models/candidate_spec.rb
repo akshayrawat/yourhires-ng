@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Candidate do
-  
+
   it "should have candidate fields" do
     candidate= Candidate.create(
     :role => Role.create(:name => "Developer"),
@@ -16,13 +16,13 @@ describe Candidate do
 
   it "should know interviewers" do
     candidate = CandidateFactory.create_with_pairing_and_interview_recruitment_steps
-    
+
     pairing = Event.create!
     interview = Event.create!
-    
+
     candidate.schedule(candidate.recruitment_steps[0], pairing)
     candidate.schedule(candidate.recruitment_steps[1], interview)
-    
+
     one= Interviewer.create!(:event => pairing, :participant => Participant.create!)
     two= Interviewer.create!(:event => pairing, :participant => Participant.create!)
     three= Interviewer.create!(:event => interview, :participant => Participant.create!)
@@ -38,16 +38,16 @@ describe Candidate do
   end
 
   describe "recruitment steps" do
-    
+
     before do
       @pairing_step = RecruitmentStepTypeFactory.pairing
       @interview_step = RecruitmentStepTypeFactory.interview
     end
-    
+
     it "returns all steps" do
       candidate = CandidateFactory.create
       candidate.register_for_steps(@pairing_step, @interview_step)
-      
+
       candidate.recruitment_steps.map(&:recruitment_step_type).should == [@pairing_step, @interview_step]
     end
 
@@ -60,7 +60,7 @@ describe Candidate do
       candidate.register_for_steps(@pairing_step, @interview_step)
       candidate.schedule(recruitment_step_for_type(candidate, @pairing_step), pairing_event)
       candidate.schedule(recruitment_step_for_type(candidate, @interview_step), interview_event)
-      
+
       candidate.recruitment_steps_completed.map(&:event).should == [pairing_event]
     end
 
@@ -72,10 +72,10 @@ describe Candidate do
       candidate.schedule(recruitment_step_for_type(candidate, @pairing_step), pairing_event)
       candidate.recruitment_steps_pending.should have(2).things
     end
-    
+
     def recruitment_step_for_type(candidate, type)
       candidate.recruitment_steps.select{|step| step.recruitment_step_type == type}.first
     end
-end
+  end
 
 end

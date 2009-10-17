@@ -1,0 +1,5 @@
+h1. YOURHIRES README
+
+h2. Developer Setup
+* Use rake commit to push changes to master
+* User rake db:setup to recreate and seed db. You will need sqlite3 in path

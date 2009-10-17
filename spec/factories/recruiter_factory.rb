@@ -5,11 +5,11 @@ class RecruiterFactory
   end
 
   def self.valid_params
-    {:login => "maria", :name => "Maria Anita", :email => "manita@thoughtworks.com", :password => "yourhires", :password_confirmation => "yourhires"}
+    {:login => "maria", :name => "Maria Anita", :email => "maria@thoughtworks.com", :password => "yourhires", :password_confirmation => "yourhires"}
   end
   
   def self.maria
-    create(:login => "maria", :name => "Maria Anita", :email => "manita@thoughtworks.com")
+    create(:login => "maria", :name => "Maria Anita", :email => "maria@thoughtworks.com")
   end
   
   def self.reshmi
