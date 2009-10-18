@@ -1,4 +1,7 @@
 class RecruiterSessionsController < ApplicationController
+  
+  skip_before_filter :ensure_login
+  
   layout false
   
   def new

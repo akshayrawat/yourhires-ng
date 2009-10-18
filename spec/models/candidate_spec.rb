@@ -14,7 +14,7 @@ describe Candidate do
     candidate.phone.should eql("12345678")
   end
 
-  it "should know interviewers" do
+  it "should know participants involved" do
     candidate = CandidateFactory.create_with_pairing_and_interview_recruitment_steps
 
     pairing = Event.create!
@@ -22,15 +22,15 @@ describe Candidate do
 
     candidate.schedule(candidate.recruitment_steps[0], pairing)
     candidate.schedule(candidate.recruitment_steps[1], interview)
-
+    
     one= Interviewer.create!(:event => pairing, :participant => Participant.create!)
     two= Interviewer.create!(:event => pairing, :participant => Participant.create!)
     three= Interviewer.create!(:event => interview, :participant => Participant.create!)
 
-    candidate.interviewers.should == [one, two, three]
+    candidate.participants.should have(3).things
   end
 
-  it "should know recruiters" do
+  it "should know recruiters involved" do
     candidate= CandidateFactory.create
     candidate.recruiters = [RecruiterFactory.maria, RecruiterFactory.reshmi]
     candidate.save!

@@ -10,10 +10,10 @@ class Candidate < ActiveRecord::Base
     end
   end
     
-  def interviewers
+  def participants
     recruitment_steps.select(&:scheduled?).collect do |recruitment_step|
-      recruitment_step.event.interviewers  
-    end.flatten
+      recruitment_step.event.interviewers.collect{|interviewer|interviewer.participant}
+    end.flatten.uniq
   end
   
   def schedule(recruitment_step, event)

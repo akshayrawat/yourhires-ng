@@ -2,7 +2,7 @@
 	%ul
 		%li 
 			%b 
-				=candidate.name 
+				=link_to(candidate.name, "#")
 		%li
 			%i
 				=candidate.role.name
@@ -17,5 +17,16 @@
 			=candidate.recruiters.collect(&:name).join(", ")
 		%li
 			%b Participants:
-			=candidate.interviewers.collect(&:name).join(", ")
+			=candidate.participants.collect{|participant|participant.name}.join(", ")
+		%li.action-links
+			%a{:href=> "#"} DOWNLOAD RESUME
+			%a{:href=> "#"} WATCH
+			%a{:href=> "#"}	SEND A MESSAGE
 	
+	.recruitment_steps
+		-candidate.recruitment_steps_completed.each do |recruitment_step|
+			%span.completed
+				= recruitment_step.recruitment_step_type.name
+		-candidate.recruitment_steps_pending.each_with_index do |recruitment_step, index|
+			%span{:class=>index == 0 ? 'next' : 'pending'}
+				= recruitment_step.recruitment_step_type.name
