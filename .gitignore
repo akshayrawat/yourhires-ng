@@ -1,10 +1,3 @@
-db/schema.rb
-config/database.yml
-config/locomotive.yml
-config/mongrel_cluster.yml
-config/thin.yml
-public/javascripts/cache/*
-public/stylesheets/cache/*
 *.sqlite3
 doc
 coverage*
