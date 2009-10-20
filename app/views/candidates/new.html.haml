@@ -1,3 +1,58 @@
 .content-section
 	.title
 		%span New Candidate
+	-form_for :candidate do |form|
+		.new-candidate.span-14
+			.span-12
+				=form.label :name
+				%br
+				=form.text_field :name
+
+			.span-6
+				=form.label :email
+				%br
+				=form.text_field :email
+
+			.span-6.last
+				=form.label :phone
+				%br
+				=form.text_field :phone
+		
+			.span-6
+				=form.label :role
+				%br
+				=form.select :role, Role.all.map(&:name)
+
+			.span-6.last
+				=form.label :source
+				%br
+				=form.text_field :source
+			.span-12
+				=form.label :comments
+				%br
+				=form.text_area :comments
+				
+		.new-candidate.span-14
+			.span-6
+				=form.label :assigned_to
+				%br
+				=form.select :role, Recruiter.all.map(&:name)
+				=link_to "Add", "#"
+		
+			.span-6.last
+				=form.label :recruitment_steps
+				%br
+				=form.select :role, RecruitmentStepType.all.map(&:name)
+				=link_to "Add", "#"
+			.span-12
+				=form.label :resume
+				%br
+				=form.file_field :resume
+			.span-12
+				=form.label :skillset
+				%br
+				=form.text_area :skillset
+
+		%center
+			=form.submit "Save", :class => "bold-button"
+		%br

@@ -7,16 +7,16 @@
 			%i
 				=candidate.role.name
 		%li 
-			%b Email:
+			=label_tag "Email:"
 			=mail_to candidate.email, candidate.email
 		%li
-			%b Phone:
+			=label_tag "Phone:"
 			=candidate.phone
 		%li
-			%b Recruiters:
+			=label_tag "Recruiters:"
 			=candidate.recruiters.collect(&:name).join(", ")
 		%li
-			%b Participants:
+			=label_tag "Participants:"
 			=candidate.participants.collect{|participant|participant.name}.join(", ")
 		%li.action-links
 			%a{:href=> "#"} DOWNLOAD RESUME

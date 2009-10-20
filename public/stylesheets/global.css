@@ -61,6 +61,8 @@ a {
     background-color: #FFFDDF;
     padding: 5px;
     margin: 10px; }
+    .candidates .candidate label {
+      color: #990000; }
     .candidates .candidate ul {
       list-style-type: none; }
       .candidates .candidate ul .action-links a {
@@ -88,8 +90,20 @@ a {
 
 .bold-button {
   background-color: #CC0000;
+  border-width: 0px;
   font-weight: bold;
   color: #FFFFFF;
   padding: 5px 20px 5px 20px;
   -webkit-box-shadow: 5px 5px 7px #999;
   -moz-box-shadow: 5px 5px 7px #999; }
+
+.new-candidate {
+  background-color: #FFFDDF;
+  margin: 20px 20px 5px 20px;
+  padding: 10px 0px 10px 25px; }
+  .new-candidate label {
+    color: #990000; }
+  .new-candidate textarea {
+    height: 60px;
+    padding: 5px;
+    width: 390px; }

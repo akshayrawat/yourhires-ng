@@ -26,8 +26,7 @@ class Seeds
   def create_recruitment_step_types
     @phone_interview = RecruitmentStepTypeFactory.phone_interview
     @pairing = RecruitmentStepTypeFactory.pairing
-    @interview_1 = RecruitmentStepTypeFactory.interview
-    @interview_2 = RecruitmentStepTypeFactory.interview
+    @interview = RecruitmentStepTypeFactory.interview
   end
 
   def create_recruiters
@@ -62,10 +61,10 @@ class Seeds
   end
 
   def candidates_get_registered_for_recruitment_steps
-    @arnab.register_for_steps(@phone_interview, @pairing, @interview_1, @interview_2)
-    @dilkash.register_for_steps(@phone_interview, @pairing, @interview_1, @interview_2)
-    @karan.register_for_steps(@phone_interview, @interview_1, @interview_2)
-    @manandeep.register_for_steps(@phone_interview, @interview_1, @interview_2)
+    @arnab.register_for_steps(@phone_interview, @pairing, @interview, @interview)
+    @dilkash.register_for_steps(@phone_interview, @pairing, @interview, @interview)
+    @karan.register_for_steps(@phone_interview, @interview, @interview)
+    @manandeep.register_for_steps(@phone_interview, @interview, @interview)
   end
 
   def recruitment_steps_get_scheduled

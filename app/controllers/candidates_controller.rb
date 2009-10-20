@@ -4,4 +4,8 @@ class CandidatesController < ApplicationController
     @candidates = current_recruiter.candidates
   end
   
+  def new
+    @candidate = Candidate.new
+  end
+  
 end
