@@ -8,3 +8,8 @@
 	
 	.candidates
 		=render @candidates
+
+=content_for :sidebar do
+	.sidebar-section
+		%center
+			=link_to "New Candidate", new_candidate_url, :class => "bold-button"

@@ -18,6 +18,8 @@ body
 	
 a 
 	text-decoration: none
+	&:focus
+		color:#FFFFFF
 	
 .page
 	background-color: #990000
@@ -101,3 +103,10 @@ a
 				padding: 5px
 				color: #000000
 				font-weight: bold
+	
+.bold-button
+	background-color: #CC0000
+	font-weight: bold
+	color: #FFFFFF
+	padding: 5px 20px 5px 20px
+	+shadow-side()

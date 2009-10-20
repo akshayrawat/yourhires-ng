@@ -11,7 +11,7 @@ class Recruiter < ActiveRecord::Base
 
   def self.authenticate(login, password)
     return nil if login.blank? || password.blank?
-    u = find_by_login(login) 
+    u = find_by_login(login)
     u && u.authenticated?(password) ? u : nil
   end
 
