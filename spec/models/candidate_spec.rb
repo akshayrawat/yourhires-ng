@@ -13,6 +13,17 @@ describe Candidate do
     candidate.email.should eql("foo@bar.com")
     candidate.phone.should eql("12345678")
   end
+  
+  it "should fail validation when mandatory fields are not specified" do
+    candidate= Candidate.new
+
+    candidate.should_not be_valid
+    candidate.should have(1).error_on(:name)
+    candidate.should have(1).error_on(:phone)
+    candidate.should have(1).error_on(:email)
+    candidate.should have(1).error_on(:source)
+    candidate.should have(1).error_on(:role_id)
+  end
 
   it "should know participants involved" do
     candidate = CandidateFactory.create_with_pairing_and_interview_recruitment_steps

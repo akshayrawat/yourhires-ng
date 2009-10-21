@@ -1,6 +1,6 @@
 class RecruiterFactory
 
-  def self.create(params)
+  def self.create(params = {})
     Recruiter.create!(valid_params.merge(params))
   end
 

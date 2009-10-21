@@ -1,7 +1,7 @@
 .content-section
 	.title
 		%span New Candidate
-	-form_for :candidate do |form|
+	-form_for :candidate, :url => candidates_path do |form|
 		.new-candidate.span-14
 			.span-12
 				=form.label :name
@@ -34,15 +34,15 @@
 				
 		.new-candidate.span-14
 			.span-6
-				=form.label :assigned_to
+				=form.label :recruiters
 				%br
-				=form.select :role, Recruiter.all.map(&:name)
+				=form.select :recruiters, Recruiter.all.map(&:name)
 				=link_to "Add", "#"
 		
 			.span-6.last
 				=form.label :recruitment_steps
 				%br
-				=form.select :role, RecruitmentStepType.all.map(&:name)
+				=form.select :recruitment_steps, RecruitmentStepType.all.map(&:name)
 				=link_to "Add", "#"
 			.span-12
 				=form.label :resume

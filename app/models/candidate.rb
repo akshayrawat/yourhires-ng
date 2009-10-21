@@ -4,6 +4,8 @@ class Candidate < ActiveRecord::Base
   has_and_belongs_to_many :recruiters
   belongs_to :role
   
+  validates_presence_of :name, :phone, :email, :source, :role_id
+  
   def register_for_steps(*step_types)
     step_types.each do |step_type|
       self.recruitment_steps.create(:recruitment_step_type => step_type)

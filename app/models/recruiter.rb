@@ -4,7 +4,7 @@ class Recruiter < ActiveRecord::Base
 
   has_and_belongs_to_many :candidates
 
-  validates_presence_of :login, :email
+  validates_presence_of :login, :email, :name
   attr_accessible :login, :email, :name, :password, :password_confirmation
 
   acts_as_authentic

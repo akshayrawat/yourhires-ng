@@ -3,7 +3,6 @@ class RecruitmentStep < ActiveRecord::Base
   has_one :event
   belongs_to :recruitment_step_type  
   
-  
   def completed?
     !pending?
   end
