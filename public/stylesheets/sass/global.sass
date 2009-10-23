@@ -67,6 +67,10 @@ a
 	.title-links a
 		padding-left: 10px
 		font-size: 90%
+	.title-subheader
+		font-weight: bold
+		font-size: 110%
+		margin-bottom: 15px
 
 .sidebar
 	margin: 15px
@@ -77,7 +81,8 @@ a
 	.candidate
 		background-color: #FFFDDF
 		padding: 5px
-		margin: 10px
+		border: #FFFF99 solid 2px		
+		margin: 10px 20px 20px 10px
 		label
 			color: #990000
 		ul
@@ -114,12 +119,22 @@ a
 	padding: 5px 20px 5px 20px
 	+shadow-side()
 
+.form-button
+	background-color: #FFFF99
+	border-width: 0px
+	font-weight: bold
+	padding: 1px 10px 1px 10px
+	+round-corner(5px)
+
 .new-candidate
 	background-color: #FFFDDF
 	margin: 20px 20px 5px 20px
 	padding: 10px 0px 10px 25px
+	border: #FFFF99 solid 2px
+	
 	label
 		color: #990000
+		font-weight: bold
 	.profile
 		profile
 	textarea

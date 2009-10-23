@@ -1,6 +1,6 @@
 h1. YOURHIRES README
 
 h2. Developer Setup
-* rake commit to push changes to master
-* rake db:setup to recreate and seed db. You will need sqlite3 in path
+* @rake commit@ to push changes to master
+* @rake db:setup@ to recreate and seed db. You will need sqlite3 in path
 * Install the Ruby Haml TextMate bundle for syntax highlighting on HAML files

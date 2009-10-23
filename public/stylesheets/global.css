@@ -50,6 +50,10 @@ a {
 .content-section .title-links a {
   padding-left: 10px;
   font-size: 90%; }
+.content-section .title-subheader {
+  font-weight: bold;
+  font-size: 110%;
+  margin-bottom: 15px; }
 
 .sidebar {
   margin: 15px;
@@ -60,7 +64,8 @@ a {
   .candidates .candidate {
     background-color: #FFFDDF;
     padding: 5px;
-    margin: 10px; }
+    border: #FFFF99 solid 2px;
+    margin: 10px 20px 20px 10px; }
     .candidates .candidate label {
       color: #990000; }
     .candidates .candidate ul {
@@ -97,12 +102,22 @@ a {
   -webkit-box-shadow: 5px 5px 7px #999;
   -moz-box-shadow: 5px 5px 7px #999; }
 
+.form-button {
+  background-color: #FFFF99;
+  border-width: 0px;
+  font-weight: bold;
+  padding: 1px 10px 1px 10px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px; }
+
 .new-candidate {
   background-color: #FFFDDF;
   margin: 20px 20px 5px 20px;
-  padding: 10px 0px 10px 25px; }
+  padding: 10px 0px 10px 25px;
+  border: #FFFF99 solid 2px; }
   .new-candidate label {
-    color: #990000; }
+    color: #990000;
+    font-weight: bold; }
   .new-candidate textarea {
     height: 60px;
     padding: 5px;

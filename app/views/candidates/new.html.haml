@@ -3,6 +3,7 @@
 		%span New Candidate
 	-form_for :candidate, :url => candidates_path do |form|
 		.new-candidate.span-14
+			.title-subheader Candidate Profile
 			.span-12
 				=form.label :name
 				%br
@@ -28,30 +29,35 @@
 				%br
 				=form.text_field :source
 			.span-12
-				=form.label :comments
+				=form.label :resume
 				%br
-				=form.text_area :comments
+				=form.file_field :resume
+
+			.span-12
+				=form.label :skillset
+				%br
+				=form.text_area :skillset
 				
 		.new-candidate.span-14
+			.title-subheader Recruitment Details
 			.span-6
 				=form.label :recruiters
 				%br
 				=form.select :recruiters, Recruiter.all.map(&:name)
-				=link_to "Add", "#"
+				%span.form-button
+					=link_to "Add", "#"
 		
 			.span-6.last
 				=form.label :recruitment_steps
 				%br
 				=form.select :recruitment_steps, RecruitmentStepType.all.map(&:name)
-				=link_to "Add", "#"
+				%span.form-button				
+					=link_to "Add", "#"
 			.span-12
-				=form.label :resume
+				=form.label :comments
 				%br
-				=form.file_field :resume
-			.span-12
-				=form.label :skillset
-				%br
-				=form.text_area :skillset
+				=form.text_area :comments
+
 
 		%center
 			=form.submit "Save", :class => "bold-button"
