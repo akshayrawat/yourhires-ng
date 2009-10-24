@@ -9,8 +9,9 @@ class CandidatesController < ApplicationController
   end
   
   def create
-    candidate = Candidate.new(params[:candidate])
-    if candidate.save
+    @candidate = Candidate.new(params[:candidate])
+    
+    if @candidate.save
       redirect_to candidates_url
     else
       render :new

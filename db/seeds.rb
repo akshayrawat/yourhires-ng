@@ -35,10 +35,10 @@ class Seeds
   end
 
   def create_candidates
-    @arnab= Candidate.create!(:name => "Arnab Mandal", :role => @software_developer, :email => "arnab@mandal.com", :phone => "+91 43567132")
-    @karan= Candidate.create!(:name => "Karan Peri", :role => @business_analyst, :email => "karan@peri.com", :phone => "+91 63544139")
-    @dilkash = Candidate.create!(:name => "Dilkash Sharma", :role => @software_developer, :email => "dilkash@sharma.com", :phone => "+9163542531")
-    @manandeep = Candidate.create!(:name => "Manandeep Singh", :role => @project_manager, :email => "manandeep@singh.com", :phone => "+9162242547")
+    @arnab= CandidateFactory.create(:name => "Arnab Mandal", :role => @software_developer, :email => "arnab@mandal.com", :phone => "+91 43567132")
+    @karan= CandidateFactory.create(:name => "Karan Peri", :role => @business_analyst, :email => "karan@peri.com", :phone => "+91 63544139")
+    @dilkash = CandidateFactory.create(:name => "Dilkash Sharma", :role => @software_developer, :email => "dilkash@sharma.com", :phone => "+9163542531")
+    @manandeep = CandidateFactory.create(:name => "Manandeep Singh", :role => @project_manager, :email => "manandeep@singh.com", :phone => "+9162242547")
 
     @all_candidates = [@arnab, @karan, @dilkash, @manandeep]
   end

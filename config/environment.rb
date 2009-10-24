@@ -6,3 +6,8 @@ Rails::Initializer.run do |config|
   config.active_record.timestamped_migrations = false
   config.time_zone = 'UTC'
 end
+
+ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
+  %(<span class="field-error">#{html_tag}</span>)
+  
+end

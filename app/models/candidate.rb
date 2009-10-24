@@ -3,15 +3,10 @@ class Candidate < ActiveRecord::Base
   has_many :recruitment_steps, :include => ["event"], :order => "events.start_time ASC"
   has_and_belongs_to_many :recruiters
   belongs_to :role
+  has_attached_file :resume
   
-  validates_presence_of :name, :phone, :email, :source, :role_id
-  
-  def register_for_steps(*step_types)
-    step_types.each do |step_type|
-      self.recruitment_steps.create(:recruitment_step_type => step_type)
-    end
-  end
-    
+  validates_presence_of :name, :phone, :email, :source, :role_id, :recruitment_steps, :recruiters
+      
   def participants
     recruitment_steps.select(&:scheduled?).collect do |recruitment_step|
       recruitment_step.event.interviewers.collect{|interviewer|interviewer.participant}
@@ -31,5 +26,19 @@ class Candidate < ActiveRecord::Base
     recruitment_steps.select(&:pending?)
   end
   
-  private  
+  def recruitment_step_selections=(recruitment_step_types)
+    register_for_steps(RecruitmentStepType.find(recruitment_step_types)) unless recruitment_step_types.empty?
+  end
+
+  def recruiter_selections=(*recruiters)
+    self.recruiters = Recruiter.find(recruiters.uniq)
+  end
+    
+  private
+  def register_for_steps(step_types)
+    step_types.each do |step_type|
+      self.recruitment_steps.build(:recruitment_step_type => step_type)
+    end
+  end
+  
 end

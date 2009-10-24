@@ -3,10 +3,9 @@ require 'spec_helper'
 describe Recruiter do
   it "should know assigned recruiters" do
       recruiter = RecruiterFactory.create(:name => "maria", :login => 'maria@tw', :email => "maria@tw.com")
-      one= CandidateFactory.create
-      two= CandidateFactory.create
+      one= CandidateFactory.create(:recruiters=> [recruiter])
+      two= CandidateFactory.create(:recruiters=> [recruiter])
 
-      recruiter.candidates = [one, two]
       recruiter.save!
       
       recruiter.candidates.should == [one, two]

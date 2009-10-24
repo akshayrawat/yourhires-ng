@@ -1,31 +1,31 @@
 .content-section
 	.title
 		%span New Candidate
-	-form_for @candidate, :url => candidates_path do |form|
+	-form_for @candidate, :html => { :multipart => true } ,:url => candidates_path do |form|
 		.new-candidate.span-14
 			.title-subheader Candidate Profile
 			.span-12
-				=form.label :name
+				=form.label :name, "Name*"
 				%br
 				=form.text_field :name
 
 			.span-6
-				=form.label :email
+				=form.label :email, "Email*"
 				%br
 				=form.text_field :email
 
 			.span-6.last
-				=form.label :phone
+				=form.label :phone, "Phone*"
 				%br
 				=form.text_field :phone
 		
 			.span-6
-				=form.label :role
+				=form.label :role, "Role*"
 				%br
-				=form.select :role, Role.all.map(&:name)
+				=form.select :role_id, Role.all.map{|role|[role.name, role.id]}
 
 			.span-6.last
-				=form.label :source
+				=form.label :source, "Source*"
 				%br
 				=form.text_field :source
 			.span-12
@@ -41,36 +41,26 @@
 		.new-candidate.span-14
 			.title-subheader Recruitment Details
 			.span-6
-				=form.label :recruiters
+				=form.label :recruiters, "Recruiters*"
 				%br
-				=select "recruiter","selection", Recruiter.all.collect{|r|[r.name, r.id]}
+				=select "recruiter","selection", Recruiter.all.collect{|r|[r.name, r.id]},{} ,:class=> ('field-error' unless @candidate.errors.on(:recruiters).blank?)
 				%span.form-button 
-					=link_to_function "Add", "add_selected_element('recruiter_selection', 'recruiter_selections')"
+					=link_to_function "Add", "add_selected_element('candidate', 'recruiter_selection')"
 				#recruiter_selections
 				
 			.span-6.last
-				=form.label :recruitment_steps			
+				=form.label :recruitment_steps, "Recruitment Steps*"	
 				%br
-				=select "recruitment","step", RecruitmentStepType.all.collect{|r|[r.name, r.id]}
+				=select "recruitment_step","selection", RecruitmentStepType.all.collect{|r|[r.name, r.id]},{}, :class=> ('field-error' unless @candidate.errors.on(:recruitment_steps).blank?)
 				%span.form-button				
-					=link_to_function "Add", "add_selected_element('recruitment_step', 'recruitment_steps')"
-				#recruitment_steps
+					=link_to_function "Add", "add_selected_element('candidate',  'recruitment_step_selection')"
+				#recruitment_step_selections
+				
 			.span-12
 				=form.label :comments
 				%br
 				=form.text_area :comments
 
-
 		%center
 			=form.submit "Save", :class => "bold-button"
 		%br
-		
-		:javascript
-			add_selected_element = function(select_element_id, placeholder_element_id) {
-				selected_option = $('#' + select_element_id + ' :selected');
-				placeholder = $('#' + placeholder_element_id);
-				hidden_field = "<input type='hidden' name='" + placeholder_element_id + "[]' value='" + selected_option.val() + "' />";
-				text = selected_option.text();
-				remove_link = "<a href='#' onclick= '$(this).parent(\"div\").remove(); return false;' class='form-button right'>Remove</a>";
-				placeholder.append("<div>"+  text + hidden_field + remove_link + "</div>");
-			}

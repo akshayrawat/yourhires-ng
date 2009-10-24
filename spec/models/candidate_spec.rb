@@ -23,8 +23,10 @@ describe Candidate do
     candidate.should have(1).error_on(:email)
     candidate.should have(1).error_on(:source)
     candidate.should have(1).error_on(:role_id)
+    candidate.should have(1).error_on(:recruiters)
+    candidate.should have(1).error_on(:recruitment_steps)
   end
-
+  
   it "should know participants involved" do
     candidate = CandidateFactory.create_with_pairing_and_interview_recruitment_steps
 
@@ -42,10 +44,9 @@ describe Candidate do
   end
 
   it "should know recruiters involved" do
-    candidate= CandidateFactory.create
-    candidate.recruiters = [RecruiterFactory.maria, RecruiterFactory.reshmi]
+    candidate= CandidateFactory.create(:recruiters => [RecruiterFactory.reshmi])
     candidate.save!
-    candidate.recruiters.map(&:login).should == ['maria', 'reshmi']
+    candidate.recruiters.map(&:login).should == ['reshmi']
   end
 
   describe "recruitment steps" do
@@ -56,19 +57,16 @@ describe Candidate do
     end
 
     it "returns all steps" do
-      candidate = CandidateFactory.create
-      candidate.register_for_steps(@pairing_step, @interview_step)
-
+      candidate = CandidateFactory.create(:recruitment_step_selections => [@pairing_step, @interview_step])
       candidate.recruitment_steps.map(&:recruitment_step_type).should == [@pairing_step, @interview_step]
     end
 
     it "completed returns all past steps" do
-      candidate = CandidateFactory.create
+      candidate = CandidateFactory.create(:recruitment_step_selections => [@pairing_step, @interview_step])
 
       pairing_event= EventFactory.create_in_past
       interview_event= EventFactory.create_in_future
 
-      candidate.register_for_steps(@pairing_step, @interview_step)
       candidate.schedule(recruitment_step_for_type(candidate, @pairing_step), pairing_event)
       candidate.schedule(recruitment_step_for_type(candidate, @interview_step), interview_event)
 
@@ -76,10 +74,9 @@ describe Candidate do
     end
 
     it "pending returns all future and unscheduled steps" do
-      candidate = CandidateFactory.create
+      candidate = CandidateFactory.create(:recruitment_step_selections => [@pairing_step, @interview_step])
       pairing_event = EventFactory.create_in_future
 
-      candidate.register_for_steps(@pairing_step, @interview_step)
       candidate.schedule(recruitment_step_for_type(candidate, @pairing_step), pairing_event)
       candidate.recruitment_steps_pending.should have(2).things
     end
