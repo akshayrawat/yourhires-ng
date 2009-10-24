@@ -51,8 +51,8 @@ a {
   padding-left: 10px;
   font-size: 90%; }
 .content-section .title-subheader {
+  color: #990000;
   font-weight: bold;
-  font-size: 110%;
   margin-bottom: 15px; }
 
 .sidebar {
@@ -105,6 +105,7 @@ a {
 .form-button {
   background-color: #FFFF99;
   border-width: 0px;
+  font-size: 90%;
   font-weight: bold;
   padding: 1px 10px 1px 10px;
   -moz-border-radius: 5px;
@@ -122,3 +123,7 @@ a {
     height: 60px;
     padding: 5px;
     width: 390px; }
+  .new-candidate #recruiter_selections, .new-candidate #recruitment_steps {
+    padding: 5px;
+    font-size: 90%;
+    font-weight: bold; }

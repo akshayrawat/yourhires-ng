@@ -34,8 +34,8 @@ describe CandidatesController do
     
     response.should render_template("new")
 
-    ["candidate_name", "candidate_email", "candidate_phone", "candidate_source", "candidate_resume", "candidate_recruiters",
-      "candidate_skillset", "candidate_comments", "candidate_role", "candidate_recruitment_steps"].each do |input_field|
+    ["candidate_name", "candidate_email", "candidate_phone", "candidate_source", "candidate_resume", "recruiter_selection",
+      "candidate_skillset", "candidate_comments", "candidate_role", "recruitment_step"].each do |input_field|
           response.should have_tag("*[id=?]", input_field)
     end
     
@@ -45,11 +45,11 @@ describe CandidatesController do
     response.should have_tag("select#candidate_role option", developer.name)
 
     
-    response.should have_tag("select#candidate_recruitment_steps option", pairing.name)
-    response.should have_tag("select#candidate_recruitment_steps option", interview.name)
+    response.should have_tag("select#recruitment_step option", pairing.name)
+    response.should have_tag("select#recruitment_step option", interview.name)
     
-    response.should have_tag("select#candidate_recruiters option", maria.name)
-    response.should have_tag("select#candidate_recruiters option", reshmi.name)
+    response.should have_tag("select#recruiter_selection option", maria.name)
+    response.should have_tag("select#recruiter_selection option", reshmi.name)
   end
   
 end

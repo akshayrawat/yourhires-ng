@@ -1,7 +1,7 @@
 .content-section
 	.title
 		%span New Candidate
-	-form_for :candidate, :url => candidates_path do |form|
+	-form_for @candidate, :url => candidates_path do |form|
 		.new-candidate.span-14
 			.title-subheader Candidate Profile
 			.span-12
@@ -43,16 +43,18 @@
 			.span-6
 				=form.label :recruiters
 				%br
-				=form.select :recruiters, Recruiter.all.map(&:name)
-				%span.form-button
-					=link_to "Add", "#"
-		
+				=select "recruiter","selection", Recruiter.all.collect{|r|[r.name, r.id]}
+				%span.form-button 
+					=link_to_function "Add", "add_selected_element('recruiter_selection', 'recruiter_selections')"
+				#recruiter_selections
+				
 			.span-6.last
-				=form.label :recruitment_steps
+				=form.label :recruitment_steps			
 				%br
-				=form.select :recruitment_steps, RecruitmentStepType.all.map(&:name)
+				=select "recruitment","step", RecruitmentStepType.all.collect{|r|[r.name, r.id]}
 				%span.form-button				
-					=link_to "Add", "#"
+					=link_to_function "Add", "add_selected_element('recruitment_step', 'recruitment_steps')"
+				#recruitment_steps
 			.span-12
 				=form.label :comments
 				%br
@@ -62,3 +64,13 @@
 		%center
 			=form.submit "Save", :class => "bold-button"
 		%br
+		
+		:javascript
+			add_selected_element = function(select_element_id, placeholder_element_id) {
+				selected_option = $('#' + select_element_id + ' :selected');
+				placeholder = $('#' + placeholder_element_id);
+				hidden_field = "<input type='hidden' name='" + placeholder_element_id + "[]' value='" + selected_option.val() + "' />";
+				text = selected_option.text();
+				remove_link = "<a href='#' onclick= '$(this).parent(\"div\").remove(); return false;' class='form-button right'>Remove</a>";
+				placeholder.append("<div>"+  text + hidden_field + remove_link + "</div>");
+			}
