@@ -19,7 +19,7 @@
 			=label_tag "Participants:"
 			=candidate.participants.collect{|participant|participant.name}.join(", ")
 		%li.action-links
-			%a{:href=> "#"} DOWNLOAD RESUME
+			=link_to_if(candidate.resume?, "DOWNLOAD RESUME", candidate.resume.url){}
 			%a{:href=> "#"} WATCH
 			%a{:href=> "#"}	SEND A MESSAGE
 	
