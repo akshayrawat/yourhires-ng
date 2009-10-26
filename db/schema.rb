@@ -25,12 +25,12 @@ ActiveRecord::Schema.define(:version => 1) do
   end
 
   create_table "events", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "venue"
     t.datetime "start_time"
     t.datetime "end_time"
     t.integer  "recruitment_step_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "interviewers", :force => true do |t|

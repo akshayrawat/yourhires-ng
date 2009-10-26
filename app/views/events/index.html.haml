@@ -1,0 +1,15 @@
+.content-section
+	.title
+		%span Events &nbsp;
+		%span.title-links
+			=link_to("Upcoming", "#", :class=> "selected")
+			=link_to("Past", "#")
+			=link_to("Incomplete", "#")
+	
+	.events
+		=render @events
+				
+=content_for :sidebar do
+	.sidebar-section
+		%center
+			=link_to "New Event", "#", :class => "bold-button"

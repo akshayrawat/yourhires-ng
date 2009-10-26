@@ -73,6 +73,14 @@ describe Candidate do
       candidate.recruitment_steps_completed.map(&:event).should == [pairing_event]
     end
 
+    it "upcoming returns all future steps" do
+      candidate = CandidateFactory.create(:recruitment_step_selections => [@pairing_step, @interview_step])
+      pairing_event = EventFactory.create_in_future
+
+      candidate.schedule(recruitment_step_for_type(candidate, @pairing_step), pairing_event)
+      candidate.recruitment_steps_upcoming.should have(1).things
+    end
+
     it "pending returns all future and unscheduled steps" do
       candidate = CandidateFactory.create(:recruitment_step_selections => [@pairing_step, @interview_step])
       pairing_event = EventFactory.create_in_future
@@ -80,7 +88,7 @@ describe Candidate do
       candidate.schedule(recruitment_step_for_type(candidate, @pairing_step), pairing_event)
       candidate.recruitment_steps_pending.should have(2).things
     end
-
+    
     def recruitment_step_for_type(candidate, type)
       candidate.recruitment_steps.select{|step| step.recruitment_step_type == type}.first
     end

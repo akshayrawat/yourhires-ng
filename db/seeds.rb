@@ -9,7 +9,6 @@ class Seeds
     create_candidates
     create_participants
 
-    recruiters_signup_for_candidates
     candidates_get_registered_for_recruitment_steps
     recruitment_steps_get_scheduled
     assign_interviewers
@@ -35,10 +34,10 @@ class Seeds
   end
 
   def create_candidates
-    @arnab= CandidateFactory.create(:name => "Arnab Mandal", :role => @software_developer, :email => "arnab@mandal.com", :phone => "+91 43567132")
-    @karan= CandidateFactory.create(:name => "Karan Peri", :role => @business_analyst, :email => "karan@peri.com", :phone => "+91 63544139")
-    @dilkash = CandidateFactory.create(:name => "Dilkash Sharma", :role => @software_developer, :email => "dilkash@sharma.com", :phone => "+9163542531")
-    @manandeep = CandidateFactory.create(:name => "Manandeep Singh", :role => @project_manager, :email => "manandeep@singh.com", :phone => "+9162242547")
+    @arnab= CandidateFactory.create(:name => "Arnab Mandal", :role => @software_developer, :email => "arnab@mandal.com", :phone => "+91 43567132", :recruiters => [@maria, @reshmi])
+    @karan= CandidateFactory.create(:name => "Karan Peri", :role => @business_analyst, :email => "karan@peri.com", :phone => "+91 63544139", :recruiters => [@maria])
+    @dilkash = CandidateFactory.create(:name => "Dilkash Sharma", :role => @software_developer, :email => "dilkash@sharma.com", :phone => "+9163542531", :recruiters => [@maria, @reshmi])
+    @manandeep = CandidateFactory.create(:name => "Manandeep Singh", :role => @project_manager, :email => "manandeep@singh.com", :phone => "+9162242547", :recruiters => [@maria, @reshmi])
 
     @all_candidates = [@arnab, @karan, @dilkash, @manandeep]
   end
@@ -52,19 +51,11 @@ class Seeds
     @all_participants = [@nila, @suresh, @irfan_shah, @sreeix]
   end
 
-
-  def recruiters_signup_for_candidates
-    @arnab.recruiters= [@maria, @reshmi]
-    @karan.recruiters= [@maria]
-    @dilkash.recruiters= [@reshmi]
-    @manandeep.recruiters= [@maria, @reshmi]
-  end
-
   def candidates_get_registered_for_recruitment_steps
-    @arnab.register_for_steps(@phone_interview, @pairing, @interview, @interview)
-    @dilkash.register_for_steps(@phone_interview, @pairing, @interview, @interview)
-    @karan.register_for_steps(@phone_interview, @interview, @interview)
-    @manandeep.register_for_steps(@phone_interview, @interview, @interview)
+    @arnab.register_for_steps([@phone_interview, @pairing, @interview, @interview])
+    @dilkash.register_for_steps([@phone_interview, @pairing, @interview, @interview])
+    @karan.register_for_steps([@phone_interview, @interview, @interview])
+    @manandeep.register_for_steps([@phone_interview, @interview, @interview])
   end
 
   def recruitment_steps_get_scheduled
@@ -72,7 +63,7 @@ class Seeds
       candidate.recruitment_steps.each do |recruitment_step|
         start_time = random_time
         candidate.schedule(recruitment_step, Event.new(
-        :name => recruitment_step.recruitment_step_type.name, :start_time => start_time, :end_time => start_time + 3600))
+        :start_time => start_time, :end_time => start_time + 3600, :venue=> "Room 201"))
       end
     end
   end

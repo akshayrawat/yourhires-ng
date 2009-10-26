@@ -8,7 +8,11 @@ class RecruitmentStep < ActiveRecord::Base
   end
   
   def pending?
-    !scheduled? || self.event.in_future?
+    !scheduled? || upcoming?
+  end
+  
+  def upcoming?
+    scheduled? && self.event.in_future?
   end
   
   def scheduled?

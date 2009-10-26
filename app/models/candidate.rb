@@ -25,6 +25,10 @@ class Candidate < ActiveRecord::Base
   def recruitment_steps_pending
     recruitment_steps.select(&:pending?)
   end
+
+  def recruitment_steps_upcoming
+    recruitment_steps.select(&:upcoming?)
+  end
   
   def recruitment_step_selections=(recruitment_step_types)
     register_for_steps(RecruitmentStepType.find(recruitment_step_types)) unless recruitment_step_types.empty?
@@ -34,7 +38,6 @@ class Candidate < ActiveRecord::Base
     self.recruiters = Recruiter.find(recruiters.uniq)
   end
     
-  private
   def register_for_steps(step_types)
     step_types.each do |step_type|
       self.recruitment_steps.build(:recruitment_step_type => step_type)

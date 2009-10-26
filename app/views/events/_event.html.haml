@@ -1,0 +1,13 @@
+%ul
+	%li
+		=event.recruitment_step.recruitment_step_type.name
+	%li
+		=event.start_time
+	%li
+		=event.end_time
+	%li
+		=event.venue
+	%li
+		=event.interviewers.map{|interview| interview.participant.name}.join(",")
+
+%hr
