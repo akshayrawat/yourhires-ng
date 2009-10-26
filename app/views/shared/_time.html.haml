@@ -1,0 +1,9 @@
+.time
+	.month-time
+		.month
+			=time.strftime("%b")
+		.date-time
+			.date
+				=time.day
+	.timestamp
+		=format_time(time)

@@ -1,13 +1,14 @@
-%ul
-	%li
-		=event.recruitment_step.recruitment_step_type.name
-	%li
-		=event.start_time
-	%li
-		=event.end_time
-	%li
-		=event.venue
-	%li
-		=event.interviewers.map{|interview| interview.participant.name}.join(",")
-
-%hr
+.event.span-14
+	.span-2.event-calendar
+		=render :partial => "/shared/time", :locals=> {:time => event.start_time}
+	.span-7.last
+		%ul
+			%li
+				="#{event.recruitment_step.recruitment_step_type.name} : #{event.recruitment_step.candidate.name}"
+			%li
+				="#{format_time(event.start_time)} - #{format_time(event.end_time)}"
+			%li
+				=event.venue
+			%li	
+				Participants: 
+				=event.interviewers.map{|interview| interview.participant.name}.join(",")

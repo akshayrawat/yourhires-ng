@@ -5,6 +5,7 @@ body {
 a {
   text-decoration: none; }
 
+
 .page {
   background-color: #990000;
   height: 79px;
@@ -70,7 +71,7 @@ a {
   .candidates .candidate {
     background-color: #FFFDDF;
     padding: 5px;
-    border: #FFFF99 solid 2px;
+    border: #FFFF99 solid 1px;
     margin: 5px 20px 20px 5px; }
     .candidates .candidate label {
       color: #990000; }
@@ -136,3 +137,34 @@ a {
 
 .field-error input, select.field-error {
   border: #CC0000 solid 2px; }
+
+.time {
+  text-transform: uppercase;
+  text-align: center;
+  width: 50px; }
+  .time .month-time {
+    font-size: 90%;
+    background: #990000;
+    border: #990000 2px solid;
+    color: #FFFFFF; }
+    .time .month-time .date-time {
+      color: #000000;
+      font-size: 150%;
+      font-weight: bold;
+      background: #FFFFFF; }
+  .time .timestamp {
+    font-size: 60%;
+    color: gray; }
+
+.events {
+  margin: 20px 0 0 10px; }
+  .events .event {
+    padding: 5px;
+    border-bottom: #DDDDDD solid 1px;
+    margin: 5px 20px 0px 5px; }
+    .events .event label {
+      color: #990000; }
+    .events .event ul {
+      list-style-type: none; }
+    .events .event .event-calendar {
+      margin-top: 10px; }

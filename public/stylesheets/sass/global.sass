@@ -21,6 +21,9 @@ a
 	&:focus
 		color:#FFFFFF
 
+ul, ol 
+	margin:0 1.5em 1.5em;
+
 .page
 	background-color: #990000
 	height: 79px
@@ -87,7 +90,7 @@ a
 	.candidate
 		background-color: #FFFDDF
 		padding: 5px
-		border: #FFFF99 solid 2px		
+		border: #FFFF99 solid 1px		
 		margin: 5px 20px 20px 5px
 		label
 			color: #990000
@@ -156,3 +159,33 @@ a
 .field-error input, select.field-error
 	border: #CC0000 solid 2px
 
+.time
+	text-transform: uppercase
+	text-align: center
+	width: 50px
+	.month-time
+		font-size: 90%	
+		background: #990000
+		border: #990000 2px solid
+		color: #FFFFFF
+		.date-time
+			color: #000000
+			font-size: 150%
+			font-weight: bold
+			background: #FFFFFF
+	.timestamp
+		font-size: 60%
+		color: gray
+		
+.events
+	margin: 20px 0 0 10px
+	.event
+		padding: 5px
+		border-bottom: #DDDDDD solid 1px
+		margin: 5px 20px 0px 5px
+		label
+			color: #990000
+		ul
+			list-style-type: none
+		.event-calendar
+			margin-top: 10px
