@@ -12,5 +12,6 @@ test:
 
 production:
   adapter: mysql
+  database: yourhires
   username: yourhires
   password: yourhires
