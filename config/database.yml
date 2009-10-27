@@ -12,6 +12,6 @@ test:
 
 production:
   adapter: mysql
-  username: yh
-  password: yh
+  username: yourhires
+  password: yourhires
   socket: /tmp/mysql.sock
