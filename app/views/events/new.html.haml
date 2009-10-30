@@ -1,0 +1,26 @@
+-content_for :head do
+	:javascript
+		$(document).ready(function() {
+			$("#recruitment-steps").accordion({header: '.recruitment-step-header'});
+		});
+
+.content-section
+	.title
+		%span New Event
+	-form_for @event ,:url => events_path do |form|
+		.new-event.span-14
+			-form.fields_for :recruitment_step do |recruitment_step_form|
+				=recruitment_step_form.label :candidate, "Select your candidate:"
+				&nbsp;
+				=recruitment_step_form.select :candidate, current_recruiter.candidates.map(&:name), :include_blank=> true
+			
+			%br
+			%br
+			.title-subheader Recruitment Steps
+				
+			#recruitment-steps
+				-current_recruiter.candidates.first.recruitment_steps.each do |recruitment_step|
+					.recruitment-step-header
+						=link_to recruitment_step.recruitment_step_type.name, "#"
+					.recruitment-step-content
+						=recruitment_step.recruitment_step_type.name + "Content"

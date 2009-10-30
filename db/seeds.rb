@@ -71,8 +71,8 @@ class Seeds
   def assign_interviewers
     @all_candidates.each do |candidate|
       candidate.recruitment_steps.each do |recruitment_step|
-      recruitment_step.event.interviewers << Interviewer.create(:participant => @all_participants[rand(@all_participants.size)],
-                                                                :event => recruitment_step.event)
+        rand_interviewer_index= rand(@all_participants.size)
+      recruitment_step.event.interviewers = [Interviewer.create(:participant => @all_participants[rand_interviewer_index]), Interviewer.create(:participant => @all_participants[rand_interviewer_index -1 ], :event => recruitment_step.event)]
       end
     end
   end

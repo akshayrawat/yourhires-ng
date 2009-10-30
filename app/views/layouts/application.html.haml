@@ -2,6 +2,7 @@
 	%head
 		=stylesheet_link_tag("blueprint/screen.css", "global.css")
 		=javascript_include_tag("jquery", "jquery-ui", "jrails", "application")
+		=yield :head
 	%body
 		.page
 			.container
