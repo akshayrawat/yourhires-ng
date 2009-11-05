@@ -60,7 +60,7 @@ class Seeds
 
   def recruitment_steps_get_scheduled
     @all_candidates.each do |candidate|
-      candidate.recruitment_steps.each do |recruitment_step|
+      candidate.recruitment_steps[0..-2].each do |recruitment_step|
         start_time = random_time
         candidate.schedule(recruitment_step, Event.new(
         :start_time => start_time, :end_time => start_time + 3600, :venue=> "Room 201"))
@@ -71,6 +71,7 @@ class Seeds
   def assign_interviewers
     @all_candidates.each do |candidate|
       candidate.recruitment_steps.each do |recruitment_step|
+        next if recruitment_step.event.nil?
         rand_interviewer_index= rand(@all_participants.size)
       recruitment_step.event.interviewers = [Interviewer.create(:participant => @all_participants[rand_interviewer_index]), Interviewer.create(:participant => @all_participants[rand_interviewer_index -1 ], :event => recruitment_step.event)]
       end

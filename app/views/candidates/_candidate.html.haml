@@ -28,5 +28,5 @@
 			%span.completed
 				= recruitment_step.recruitment_step_type.name
 		-candidate.recruitment_steps_pending.each_with_index do |recruitment_step, index|
-			%span{:class=>index == 0 ? 'next' : 'pending'}
+			%span.pending
 				= recruitment_step.recruitment_step_type.name

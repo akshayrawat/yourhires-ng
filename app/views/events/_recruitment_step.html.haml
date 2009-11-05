@@ -1,0 +1,17 @@
+=recruitment_step.recruitment_step_type.name
+%br
+=form.label :venue, "Venue*"
+=form.text_field :venue
+%br
+
+=form.label :start_time
+=form.datetime_select :start_time, {:minute_step => 15,:default => Time.now, :order => [:hour, :minute, :day, :month, :year], :date_separator => '/', :datetime_separator => ' at '}
+%br
+=form.label :end_time
+&nbsp;
+
+=form.datetime_select :end_time, {:minute_step => 15,:default => 1.hour.from_now, :order => [:hour, :minute, :day, :month, :year], :date_separator => '/', :datetime_separator => ' at '}
+
+%center
+	%br
+	=form.submit "Save", :class => "form-button"

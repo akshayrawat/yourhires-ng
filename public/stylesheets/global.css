@@ -1,5 +1,5 @@
 body {
-  background-color: #DDDDDD;
+  background-color: #eeeeee;
   font-family: "Lucida Grande",verdana,arial,helvetica,sans-serif; }
 
 a {
@@ -12,7 +12,7 @@ a {
   padding: 20px 10px 5px 0px; }
   .page .title {
     font-size: 30px;
-    color: #FFCC00; }
+    color: #ffcc00; }
   .page .user {
     font-size: 22px;
     color: #FFFFFF; }
@@ -32,7 +32,7 @@ a {
     .navigation .navigation-item a {
       color: #FFFFFF; }
   .navigation .selected {
-    background-color: #DDDDDD; }
+    background-color: #eeeeee; }
     .navigation .selected a {
       color: #990000; }
 
@@ -43,7 +43,7 @@ a {
   -moz-box-shadow: 5px 5px 7px #999; }
 
 .content-section .title {
-  background-color: #FFFF99;
+  background-color: #ffff88;
   color: #990000;
   font-size: 12px;
   font-weight: bold;
@@ -55,7 +55,7 @@ a {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   color: #000000;
-  background-color: #FFCC00;
+  background-color: #ffcc00;
   padding: 2px; }
 .content-section .title-subheader {
   color: #990000;
@@ -71,7 +71,7 @@ a {
   .candidates .candidate {
     background-color: #FFFDDF;
     padding: 5px;
-    border: #FFFF99 solid 1px;
+    border: #FFFF88 solid 2px;
     margin: 5px 20px 20px 5px; }
     .candidates .candidate label {
       color: #990000; }
@@ -89,16 +89,11 @@ a {
       color: #FFFFFF;
       font-size: 10px; }
       .candidates .candidate .recruitment_steps .completed {
-        background-color: #005826;
+        background-color: #6bba70;
         padding: 5px; }
       .candidates .candidate .recruitment_steps .pending {
         background-color: #444343;
         padding: 5px; }
-      .candidates .candidate .recruitment_steps .next {
-        background-color: #FFFF99;
-        padding: 5px;
-        color: #000000;
-        font-weight: bold; }
 
 .bold-button {
   background-color: #CC0000;
@@ -110,7 +105,7 @@ a {
   -moz-box-shadow: 5px 5px 7px #999; }
 
 .form-button {
-  background-color: #FFFF99;
+  background-color: #ffff88;
   border-width: 0px;
   font-size: 90%;
   font-weight: bold;
@@ -122,7 +117,7 @@ a {
   background-color: #FFFDDF;
   margin: 20px 20px 5px 20px;
   padding: 10px 0px 10px 25px;
-  border: #FFFF99 solid 2px; }
+  border: #FFFF88 solid 2px; }
   .new-candidate label {
     color: #990000;
     font-weight: bold; }
@@ -175,19 +170,28 @@ a {
   background-color: #FFFDDF;
   margin: 20px 20px 5px 20px;
   padding: 10px 10px 10px 10px;
-  border: #FFFF99 solid 2px; }
+  border: #FFFF88 solid 2px; }
   .new-event label {
     color: #990000;
     font-weight: bold; }
 
+#recruitment-steps .scheduled_true {
+  background-color: #6bba70; }
+#recruitment-steps .scheduled_false {
+  background-color: #444343; }
 #recruitment-steps .recruitment-step-header {
-  background-color: #FFFF99;
+  font-size: 10px;
   padding: 5px;
-  margin: 1px; }
+  margin: 1px;
+  padding: 5px; }
   #recruitment-steps .recruitment-step-header a {
-    font-weight: bold; }
+    padding: 2px;
+    color: white; }
 #recruitment-steps .recruitment-step-content {
   background-color: white;
   padding: 5px;
   margin: 1px;
-  height: 40px; }
+  height: 100px; }
+
+.calendar {
+  width: 80px; }

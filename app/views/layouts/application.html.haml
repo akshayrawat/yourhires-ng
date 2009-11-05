@@ -1,7 +1,7 @@
 %html
 	%head
 		=stylesheet_link_tag("blueprint/screen.css", "global.css")
-		=javascript_include_tag("jquery", "jquery-ui", "jrails", "application")
+		=javascript_include_tag("jquery", "jrails", "application")
 		=yield :head
 	%body
 		.page
@@ -16,7 +16,7 @@
 					.navigation-item{:id=> 'candidates-navigation-item'}
 						=link_to("Candidates", candidates_url)
 					.navigation-item{:id=> 'events-navigation-item'}
-						=link_to("Events", events_url)
+						=link_to("Schedules", events_url)
 					.navigation-item{:id=> 'inbox-navigation-item'}
 						=link_to("Settings", "/")
 				.content.span-16
