@@ -30,8 +30,8 @@ describe Candidate do
   it "should know participants involved" do
     candidate = CandidateFactory.create_with_pairing_and_interview_recruitment_steps
 
-    pairing = Event.create!
-    interview = Event.create!
+    pairing = EventFactory.create_in_future
+    interview = EventFactory.create_in_future
 
     candidate.schedule(candidate.recruitment_steps[0], pairing)
     candidate.schedule(candidate.recruitment_steps[1], interview)

@@ -1,10 +1,16 @@
 .content-section
 	.title
-		=label :select_candidate, "Select Candidate"
+		=label :candidate_id, "Select Candidate"
 		&nbsp;
-		=select "candidate", "selection", current_recruiter.candidates.map{|candidate| [candidate.name, candidate.id]}, {:include_blank => true}
+		=select "candidate", "id", current_recruiter.candidates.map{|candidate| [candidate.name, candidate.id]},{:include_blank => true}
 		
-		#event_details			
+		#recruitment_steps
 	%br					
-				
-=observe_field :candidate_selection, :url => {:action => 'event_details'}, :with => "'candidate_id='+$('#candidate_selection :selected').val()", :update=> "event_details"
+
+-remote_function_params =  {:url => {:action => 'recruitment_steps'}, :with => "'candidate_id='+$('#candidate_id :selected').val()", :update=> "recruitment_steps"}
+	
+=observe_field :candidate_id, remote_function_params
+:javascript
+	$(document).ready(function(){
+		#{remote_function(remote_function_params)}
+	});

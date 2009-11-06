@@ -1,4 +1,0 @@
--@recruitment_steps.each do |recruitment_step|
-	.new-event.span-14
-		-form_for recruitment_step.event || @new_event ,:url => events_path do |form|
-			=render :partial=> 'recruitment_step', :locals=> {:form=> form, :recruitment_step => recruitment_step}

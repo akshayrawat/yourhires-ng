@@ -168,7 +168,7 @@ a {
 
 .new-event {
   background-color: #FFFDDF;
-  margin: 20px 20px 5px 20px;
+  margin: 15px 20px 5px 15px;
   padding: 10px 10px 10px 10px;
   border: #FFFF88 solid 2px; }
   .new-event label {
@@ -195,3 +195,20 @@ a {
 
 .calendar {
   width: 80px; }
+
+.scheduled-event-title {
+  background-color: #6bba70;
+  padding: 2px 5px 2px 5px;
+  text-align: center;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  width: 25%;
+  color: white; }
+
+.unscheduled-event-title {
+  background-color: #444343;
+  padding: 2px 5px 2px 5px;
+  text-align: center;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  color: white; }

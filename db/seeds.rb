@@ -52,8 +52,8 @@ class Seeds
   end
 
   def candidates_get_registered_for_recruitment_steps
-    @arnab.register_for_steps([@phone_interview, @pairing, @interview, @interview])
-    @dilkash.register_for_steps([@phone_interview, @pairing, @interview, @interview])
+    @arnab.register_for_steps([@phone_interview, @pairing, @interview])
+    @dilkash.register_for_steps([@phone_interview, @pairing, @interview])
     @karan.register_for_steps([@phone_interview, @interview, @interview])
     @manandeep.register_for_steps([@phone_interview, @interview, @interview])
   end

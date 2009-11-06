@@ -1,5 +1,9 @@
 ActionController::Routing::Routes.draw do |map|    
-  map.resources :candidates, :events
+
+  map.resources :candidates do |candidate_map|
+    candidate_map.resources :events
+  end
+  map.resources :events
   
   map.dashboard '/dashboard', :controller => "dashboard", :action => 'index'
   
