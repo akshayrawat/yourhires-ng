@@ -3,7 +3,7 @@
 		=render :partial => "/shared/time", :locals=> {:time => event.start_time}
 	.span-10.last
 		%ul
-			%li{:class=> "event-title"}
+			%li{:class=> "event-title", :id=> event.id}
 				=link_to "#{event.recruitment_step.recruitment_step_type.name} : #{event.recruitment_step.candidate.name}", "#"
 			%li
 				=label_tag "Time:"			

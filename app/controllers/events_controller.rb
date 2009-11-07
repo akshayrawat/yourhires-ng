@@ -9,13 +9,7 @@ class EventsController < ApplicationController
   end
 
   def new
-    @candidate = Candidate.find(params[:candidate_id]) unless params[:candidate_id].blank?
-  end
-
-  def recruitment_steps
-    render :nothing => true and return if params[:candidate_id].blank?
-    render :partial => "recruitment_step", 
-           :collection => Candidate.find(params[:candidate_id]).recruitment_steps
+    @candidate= params[:candidate_id].blank? ? Candidate.new : Candidate.find(params[:candidate_id])
   end
 
   def create

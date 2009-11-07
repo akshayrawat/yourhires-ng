@@ -5,12 +5,14 @@
 		=select "candidate", "id", current_recruiter.candidates.map{|candidate| [candidate.name, candidate.id]},{:include_blank => true}
 		
 		#recruitment_steps
-	%br					
+			=render :partial => "recruitment_step", :collection => @candidate.recruitment_steps
 
--remote_function_params =  {:url => {:action => 'recruitment_steps'}, :with => "'candidate_id='+$('#candidate_id :selected').val()", :update=> "recruitment_steps"}
-	
-=observe_field :candidate_id, remote_function_params
 :javascript
-	$(document).ready(function(){
-		#{remote_function(remote_function_params)}
+	$("#candidate_id").change(function() {
+		candidate_id = $('#candidate_id :selected').val();
+		if(candidate_id == "") {
+			window.location = '/events/new';
+		}else {
+			window.location = '/candidates/' + candidate_id + '/events/new';
+		}
 	});

@@ -10,7 +10,7 @@ class CandidateFactory
     }
   end
   
-  def self.create_with_pairing_and_interview_recruitment_steps
+  def self.create_registered_with_pairing_and_interview_steps
     pairing = RecruitmentStepTypeFactory.pairing
     interview = RecruitmentStepTypeFactory.interview
     candidate = CandidateFactory.create(:recruitment_step_selections => [pairing, interview])

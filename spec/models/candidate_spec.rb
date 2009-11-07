@@ -28,7 +28,7 @@ describe Candidate do
   end
   
   it "should know participants involved" do
-    candidate = CandidateFactory.create_with_pairing_and_interview_recruitment_steps
+    candidate = CandidateFactory.create_registered_with_pairing_and_interview_steps
 
     pairing = EventFactory.create_in_future
     interview = EventFactory.create_in_future
