@@ -8,18 +8,20 @@ describe EventsController do
     login_as @maria
   end
 
-  it "#index should list upcoming events for recruiter" do
-    candidate= CandidateFactory.create(:name => "Arnab", :recruiters => [@maria])
+  describe "#index" do
+    it "should list upcoming events for recruiter" do
+      candidate= CandidateFactory.create(:name => "Arnab", :recruiters => [@maria])
 
-    pairing = RecruitmentStepFactory.pairing(:event => EventFactory.create_in_past)
-    interview = RecruitmentStepFactory.interview(:event => EventFactory.create_in_future)
+      pairing = RecruitmentStepFactory.pairing(:event => EventFactory.create_in_past)
+      interview = RecruitmentStepFactory.interview(:event => EventFactory.create_in_future)
 
-    candidate.recruitment_steps = [pairing, interview]
+      candidate.recruitment_steps = [pairing, interview]
 
-    get :index
+      get :index
 
-    response.should have_tag("*[id=?]", interview.event.id)
-    response.should_not have_tag("*[id=?]", pairing.event.id)
+      response.should have_tag("*[id=?]", interview.event.id)
+      response.should_not have_tag("*[id=?]", pairing.event.id)
+    end
   end
 
   describe "#new" do
@@ -40,14 +42,14 @@ describe EventsController do
       response.should_not have_tag("span", RecruitmentStepTypeFactory.phone_interview.name)
     end
 
-    it "should list all current recruiter`s candidates available for selection" do
+    it "should list current recruiter`s candidates in select box" do
       candidate_one = CandidateFactory.create(:name => "Arnab", :recruiters => [@maria])
       candidate_two= CandidateFactory.create(:name=> "Karan",:recruiters=> [RecruiterFactory.reshmi])
 
       get :new
 
-      response.should have_tag("select#candidate_id option", candidate_one.name)
-      response.should_not have_tag("select#candidate_id option", candidate_two.name)
+      response.should have_tag("select#selected_candidate_id option", candidate_one.name)
+      response.should_not have_tag("select#selected_candidate_id option", candidate_two.name)
     end
 
   end

@@ -1,18 +1,31 @@
 .content-section
 	.title
-		=label :candidate_id, "Select Candidate"
+		=label :selected_candidate_id, "Select Candidate"
 		&nbsp;
-		=select "candidate", "id", current_recruiter.candidates.map{|candidate| [candidate.name, candidate.id]},{:include_blank => true}
+		=select "selected_candidate", "id", current_recruiter.candidates.map{|candidate| [candidate.name, candidate.id]},{:prompt => "Select"}
+
+		-unless @selected_candidate.recruitment_steps.empty?
+			=select "selected_recruitment_step", "id", @selected_candidate.recruitment_steps.map{|recruitment_step| [recruitment_step.recruitment_step_type.name, recruitment_step.id]},{:include_blank => "All"}
 		
 		#recruitment_steps
-			=render :partial => "recruitment_step", :collection => @candidate.recruitment_steps
+			=render :partial => "recruitment_step", :collection => @recruitment_steps
 
 :javascript
-	$("#candidate_id").change(function() {
-		candidate_id = $('#candidate_id :selected').val();
-		if(candidate_id == "") {
+	$("#selected_candidate_id").change(function() {
+		selected_candidate_id = $('#selected_candidate_id :selected').val();
+		if(selected_candidate_id == "") {
 			window.location = '/events/new';
 		}else {
-			window.location = '/candidates/' + candidate_id + '/events/new';
+			window.location = '/candidates/' + selected_candidate_id + '/events/new';
+		}
+	});	
+	
+	$("#selected_recruitment_step_id").change(function() {
+		selected_candidate_id = $('#selected_candidate_id :selected').val();	
+		recruitment_step_id = $('#selected_recruitment_step_id :selected').val();
+		if(recruitment_step_id == "") {
+			window.location = '/candidates/' + selected_candidate_id + '/events/new';
+		}else {
+			window.location = '/candidates/' + selected_candidate_id + '/recruitment_steps/' + recruitment_step_id+'/events/new';
 		}
 	});

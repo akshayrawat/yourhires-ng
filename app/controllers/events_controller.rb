@@ -9,7 +9,15 @@ class EventsController < ApplicationController
   end
 
   def new
-    @candidate= params[:candidate_id].blank? ? Candidate.new : Candidate.find(params[:candidate_id])
+    @selected_candidate= 
+        params[:candidate_id].blank? ? Candidate.new : Candidate.find(params[:candidate_id])
+    
+    if params[:recruitment_step_id].blank?
+      @recruitment_steps = @selected_candidate.recruitment_steps
+    else
+      @selected_recruitment_step= RecruitmentStep.find(params[:recruitment_step_id])
+      @recruitment_steps = [@selected_recruitment_step]
+    end
   end
 
   def create
@@ -31,7 +39,7 @@ class EventsController < ApplicationController
       if yield(event)
         @message= success_message
       else          
-        event.recruitment_step.event = event #HACK        
+        event.recruitment_step.event = event #HACK
         @message = "Please enter the highlighted fields"
       end
       page.replace dom_id(event.recruitment_step), 

@@ -26,7 +26,8 @@
 	.recruitment_steps
 		-candidate.recruitment_steps_completed.each do |recruitment_step|
 			%span.completed
-				= recruitment_step.recruitment_step_type.name
+				=link_to recruitment_step.recruitment_step_type.name, new_candidate_event_url(candidate)
+				
 		-candidate.recruitment_steps_pending.each_with_index do |recruitment_step, index|
 			%span.pending
-				= recruitment_step.recruitment_step_type.name
+				=link_to recruitment_step.recruitment_step_type.name, new_candidate_event_url(candidate)
