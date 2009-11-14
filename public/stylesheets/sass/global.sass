@@ -1,7 +1,18 @@
-!green = #6BBA70
+!black = #000000
+!white = #FFFFFF
+!green= #6BBA70
+
 !light_yellow= #FFFF88
 !dark_yellow= #FFCC00
-!gray= #EEEEEE
+
+!light_red= #CC0000
+!dark_red = #990000
+
+!light_gray= #EEEEEE
+!dark_gray= #444343
+
+!content_background = #FAF7D4
+
 
 =round-top-corner(!radius)
 	-moz-border-radius-topright: #{!radius}
@@ -14,23 +25,23 @@
 	-webkit-border-radius: #{!radius}
 
 =shadow-side()
-	-webkit-box-shadow: 5px 5px 7px #999
-	-moz-box-shadow: 5px 5px 7px #999
+	-webkit-box-shadow= "5px 5px 10px #{!dark_gray}"
+	-moz-box-shadow= "5px 5px 10px #{!dark_gray}"
 
 body
-	background-color= !gray
+	background-color= !light_gray
 	font-family: "Lucida Grande",verdana,arial,helvetica,sans-serif
 	
 a 
 	text-decoration: none
 	&:focus
-		color:#FFFFFF
+		color= !white
 
 ul, ol 
 	margin:0 1.5em 1.5em;
 
 .page
-	background-color: #990000
+	background-color= !dark_red
 	height: 79px
 	padding: 20px 10px 5px 0px
 	.title
@@ -38,27 +49,27 @@ ul, ol
 		color= !dark_yellow
 	.user
 		font-size: 22px
-		color: #FFFFFF
+		color= !white
 		
 .navigation
 	margin-top: 15px
-	color:#FFFFFF
-	background-color: #990000
+	color= !white
+	background-color= !dark_red
 	font-weight: bold 
 	text-align: center
 	.navigation-item
-		background-color: #CC0000
-		border-left: 1px #990000 solid
-		border-right: 1px #990000 solid
+		background-color= !light_red
+		border-left= "1px #{!dark_red} solid"
+		border-right= "1px #{!dark_red} solid"
 		padding: 3px
 		float: left
 		width: 100px
 		a
-			color: #FFFFFF
+			color= !white
 	.selected
-		background-color= !gray
+		background-color= !light_gray
 		a
-			color: #990000
+			color= !dark_red
 		
 .content
 	margin: 15px 10px 10px 0px
@@ -68,7 +79,7 @@ ul, ol
 .content-section
 	.title
 		background-color= !light_yellow
-		color: #990000
+		color= !dark_red
 		font-size: 12px
 		font-weight: bold
 		padding: 5px 0 5px 20px
@@ -77,12 +88,12 @@ ul, ol
 		margin: 0px 2px 0 2px
 	.title-links a.selected
 		+round-corner(5px)
-		color: #000000
+		color= !black
 		background-color= !dark_yellow
 		padding: 2px
 		
 	.title-subheader
-		color: #990000
+		color= !dark_red
 		font-weight: bold
 		margin-bottom: 15px
 
@@ -93,12 +104,12 @@ ul, ol
 .candidates
 	margin: 20px 0 0 10px
 	.candidate
-		background-color: #FFFDDF
+		background-color= !content_background
 		padding: 5px
-		border: #FFFF88 solid 2px		
+		border= "#{!light_yellow} solid 2px"
 		margin: 5px 20px 20px 5px
 		label
-			color: #990000
+			color= !dark_red
 		ul
 			list-style-type: none
 			.action-links a
@@ -112,7 +123,7 @@ ul, ol
 		.recruitment_steps
 			margin: 0px 0px 10px 15px
 			a
-				color: #FFFFFF
+				color= !white
 				text-decoration: underline
 		.completed
 			padding: 3px 7px 3px 7px
@@ -121,13 +132,13 @@ ul, ol
 		.pending
 			font-size: 10px		
 			padding: 3px 7px 3px 7px
-			background-color: #444343
+			background-color= !dark_gray
 			
 .bold-button
-	background-color: #CC0000
+	background-color= !light_red
 	border-width: 0px
 	font-weight: bold
-	color: #FFFFFF
+	color= !white
 	padding: 5px 20px 5px 20px
 	+shadow-side()
 
@@ -140,13 +151,13 @@ ul, ol
 	+round-corner(5px)
 	
 .new-candidate
-	background-color: #FFFDDF
+	background-color= !content_background
 	margin: 20px 20px 5px 20px
 	padding: 10px 0px 10px 25px
-	border: #FFFF88 solid 2px
+	border= "#{!light_yellow} solid 2px"
 	
 	label
-		color: #990000
+		color= !dark_red
 		font-weight: bold
 	.profile
 		profile
@@ -160,7 +171,7 @@ ul, ol
 		font-weight: bold
 
 .field-error input, .field-error select, select.field-error
-	border: #CC0000 solid 2px
+	border= "#{!light_red} solid 2px"
 
 .time
 	text-transform: uppercase
@@ -168,14 +179,14 @@ ul, ol
 	width: 50px
 	.month-time
 		font-size: 90%	
-		background: #990000
-		border: #990000 2px solid
-		color: #FFFFFF
+		background= !dark_red
+		border= !dark_red 2px solid
+		color= !white
 		.date-time
-			color: #000000
+			color= !black
 			font-size: 150%
 			font-weight: bold
-			background: #FFFFFF
+			background= !white
 	.timestamp
 		font-size: 60%
 		color: gray
@@ -184,10 +195,10 @@ ul, ol
 	margin: 20px 0 0 10px
 	.event
 		padding: 5px
-		border-bottom: #DDDDDD solid 1px
+		border-bottom= "#{!light_gray} solid 1px"
 		margin: 5px 20px 0px 5px
 		label
-			color: #990000
+			color= !dark_red
 		ul
 			list-style-type: none
 		.event-calendar
@@ -195,20 +206,20 @@ ul, ol
 		.event-title
 			font-weight: bold
 .new-event
-	background-color: #FFFDDF
+	background-color= !content_background
 	margin: 15px 20px 5px 15px
 	padding: 10px 10px 10px 10px
-	border: #FFFF88 solid 2px
+	border= "#{!light_yellow} solid 2px"
 
 	label
-		color: #990000
+		color= !dark_red
 		font-weight: bold
 
 #recruitment-steps	
 	.scheduled_true
 		background-color= !green
 	.scheduled_false
-		background-color: #444343
+		background-color= !dark_gray
 	.recruitment-step-header
 		font-size: 10px	
 		padding: 5px
@@ -231,12 +242,10 @@ ul, ol
 	background-color= !green
 	padding: 2px 5px 2px 5px
 	text-align: center
-	+round-corner(5px)
 	width: 25%
 	color: white
 .unscheduled-event-title
-	background-color: #444343
+	background-color= !dark_gray
 	padding: 2px 5px 2px 5px
 	text-align: center
-	+round-corner(5px)
 	color: white

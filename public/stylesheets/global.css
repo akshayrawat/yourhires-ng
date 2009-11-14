@@ -4,6 +4,8 @@ body {
 
 a {
   text-decoration: none; }
+  a:focus {
+    color: white; }
 
 
 .page {
@@ -15,22 +17,23 @@ a {
     color: #ffcc00; }
   .page .user {
     font-size: 22px;
-    color: #FFFFFF; }
+    color: white; }
 
 .navigation {
   margin-top: 15px;
+  color: white;
   background-color: #990000;
   font-weight: bold;
   text-align: center; }
   .navigation .navigation-item {
-    background-color: #CC0000;
+    background-color: #cc0000;
     border-left: 1px #990000 solid;
     border-right: 1px #990000 solid;
     padding: 3px;
     float: left;
     width: 100px; }
     .navigation .navigation-item a {
-      color: #FFFFFF; }
+      color: white; }
   .navigation .selected {
     background-color: #eeeeee; }
     .navigation .selected a {
@@ -39,8 +42,8 @@ a {
 .content {
   margin: 15px 10px 10px 0px;
   background-color: white;
-  -webkit-box-shadow: 5px 5px 7px #999;
-  -moz-box-shadow: 5px 5px 7px #999; }
+  -webkit-box-shadow: 5px 5px 10px #444343;
+  -moz-box-shadow: 5px 5px 10px #444343; }
 
 .content-section .title {
   background-color: #ffff88;
@@ -54,7 +57,7 @@ a {
 .content-section .title-links a.selected {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
-  color: #000000;
+  color: black;
   background-color: #ffcc00;
   padding: 2px; }
 .content-section .title-subheader {
@@ -69,9 +72,9 @@ a {
 .candidates {
   margin: 20px 0 0 10px; }
   .candidates .candidate {
-    background-color: #FFFDDF;
+    background-color: #faf7d4;
     padding: 5px;
-    border: #FFFF88 solid 2px;
+    border: #ffff88 solid 2px;
     margin: 5px 20px 20px 5px; }
     .candidates .candidate label {
       color: #990000; }
@@ -87,7 +90,7 @@ a {
     .candidates .candidate .recruitment_steps {
       margin: 0px 0px 10px 15px; }
       .candidates .candidate .recruitment_steps a {
-        color: #FFFFFF;
+        color: white;
         text-decoration: underline; }
     .candidates .candidate .completed {
       padding: 3px 7px 3px 7px;
@@ -99,13 +102,13 @@ a {
       background-color: #444343; }
 
 .bold-button {
-  background-color: #CC0000;
+  background-color: #cc0000;
   border-width: 0px;
   font-weight: bold;
-  color: #FFFFFF;
+  color: white;
   padding: 5px 20px 5px 20px;
-  -webkit-box-shadow: 5px 5px 7px #999;
-  -moz-box-shadow: 5px 5px 7px #999; }
+  -webkit-box-shadow: 5px 5px 10px #444343;
+  -moz-box-shadow: 5px 5px 10px #444343; }
 
 .form-button {
   background-color: #ffff88;
@@ -117,10 +120,10 @@ a {
   -webkit-border-radius: 5px; }
 
 .new-candidate {
-  background-color: #FFFDDF;
+  background-color: #faf7d4;
   margin: 20px 20px 5px 20px;
   padding: 10px 0px 10px 25px;
-  border: #FFFF88 solid 2px; }
+  border: #ffff88 solid 2px; }
   .new-candidate label {
     color: #990000;
     font-weight: bold; }
@@ -134,7 +137,7 @@ a {
     font-weight: bold; }
 
 .field-error input, .field-error select, select.field-error {
-  border: #CC0000 solid 2px; }
+  border: #cc0000 solid 2px; }
 
 .time {
   text-transform: uppercase;
@@ -144,12 +147,12 @@ a {
     font-size: 90%;
     background: #990000;
     border: #990000 2px solid;
-    color: #FFFFFF; }
+    color: white; }
     .time .month-time .date-time {
-      color: #000000;
+      color: black;
       font-size: 150%;
       font-weight: bold;
-      background: #FFFFFF; }
+      background: white; }
   .time .timestamp {
     font-size: 60%;
     color: gray; }
@@ -158,7 +161,7 @@ a {
   margin: 20px 0 0 10px; }
   .events .event {
     padding: 5px;
-    border-bottom: #DDDDDD solid 1px;
+    border-bottom: #eeeeee solid 1px;
     margin: 5px 20px 0px 5px; }
     .events .event label {
       color: #990000; }
@@ -170,10 +173,10 @@ a {
       font-weight: bold; }
 
 .new-event {
-  background-color: #FFFDDF;
+  background-color: #faf7d4;
   margin: 15px 20px 5px 15px;
   padding: 10px 10px 10px 10px;
-  border: #FFFF88 solid 2px; }
+  border: #ffff88 solid 2px; }
   .new-event label {
     color: #990000;
     font-weight: bold; }
@@ -203,8 +206,6 @@ a {
   background-color: #6bba70;
   padding: 2px 5px 2px 5px;
   text-align: center;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
   width: 25%;
   color: white; }
 
@@ -212,6 +213,4 @@ a {
   background-color: #444343;
   padding: 2px 5px 2px 5px;
   text-align: center;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
   color: white; }
