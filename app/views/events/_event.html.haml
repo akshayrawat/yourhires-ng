@@ -1,6 +1,6 @@
 .event.span-14
 	.span-2.event-calendar
-		=render :partial => "/shared/time", :locals=> {:time => event.start_time}
+		=render :partial => "/events/time", :locals=> {:time => event.start_time}
 	.span-10.last
 		%ul
 			%li{:class=> "event-title", :id=> event.id}

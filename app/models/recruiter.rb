@@ -15,4 +15,10 @@ class Recruiter < ActiveRecord::Base
     u && u.authenticated?(password) ? u : nil
   end
 
+  def upcoming_events
+    candidates.collect do |candidate|
+      candidate.recruitment_steps_upcoming.collect(&:event)
+    end.flatten
+  end
+
 end

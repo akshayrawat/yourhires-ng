@@ -4,8 +4,9 @@ body {
 
 a {
   text-decoration: none; }
-  a:focus {
-    color: white; }
+
+a:focus, a:hover {
+  color: white; }
 
 
 .page {
@@ -39,31 +40,31 @@ a {
     .navigation .selected a {
       color: #990000; }
 
-.content {
+
+.content-section {
   margin: 15px 10px 10px 0px;
   background-color: white;
-  -webkit-box-shadow: 5px 5px 10px #444343;
-  -moz-box-shadow: 5px 5px 10px #444343; }
-
-.content-section .title {
-  background-color: #ffff88;
-  color: #990000;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 5px 0 5px 20px; }
-.content-section .title-links a {
-  font-size: 90%;
-  margin: 0px 2px 0 2px; }
-.content-section .title-links a.selected {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  color: black;
-  background-color: #ffcc00;
-  padding: 2px; }
-.content-section .title-subheader {
-  color: #990000;
-  font-weight: bold;
-  margin-bottom: 15px; }
+  -webkit-box-shadow: 5px 5px 10px #999;
+  -moz-box-shadow: 5px 5px 10px #999; }
+  .content-section .title {
+    background-color: #ffff88;
+    color: #990000;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 0 5px 20px; }
+  .content-section .title-links a {
+    font-size: 90%;
+    margin: 0px 2px 0 2px; }
+  .content-section .title-links a.selected {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    color: black;
+    background-color: #ffcc00;
+    padding: 2px; }
+  .content-section .title-subheader {
+    color: #990000;
+    font-weight: bold;
+    margin-bottom: 15px; }
 
 .sidebar {
   margin: 15px;
@@ -72,9 +73,11 @@ a {
 .candidates {
   margin: 20px 0 0 10px; }
   .candidates .candidate {
-    background-color: #faf7d4;
+    background-color: #ffffbe;
     padding: 5px;
-    border: #ffff88 solid 2px;
+    border: #ffff88 solid 4px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
     margin: 5px 20px 20px 5px; }
     .candidates .candidate label {
       color: #990000; }
@@ -107,8 +110,8 @@ a {
   font-weight: bold;
   color: white;
   padding: 5px 20px 5px 20px;
-  -webkit-box-shadow: 5px 5px 10px #444343;
-  -moz-box-shadow: 5px 5px 10px #444343; }
+  -webkit-box-shadow: 5px 5px 10px #999;
+  -moz-box-shadow: 5px 5px 10px #999; }
 
 .form-button {
   background-color: #ffff88;
@@ -120,10 +123,12 @@ a {
   -webkit-border-radius: 5px; }
 
 .new-candidate {
-  background-color: #faf7d4;
+  background-color: #ffffbe;
   margin: 20px 20px 5px 20px;
   padding: 10px 0px 10px 25px;
-  border: #ffff88 solid 2px; }
+  border: #ffff88 solid 4px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px; }
   .new-candidate label {
     color: #990000;
     font-weight: bold; }
@@ -141,8 +146,7 @@ a {
 
 .time {
   text-transform: uppercase;
-  text-align: center;
-  width: 50px; }
+  text-align: center; }
   .time .month-time {
     font-size: 90%;
     background: #990000;
@@ -173,10 +177,12 @@ a {
       font-weight: bold; }
 
 .new-event {
-  background-color: #faf7d4;
+  background-color: #ffffbe;
   margin: 15px 20px 5px 15px;
   padding: 10px 10px 10px 10px;
-  border: #ffff88 solid 2px; }
+  border: #ffff88 solid 4px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px; }
   .new-event label {
     color: #990000;
     font-weight: bold; }
@@ -214,3 +220,22 @@ a {
   padding: 2px 5px 2px 5px;
   text-align: center;
   color: white; }
+
+.dashboard a {
+  font-weight: bold; }
+.dashboard label {
+  color: #990000; }
+.dashboard ul {
+  list-style-type: none; }
+.dashboard .upcoming-event {
+  cursor: pointer;
+  cursor: hand; }
+.dashboard .events {
+  margin: 20px 0px 0px 30px; }
+.dashboard #upcoming-event-detail {
+  padding-top: 10px;
+  background-color: #ffffbe;
+  border: #ffff88 solid 4px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  margin: 20px 20px 20px 20px; }

@@ -1,0 +1,23 @@
+.time.span-2.upcoming-event{:id=> "event_#{upcoming_event.id}"}
+	.month-time
+		.month
+			=upcoming_event.start_time.strftime("%b")
+		.date-time
+			.date
+				=upcoming_event.start_time.day
+	.timestamp
+		=format_time(upcoming_event.start_time)
+
+	%div{:id=> "detail_event_#{upcoming_event.id}", :style=> "display:none"}
+		%ul{:class=> "event"}
+			%li{:class=> "event-title", :id=> upcoming_event.id}
+				=link_to "#{upcoming_event.recruitment_step.recruitment_step_type.name} : #{upcoming_event.recruitment_step.candidate.name}", new_candidate_recruitment_step_event_url(upcoming_event.recruitment_step.candidate, upcoming_event.recruitment_step)
+			%li
+				=label_tag "Time:"			
+				="#{format_time(upcoming_event.start_time)} - #{format_time(upcoming_event.end_time)}"
+			%li
+				=label_tag "Venue:"
+				=upcoming_event.venue
+			%li
+				=label_tag "Participants:"
+				=upcoming_event.interviewers.map{|interview| interview.participant.name}.join(",")

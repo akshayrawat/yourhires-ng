@@ -20,8 +20,6 @@
 			=candidate.participants.collect{|participant|participant.name}.join(", ")
 		%li.action-links
 			=link_to_if(candidate.resume?, "DOWNLOAD RESUME", candidate.resume.url){}
-			%a{:href=> "#"} WATCH
-			%a{:href=> "#"}	SEND A MESSAGE
 	
 	.recruitment_steps
 		-candidate.recruitment_steps_completed.each do |recruitment_step|

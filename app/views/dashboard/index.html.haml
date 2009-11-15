@@ -1,2 +1,30 @@
-.content-section
-	.title Dashboard
+.dashboard.content-section.span-16
+	.title
+		%span Upcoming Events
+	.events
+		=render :partial => 'upcoming_event', :collection => @upcoming_events
+	#upcoming-event-detail.span-14
+		:javascript
+			$('#upcoming-event-detail').html($(detail_event_#{@upcoming_events.first.id}).html());			
+		
+.dashboard.content-section.span-16
+	.title
+		%span Recent Activities
+	.events
+		%br
+		%br
+		%br
+
+=content_for :sidebar do
+	.sidebar-section
+		%center
+			%p
+				=link_to "New Candidate", new_candidate_url, :class => "bold-button"
+			%p
+				=link_to "Schedule a Step", new_event_url, :class => "bold-button"	
+
+:javascript
+	$(".upcoming-event").click(function(){
+		upcoming_event_detail_id = "detail_" + this.id;
+		$('#upcoming-event-detail').html($('#'+upcoming_event_detail_id).html());
+	})

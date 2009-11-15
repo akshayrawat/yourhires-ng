@@ -11,8 +11,7 @@
 !light_gray= #EEEEEE
 !dark_gray= #444343
 
-!content_background = #FAF7D4
-
+!content_background = #FFFFBE
 
 =round-top-corner(!radius)
 	-moz-border-radius-topright: #{!radius}
@@ -25,17 +24,18 @@
 	-webkit-border-radius: #{!radius}
 
 =shadow-side()
-	-webkit-box-shadow= "5px 5px 10px #{!dark_gray}"
-	-moz-box-shadow= "5px 5px 10px #{!dark_gray}"
+	-webkit-box-shadow: 5px 5px 10px #999
+	-moz-box-shadow: 5px 5px 10px #999
 
 body
 	background-color= !light_gray
 	font-family: "Lucida Grande",verdana,arial,helvetica,sans-serif
-	
+
 a 
 	text-decoration: none
-	&:focus
-		color= !white
+	
+a:focus, a:hover
+	color= !white
 
 ul, ol 
 	margin:0 1.5em 1.5em;
@@ -72,11 +72,11 @@ ul, ol
 			color= !dark_red
 		
 .content
+
+.content-section
 	margin: 15px 10px 10px 0px
 	background-color: white
 	+shadow-side
-	
-.content-section
 	.title
 		background-color= !light_yellow
 		color= !dark_red
@@ -106,7 +106,8 @@ ul, ol
 	.candidate
 		background-color= !content_background
 		padding: 5px
-		border= "#{!light_yellow} solid 2px"
+		border= "#{!light_yellow} solid 4px"
+		+round-corner(10px)
 		margin: 5px 20px 20px 5px
 		label
 			color= !dark_red
@@ -154,8 +155,8 @@ ul, ol
 	background-color= !content_background
 	margin: 20px 20px 5px 20px
 	padding: 10px 0px 10px 25px
-	border= "#{!light_yellow} solid 2px"
-	
+	border= "#{!light_yellow} solid 4px"
+	+round-corner(10px)
 	label
 		color= !dark_red
 		font-weight: bold
@@ -176,7 +177,7 @@ ul, ol
 .time
 	text-transform: uppercase
 	text-align: center
-	width: 50px
+
 	.month-time
 		font-size: 90%	
 		background= !dark_red
@@ -209,7 +210,8 @@ ul, ol
 	background-color= !content_background
 	margin: 15px 20px 5px 15px
 	padding: 10px 10px 10px 10px
-	border= "#{!light_yellow} solid 2px"
+	border= "#{!light_yellow} solid 4px"
+	+round-corner(10px)
 
 	label
 		color= !dark_red
@@ -249,3 +251,22 @@ ul, ol
 	padding: 2px 5px 2px 5px
 	text-align: center
 	color: white
+	
+.dashboard
+	a
+		font-weight: bold
+	label
+		color= !dark_red
+	ul
+		list-style-type: none
+	.upcoming-event
+		cursor: pointer
+		cursor: hand
+	.events
+		margin: 20px 0px 0px 30px
+	#upcoming-event-detail
+		padding-top: 10px
+		background-color= !content_background	
+		border= "#{!light_yellow} solid 4px"
+		+round-corner(10px)	
+		margin: 20px 20px 20px 20px
