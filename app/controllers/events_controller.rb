@@ -3,6 +3,10 @@ class EventsController < ApplicationController
   def index
     @events = current_recruiter.upcoming_events
   end
+  
+  def show
+    render Event.find(params[:id])
+  end
 
   def new
     @selected_candidate= 

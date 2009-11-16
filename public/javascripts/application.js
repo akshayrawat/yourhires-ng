@@ -7,3 +7,15 @@ add_selected_element = function(object, method) {
 	remove_link = "<a href='#' onclick= '$(this).parent(\"div\").remove(); return false;' class='form-button right'>Remove</a>";
 	placeholder.append("<div>"+  text + hidden_field + remove_link + "</div>");
 }
+
+register_event_clicktips = function() {
+	$(".event-clicktip").each(function(){
+	event_id_url= this.id
+	 $(this).qtip({
+		   content: {
+		      url: event_id_url,
+		      method: 'get'
+		   }
+		});	
+	})
+};
