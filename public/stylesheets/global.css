@@ -251,11 +251,12 @@ li {
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px; }
     .recruitment-activities .recruitment-activity .message {
+      font-size: 90%;
       font-weight: bold; }
     .recruitment-activities .recruitment-activity .recruiter {
       font-style: italic;
       text-align: right;
-      font-size: 60%;
+      font-size: 50%;
       color: gray; }
     .recruitment-activities .recruitment-activity .timestamp {
       font-style: italic;
