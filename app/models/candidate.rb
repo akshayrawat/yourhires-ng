@@ -4,7 +4,7 @@ class Candidate < ActiveRecord::Base
   has_and_belongs_to_many :recruiters
   belongs_to :role
   has_attached_file :resume
-  
+
   validates_presence_of :name, :phone, :email, :source, :role_id, :recruitment_steps, :recruiters
       
   def participants

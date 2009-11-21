@@ -5,9 +5,12 @@ body {
 a {
   text-decoration: none; }
 
-a:focus, a:hover {
-  color: white; }
+li {
+  list-style-type: none; }
 
+
+.container {
+  margin-bottom: 80px; }
 
 .page {
   background-color: #990000;
@@ -104,7 +107,7 @@ a:focus, a:hover {
       padding: 3px 7px 3px 7px;
       background-color: #444343; }
 
-.bold-button {
+.bold-button, a.bold-button {
   background-color: #cc0000;
   border-width: 0px;
   font-weight: bold;
@@ -239,3 +242,11 @@ a:focus, a:hover {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   margin: 20px 20px 20px 20px; }
+
+.recruitment-activities {
+  margin: 20px 30px 20px 20px; }
+  .recruitment-activities .recruitment-activity {
+    padding: 7px;
+    border-bottom: #eeeeee solid 1px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px; }

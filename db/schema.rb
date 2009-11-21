@@ -68,5 +68,13 @@ ActiveRecord::Schema.define(:version => 1) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+  
+  create_table "recruitment_activities", :force  => true do |t|
+    t.integer  "candidate_id"
+    t.integer  "recruiter_id"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
     
 end

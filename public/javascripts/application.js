@@ -13,9 +13,19 @@ register_event_clicktips = function() {
 	event_id_url= this.id
 	 $(this).qtip({
 		   content: {
-		      url: event_id_url,
-		      method: 'get'
-		   }
+		      url: event_id_url
+			},
+			style: {
+				padding: 5,
+				width: 500
+			}
 		});	
+	})
+	
+	$(".unscheduled-event-clicktip").each(function(){
+		$(this).qtip({
+			content: "Recruitment step not scheduled",
+			style: {width: 210}
+		})
 	})
 };

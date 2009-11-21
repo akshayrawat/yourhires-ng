@@ -6,16 +6,25 @@ class Seeds
     create_roles
     create_recruitment_step_types
     create_recruiters
+
+    login
+
     create_candidates
     create_participants
 
     candidates_get_registered_for_recruitment_steps
     recruitment_steps_get_scheduled
+    
+    save
     assign_interviewers
-
     save
   end
-
+  
+  def login
+    Authlogic::Session::Base.controller = Authlogic::TestCase::MockController.new    
+    RecruiterSession.create(@maria)
+  end
+  
   def create_roles
     @software_developer = Role.create!(:name => "Software Developer")
     @business_analyst = Role.create!(:name => "Business Analyst")

@@ -28,5 +28,5 @@
 					
 		-candidate.recruitment_steps_pending.each do |recruitment_step|
 			%span.pending
-				=link_to recruitment_step.recruitment_step_type.name, new_candidate_recruitment_step_event_url(candidate, recruitment_step)
+				=link_to recruitment_step.recruitment_step_type.name, new_candidate_recruitment_step_event_url(candidate, recruitment_step), :class=> "unscheduled-event-clicktip"
 

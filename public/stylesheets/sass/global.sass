@@ -26,7 +26,7 @@
 =shadow-side()
 	-webkit-box-shadow: 5px 5px 10px #999
 	-moz-box-shadow: 5px 5px 10px #999
-
+	
 body
 	background-color= !light_gray
 	font-family: "Lucida Grande",verdana,arial,helvetica,sans-serif
@@ -34,12 +34,15 @@ body
 a 
 	text-decoration: none
 	
-a:focus, a:hover
-	color= !white
+li 
+	list-style-type: none
 
 ul, ol 
 	margin:0 1.5em 1.5em;
 
+.container
+	margin-bottom: 80px
+	
 .page
 	background-color= !dark_red
 	height: 79px
@@ -135,7 +138,7 @@ ul, ol
 			padding: 3px 7px 3px 7px
 			background-color= !dark_gray
 			
-.bold-button
+.bold-button, a.bold-button
 	background-color= !light_red
 	border-width: 0px
 	font-weight: bold
@@ -270,3 +273,10 @@ ul, ol
 		border= "#{!light_yellow} solid 4px"
 		+round-corner(10px)	
 		margin: 20px 20px 20px 20px
+
+.recruitment-activities
+	margin: 20px 30px 20px 20px
+	.recruitment-activity
+		padding: 7px
+		border-bottom= "#{!light_gray} solid 1px"		
+		+round-corner(10px)
