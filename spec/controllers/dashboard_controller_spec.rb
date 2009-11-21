@@ -48,6 +48,17 @@ describe DashboardController do
 
 				response.should have_tag("*[id=?]", "detail_event_#{one.event.id}")
 			end
-		end		
+		end	
+		
+		context "recent activities section" do
+			it "should list recent recruitment activities" do
+				candidate = CandidateFactory.create(:recruiters => [@maria])
+			  RecruitmentActivity.create(:candidate => candidate,:recruiter => @maria, :message => "candidate was created")
+			
+				get :index
+				
+				response.should have_tag(".recruitment-activity .message", "candidate was created")
+			end
+		end	
 	end
 end

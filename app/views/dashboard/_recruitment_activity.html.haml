@@ -1,4 +1,7 @@
 .recruitment-activity
-	=recruitment_activity.message 
-	=recruitment_activity.recruiter.name
-	=recruitment_activity.created_at
+	%span.message 
+		=recruitment_activity.message 
+	%span.recruiter 
+		=recruitment_activity.recruiter.name
+	%span.timestamp
+		="#{time_ago_in_words(recruitment_activity.updated_at)} ago"

@@ -4,7 +4,6 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
   config.active_record.timestamped_migrations = false
-  config.time_zone = 'UTC'
   config.active_record.observers = :recruitment_activity_observer  
 end
 

@@ -59,8 +59,8 @@ describe RecruitmentActivity do
 	end
 	
 	context "recent" do
-		it "be the last the 10 recruitment activities" do
-			activites= 10.times.collect { RecruitmentActivity.create!}
+		it "be the last the 15 recruitment activities" do
+			activites= 15.times.collect { RecruitmentActivity.create!}
 			10.times{RecruitmentActivity.create!(:updated_at => 10.minutes.ago)}
 			
 			RecruitmentActivity.recent.should eql(activites)
