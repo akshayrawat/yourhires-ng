@@ -11,7 +11,8 @@
 	%div{:id=> "detail_event_#{upcoming_event.id}", :style=> "display:none"}
 		%ul{:class=> "event"}
 			%li{:class=> "event-title", :id=> upcoming_event.id}
-				=link_to "#{upcoming_event.recruitment_step.recruitment_step_type.name} : #{upcoming_event.recruitment_step.candidate.name}", new_candidate_recruitment_step_event_url(upcoming_event.recruitment_step.candidate, upcoming_event.recruitment_step)
+				%b
+					="#{upcoming_event.recruitment_step.recruitment_step_type.name} :  #{link_to( upcoming_event.recruitment_step.candidate.name, candidate_url(upcoming_event.recruitment_step.candidate))}"
 			%li
 				=label_tag "Time:"			
 				="#{format_time(upcoming_event.start_time)} - #{format_time(upcoming_event.end_time)}"

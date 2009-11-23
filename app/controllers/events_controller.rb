@@ -5,7 +5,8 @@ class EventsController < ApplicationController
   end
   
   def show
-    render Event.find(params[:id])
+    @event= Event.find(params[:id])
+		render :partial => 'event', :locals => {:event => @event} and return if request.xhr?
   end
 
   def new

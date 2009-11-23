@@ -44,9 +44,10 @@ describe Candidate do
   end
 
   it "should know recruiters involved" do
-    candidate= CandidateFactory.create(:recruiters => [RecruiterFactory.reshmi])
+		recruiter = RecruiterFactory.reshmi
+    candidate= CandidateFactory.create(:recruiters => [recruiter])
     candidate.save!
-    candidate.recruiters.map(&:login).should == ['reshmi']
+    candidate.recruiters.should eql([recruiter])
   end
 
   describe "recruitment steps" do

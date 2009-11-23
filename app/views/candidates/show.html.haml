@@ -1,0 +1,34 @@
+.content-section.span-16
+	.title
+		%span Candidate
+		%span.title-links
+			=link_to("Profile", "#", :class=> "selected")
+			=link_to("Feedback", "#")
+			=link_to("Schedule", "#")
+	
+	.candidates	
+		.candidate.span-14 
+			%ul
+				%li 
+					%b 
+						=@candidate.name
+				=render :partial=> 'candidate_profile', :locals=> {:candidate => @candidate}
+				%br
+			
+				-if @candidate.skillset
+					%li
+						%p
+							=label_tag "Skillset:"
+							=@candidate.skillset
+					
+				-if @candidate.comments
+					%li
+						%p
+							=label_tag "Comments:"
+							=@candidate.comments
+
+.content-section.span-16
+	.title
+		%span Activities
+	.recruitment-activities
+		=render :partial => '/dashboard/recruitment_activity', :collection => RecruitmentActivity.recent(@candidate)

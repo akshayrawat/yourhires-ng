@@ -2,29 +2,13 @@
 	%ul
 		%li 
 			%b 
-				=link_to(candidate.name, "#")
-		%li
-			%i
-				=candidate.role.name
-		%li 
-			=label_tag "Email:"
-			=mail_to candidate.email, candidate.email
-		%li
-			=label_tag "Phone:"
-			=candidate.phone
-		%li
-			=label_tag "Recruiters:"
-			=candidate.recruiters.collect(&:name).join(", ")
-		%li
-			=label_tag "Participants:"
-			=candidate.participants.collect{|participant|participant.name}.join(", ")
-		%li.action-links
-			=link_to_if(candidate.resume?, "DOWNLOAD RESUME", candidate.resume.url){}
-	
+				=link_to(candidate.name, candidate_url(candidate))
+		=render :partial=> 'candidate_profile', :locals=> {:candidate => candidate}
+		
 	.recruitment_steps
 		-candidate.recruitment_steps_completed.each do |recruitment_step|
 			%span.completed
-				=link_to recruitment_step.recruitment_step_type.name, new_candidate_recruitment_step_event_url(candidate, recruitment_step), :class=> "event-clicktip", :id=> "/events/#{recruitment_step.event.id}"
+				=link_to recruitment_step.recruitment_step_type.name, event_url(recruitment_step.event), :class=> "event-clicktip", :id=> "/events/#{recruitment_step.event.id}"
 					
 		-candidate.recruitment_steps_pending.each do |recruitment_step|
 			%span.pending

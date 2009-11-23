@@ -8,8 +8,8 @@ describe DashboardController do
 		login_as @maria    
 	end
 
-	context "#index" do
-		context "upcoming event section" do
+	describe "index" do
+		describe "upcoming event section" do
 			it "should list first 5 upcoming events for the recruiter" do
 				candidate= CandidateFactory.create(:name => "Arnab", :recruiters => [@maria])
 
@@ -50,7 +50,7 @@ describe DashboardController do
 			end
 		end	
 		
-		context "recent activities section" do
+		describe "recent activities section" do
 			it "should list recent recruitment activities" do
 				candidate = CandidateFactory.create(:recruiters => [@maria])
 			  RecruitmentActivity.create(:candidate => candidate,:recruiter => @maria, :message => "candidate was created")

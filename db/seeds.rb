@@ -43,10 +43,22 @@ class Seeds
   end
 
   def create_candidates
-    @arnab= CandidateFactory.create(:name => "Arnab Mandal", :role => @software_developer, :email => "arnab@mandal.com", :phone => "+91 43567132", :recruiters => [@maria, @reshmi])
-    @karan= CandidateFactory.create(:name => "Karan Peri", :role => @business_analyst, :email => "karan@peri.com", :phone => "+91 63544139", :recruiters => [@maria])
-    @dilkash = CandidateFactory.create(:name => "Dilkash Sharma", :role => @software_developer, :email => "dilkash@sharma.com", :phone => "+9163542531", :recruiters => [@maria, @reshmi])
-    @manandeep = CandidateFactory.create(:name => "Manandeep Singh", :role => @project_manager, :email => "manandeep@singh.com", :phone => "+9162242547", :recruiters => [@maria, @reshmi])
+    @arnab= CandidateFactory.create(
+							:name => "Arnab Mandal", :role => @software_developer, :email => "arnab@mandal.com",
+							:phone => "+91 43567132", :recruiters => [@maria, @reshmi], :comments => comments,
+							:skillset => skillset)
+							
+    @karan= CandidateFactory.create(:name => "Karan Peri", :role => @business_analyst, :email =>
+ 							"karan@peri.com", :phone => "+91 63544139", :recruiters => [@maria], 
+							:comments => comments, :skillset => skillset)
+								
+    @dilkash = CandidateFactory.create(:name => "Dilkash Sharma", :role => @software_developer, 
+							:email => "dilkash@sharma.com", :phone => "+9163542531", :recruiters => [@maria,
+							 @reshmi], :comments => comments, :skillset => skillset)
+							
+    @manandeep = CandidateFactory.create(:name => "Manandeep Singh", :role => @project_manager, 
+							:email => "manandeep@singh.com", :phone => "+9162242547", :recruiters => [@maria,
+								 @reshmi], :comments => comments, :skillset => skillset)
 
     @all_candidates = [@arnab, @karan, @dilkash, @manandeep]
   end
@@ -96,6 +108,14 @@ class Seeds
     hour_shift = [-1,-2,-3,-4,1,2,3,4][rand(8)]
     Time.now + (day_shift * 24 * hour_shift * 60 * 60)
   end 
+	
+	def comments
+		"Candidate prefers to be interviewed between 1pm to 3pm on a weekday. Also he is on leave next week. Expected compensation needs to be negotiated. Travel may need to be arranged for an office interview."
+	end
+	
+	def skillset
+		"Java, Spring, Hibernate, Struts2, Tomcat. Ruby on Rails related technologies.Advanced profiency in XP methodologies and tools"
+	end
 
 end
 

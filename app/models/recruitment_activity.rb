@@ -25,18 +25,19 @@ class RecruitmentActivity < ActiveRecord::Base
                           :message => "#{event_url(event, candidate)} for #{candidate_url(candidate)} was updated.")
   end
 
-  def self.recent
-    self.find(:all, :order => "updated_at DESC", :limit => 15)
+  def self.recent(candidate=nil)
+		conditions = candidate.nil? ? [] : ["candidate_id = ?", candidate.id]
+    self.find(:all, :conditions => conditions, :order => "updated_at DESC", :limit => 15)
   end
 	
 	private
 	
 	def self.candidate_url(candidate)
-		"<a href='/candidates/'>#{candidate.name}</a>"
+		"<a href='/candidates/#{candidate.id}'>#{candidate.name}</a>"
 	end
 	
 	def self.event_url(event, candidate)
-		"<a href='/candidates/#{candidate.id}/recruitment_steps/#{event.recruitment_step.id}/events/new'>#{event.recruitment_step.recruitment_step_type.name}</a>"
+		"<a href='/events/#{event.id}'>#{event.recruitment_step.recruitment_step_type.name}</a>"
 	end
 
 end

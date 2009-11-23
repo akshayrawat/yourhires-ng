@@ -4,7 +4,6 @@ require 'spec/autorun'
 require 'spec/rails'
 require File.join(File.dirname(__FILE__),"enable_factories")
 
-
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
 Spec::Runner.configure do |config|

@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe RecruitmentActivity do
 
-	context "for candidates" do
+	describe "for candidates" do
 		it "should create a new instance for a new candidate activity" do
 			candidate = CandidateFactory.create
 			recruiter = candidate.recruiters.first
@@ -26,13 +26,13 @@ describe RecruitmentActivity do
 		end
 	end
 
-	context "for events" do
+	describe "for events" do
 		it "should create a new instance for a new event activity" do
 			event = EventFactory.create
 			pairing = RecruitmentStepFactory.pairing(:event => event)
 			candidate= CandidateFactory.create
 			candidate.recruitment_steps = [pairing]
-			
+
 			recruiter = candidate.recruiters.first
 			RecruiterSession.expects(:find).returns(stub(:recruiter => recruiter))
 			RecruitmentActivity.new_event(event)
@@ -47,7 +47,7 @@ describe RecruitmentActivity do
 			pairing = RecruitmentStepFactory.pairing(:event => event)
 			candidate= CandidateFactory.create
 			candidate.recruitment_steps = [pairing]
-			
+
 			recruiter = candidate.recruiters.first
 			RecruiterSession.expects(:find).returns(stub(:recruiter => recruiter))
 			RecruitmentActivity.event_updated(event)
@@ -57,14 +57,24 @@ describe RecruitmentActivity do
 			activity.message.should_not be_blank			
 		end
 	end
-	
-	context "recent" do
+
+	describe "recent" do
+
 		it "be the last the 15 recruitment activities" do
 			activites= 15.times.collect { RecruitmentActivity.create!}
 			10.times{RecruitmentActivity.create!(:updated_at => 10.minutes.ago)}
-			
+
 			RecruitmentActivity.recent.should eql(activites)
 		end
+
+		it "be the last activities of specified candidate" do
+			one = CandidateFactory.create
+			two = CandidateFactory.create
+			ones_activites= 5.times.collect { RecruitmentActivity.create!(:candidate => one)}
+			twos_activites= 5.times.collect { RecruitmentActivity.create!(:candidate => two)}
+
+			RecruitmentActivity.recent(one).should eql(ones_activites)
+		end
 	end
-	
+
 end
