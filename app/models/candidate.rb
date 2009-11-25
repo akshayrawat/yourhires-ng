@@ -29,6 +29,14 @@ class Candidate < ActiveRecord::Base
   def recruitment_steps_upcoming
     recruitment_steps.select(&:upcoming?)
   end
+
+	def recruitment_steps_scheduled
+    recruitment_steps.select(&:scheduled?)		
+	end 
+
+	def recruitment_steps_unscheduled
+    recruitment_steps.select(&:unscheduled?)
+	end 
   
   def recruitment_step_selections=(recruitment_step_types)
     register_for_steps(RecruitmentStepType.find(recruitment_step_types)) unless recruitment_step_types.empty?

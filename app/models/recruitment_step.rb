@@ -8,7 +8,7 @@ class RecruitmentStep < ActiveRecord::Base
   end
   
   def pending?
-    !scheduled? || upcoming?
+    unscheduled? || upcoming?
   end
   
   def upcoming?
@@ -16,7 +16,11 @@ class RecruitmentStep < ActiveRecord::Base
   end
   
   def scheduled?
-    !self.event.nil?
+    !unscheduled?
   end
+
+	def unscheduled?
+		self.event.nil?
+	end
   
 end

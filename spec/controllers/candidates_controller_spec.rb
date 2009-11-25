@@ -82,4 +82,17 @@ describe CandidatesController do
 			end
 		end
 
+		describe "schedule" do
+			it "show render all scheduled event" do
+				pairing = RecruitmentStepFactory.pairing(:event => EventFactory.create_in_past)
+						
+				candidate= CandidateFactory.create(:name => "Karan",
+									:recruitment_steps => [pairing])
+
+				get :schedule, :id=> candidate.id
+
+				response.should have_tag("li", "#{pairing.recruitment_step_type.name} : #{candidate.name}")
+			end
+		  
+		end
 	end

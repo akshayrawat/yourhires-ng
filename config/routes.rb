@@ -9,7 +9,8 @@ ActionController::Routing::Routes.draw do |map|
       recruitment_step_map.resources :events
     end
   end
-  
+	
+  map.candidate_schedule '/candidate/:id/schedule', :controller => "candidates", :action => 'schedule'
   map.dashboard '/dashboard', :controller => "dashboard", :action => 'index'
 
   map.root :controller => :dashboard

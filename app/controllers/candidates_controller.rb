@@ -3,6 +3,10 @@ class CandidatesController < ApplicationController
 	def index
 		@candidates = current_recruiter.candidates
 	end
+	
+	def schedule
+		@events = current_candidate.recruitment_steps_scheduled.map(&:event)
+	end
 
 	def new
 		@candidate = Candidate.new
@@ -19,6 +23,12 @@ class CandidatesController < ApplicationController
 	end
 	
 	def show
+		@candidate = current_candidate
+	end
+	
+	private
+
+	def current_candidate
 		@candidate = Candidate.find(params[:id])
 	end
 

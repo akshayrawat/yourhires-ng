@@ -2,10 +2,10 @@
 	.title
 		%span Candidate
 		%span.title-links
-			=link_to("Profile", "#", :class=> "selected")
+			=link_to("Profile", candidate_url(@candidate),:class=> "selected")
 			=link_to("Feedback", "#")
-			=link_to("Schedule", "#")
-	
+			=link_to("Schedule", candidate_schedule_url(@candidate))
+			
 	.candidates	
 		.candidate.span-14 
 			%ul
