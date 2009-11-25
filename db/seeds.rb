@@ -38,8 +38,8 @@ class Seeds
   end
 
   def create_recruiters
-    @maria = RecruiterFactory.maria
-    @reshmi = RecruiterFactory.reshmi
+    @maria = RecruiterFactory.maria(:login => "maria")
+    @reshmi = RecruiterFactory.reshmi(:login => "reshmi")
   end
 
   def create_candidates
