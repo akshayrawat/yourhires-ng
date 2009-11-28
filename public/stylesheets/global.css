@@ -73,6 +73,12 @@ li {
   margin: 15px;
   height: 600px; }
 
+.empty-collection-message {
+  color: #990000;
+  text-align: center;
+  font-weight: bold;
+  margin: 10px; }
+
 .candidates {
   margin: 20px 0 0 10px; }
   .candidates .candidate {
@@ -101,11 +107,11 @@ li {
     .candidates .candidate .completed {
       padding: 3px 7px 3px 7px;
       background-color: #6bba70;
-      font-size: 10px; }
+      font-size: 85%; }
     .candidates .candidate .pending {
-      font-size: 10px;
       padding: 3px 7px 3px 7px;
-      background-color: #444343; }
+      background-color: #444343;
+      font-size: 85%; }
 
 .bold-button, a.bold-button {
   background-color: #cc0000;
@@ -216,13 +222,17 @@ li {
   padding: 2px 5px 2px 5px;
   text-align: center;
   width: 25%;
-  color: white; }
+  color: white;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px; }
 
 .unscheduled-event-title {
   background-color: #444343;
   padding: 2px 5px 2px 5px;
   text-align: center;
-  color: white; }
+  color: white;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px; }
 
 .dashboard a {
   font-weight: bold; }

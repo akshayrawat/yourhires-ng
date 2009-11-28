@@ -7,7 +7,7 @@
 			=link_to("Incomplete", "#")
 	
 	.events
-		=render @events
+		=render(@events) || (render(:partial  => "/shared/empty_collection", :locals => {:message => "No upcoming events"}))
 				
 =content_for :sidebar do
 	.sidebar-section

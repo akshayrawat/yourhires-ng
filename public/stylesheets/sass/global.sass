@@ -104,6 +104,12 @@ ul, ol
 	margin: 15px
 	height: 600px
 	
+.empty-collection-message
+	color= !dark_red
+	text-align: center
+	font-weight: bold
+	margin: 10px
+	
 .candidates
 	margin: 20px 0 0 10px
 	.candidate
@@ -132,11 +138,11 @@ ul, ol
 		.completed
 			padding: 3px 7px 3px 7px
 			background-color= !green
-			font-size: 10px
+			font-size: 85%
 		.pending
-			font-size: 10px		
 			padding: 3px 7px 3px 7px
 			background-color= !dark_gray
+			font-size: 85%
 			
 .bold-button, a.bold-button
 	background-color= !light_red
@@ -249,12 +255,15 @@ ul, ol
 	text-align: center
 	width: 25%
 	color: white
+	+round-corner(5px)
+	
 .unscheduled-event-title
 	background-color= !dark_gray
 	padding: 2px 5px 2px 5px
 	text-align: center
 	color: white
-	
+	+round-corner(5px)
+		
 .dashboard
 	a
 		font-weight: bold

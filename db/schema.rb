@@ -12,7 +12,7 @@ ActiveRecord::Schema.define(:version => 1) do
     t.string  "resume_content_type"
     t.integer "resume_file_size"
     t.datetime "resume_updated_at"
-    
+
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(:version => 1) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-  
+
   create_table "recruitment_activities", :force  => true do |t|
     t.integer  "candidate_id"
     t.integer  "recruiter_id"
@@ -76,5 +76,12 @@ ActiveRecord::Schema.define(:version => 1) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-    
+
+  create_table "feedbacks", :force => true do |t|
+    t.integer "candidate_id"
+    t.integer "event_id"
+    t.integer "participant_id"
+    t.text    "feedback"
+  end
+
 end

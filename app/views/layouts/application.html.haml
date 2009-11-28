@@ -24,7 +24,4 @@
 				.sidebar.span-6
 					=yield :sidebar
 		:javascript
-			navigation_item = "#{controller.class.to_s.gsub('Controller', '').downcase}-navigation-item";
-			element= document.getElementById(navigation_item);
-			element.setAttribute("class", "navigation-item selected");
-
+			$("##{controller_name}-navigation-item").addClass("selected");

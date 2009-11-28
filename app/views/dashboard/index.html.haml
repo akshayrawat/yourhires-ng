@@ -2,17 +2,18 @@
 	.title
 		%span Upcoming Events
 	.events
-		=render :partial => 'upcoming_event', :collection => @upcoming_events
-	#upcoming-event-detail.span-14
+		=render(:partial => 'upcoming_event', :collection => @upcoming_events) || render(:partial =>"/shared/empty_collection", :locals => {:message => "No upcoming events"})
+		
 		-unless @upcoming_events.empty?
-			:javascript
-				$('#upcoming-event-detail').html($(detail_event_#{@upcoming_events.first.id}).html());
+			#upcoming-event-detail.span-14
+				:javascript
+					$('#upcoming-event-detail').html($(detail_event_#{@upcoming_events.first.id}).html());
 		
 .dashboard.content-section.span-16
 	.title
 		%span Recent Activities
 	.recruitment-activities
-		=render :partial => 'recruitment_activity', :collection => @recruitment_activities
+		=render(:partial => 'recruitment_activity', :collection => @recruitment_activities)
 		
 =content_for :sidebar do
 	.sidebar-section

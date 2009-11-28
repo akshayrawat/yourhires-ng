@@ -1,9 +1,6 @@
 .content-section.span-16
 	.title
 		%span Candidate
-		%span.title-links
-			=link_to("Profile", candidate_url(@candidate))
-			=link_to("Feedback", "#")
-			=link_to("Schedule", candidate_schedule_url(@candidate), :class=> "selected")
+		=render :partial=> "navigation"
 	.events
 		=render :partial => '/events/event', :collection => @events

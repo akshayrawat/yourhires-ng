@@ -1,0 +1,7 @@
+%span.title-links
+	=link_to("Profile", candidate_url(@candidate), :id => "show-candidate-navigation")
+	=link_to("Schedule", candidate_schedule_url(@candidate), :id => "schedule-candidate-navigation")
+	=link_to("Feedback", candidate_feedback_url(@candidate), :id => "feedback-candidate-navigation")
+	
+:javascript
+	$("##{action_name}-candidate-navigation").addClass('selected');

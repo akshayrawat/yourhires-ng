@@ -1,11 +1,7 @@
 .content-section.span-16
 	.title
 		%span Candidate
-		%span.title-links
-			=link_to("Profile", candidate_url(@candidate),:class=> "selected")
-			=link_to("Feedback", "#")
-			=link_to("Schedule", candidate_schedule_url(@candidate))
-			
+		=render :partial=> "navigation"
 	.candidates	
 		.candidate.span-14 
 			%ul
