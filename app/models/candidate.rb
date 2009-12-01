@@ -36,6 +36,14 @@ class Candidate < ActiveRecord::Base
 
 	def recruitment_steps_unscheduled
     recruitment_steps.select(&:unscheduled?)
+	end
+	
+	def feedbacks
+	 recruitment_steps_scheduled.collect do |recruitment_step|
+	   recruitment_step.event.interviewers.collect do |interviewer|
+	     interviewer.feedbacks
+     end
+   end.flatten
 	end 
   
   def recruitment_step_selections=(recruitment_step_types)

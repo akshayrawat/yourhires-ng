@@ -26,7 +26,7 @@ class CandidatesController < ApplicationController
 		@events = current_candidate.recruitment_steps_scheduled.map(&:event)
 	end
 	
-	def feedback
+	def feedbacks
 	  @candidate = current_candidate
 	end
 	

@@ -8,11 +8,10 @@ ActiveRecord::Schema.define(:version => 1) do
     t.string   "source"
     t.string   "skillset"
     t.string   "comments"
-    t.string  "resume_file_name"
-    t.string  "resume_content_type"
-    t.integer "resume_file_size"
+    t.string   "resume_file_name"
+    t.string   "resume_content_type"
+    t.integer  "resume_file_size"
     t.datetime "resume_updated_at"
-
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,6 +32,13 @@ ActiveRecord::Schema.define(:version => 1) do
     t.datetime "updated_at"
   end
 
+  create_table "feedbacks", :force => true do |t|
+    t.integer  "interviewer_id"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "interviewers", :force => true do |t|
     t.integer "event_id"
     t.integer "participant_id"
@@ -43,12 +49,27 @@ ActiveRecord::Schema.define(:version => 1) do
   end
 
   create_table "recruiters", :force => true do |t|
-    t.string  "name"
-    t.string  "login",                                :null => false
-    t.string  "email",                                :null => false
-    t.string  "crypted_password",                     :null => false
-    t.string  "password_salt",                        :null => false
-    t.string  "persistence_token",                    :null => false
+    t.string "name"
+    t.string "login",             :null => false
+    t.string "email",             :null => false
+    t.string "crypted_password",  :null => false
+    t.string "password_salt",     :null => false
+    t.string "persistence_token", :null => false
+  end
+
+  create_table "recruitment_activities", :force => true do |t|
+    t.integer  "candidate_id"
+    t.integer  "recruiter_id"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "recruitment_activity", :force => true do |t|
+    t.integer  "candidate_id"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "recruitment_step_types", :force => true do |t|
@@ -67,21 +88,6 @@ ActiveRecord::Schema.define(:version => 1) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "recruitment_activities", :force  => true do |t|
-    t.integer  "candidate_id"
-    t.integer  "recruiter_id"
-    t.text     "message"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "feedbacks", :force => true do |t|
-    t.integer "candidate_id"
-    t.integer "event_id"
-    t.integer "participant_id"
-    t.text    "feedback"
   end
 
 end

@@ -16,7 +16,10 @@ class Seeds
     recruitment_steps_get_scheduled
     
     save
+    
     assign_interviewers
+    provide_feedback
+    
     save
   end
   
@@ -98,6 +101,14 @@ class Seeds
       end
     end
   end
+  
+  def provide_feedback
+    @all_candidates[0..-1].collect{|candidate| candidate.recruitment_steps_completed }.flatten.each do |recruitment_step|
+      recruitment_step.event.interviewers.each do |interviewer|
+        interviewer.feedbacks.create!(:comment => feedback_comment)
+      end
+    end
+  end
 
   def save
     @all_candidates.each {|candidate| candidate.save!}
@@ -109,6 +120,10 @@ class Seeds
     Time.now + (day_shift * 24 * hour_shift * 60 * 60)
   end 
 	
+	def feedback_comment
+	  "He is a widely known person in the software development community. His strong object oriented skills with deep knowledge of programming languages and frameworks makes him a very strong technically. He seems to be a good fit culturally too. He is a widely known person in the software development community. His strong object oriented skills with deep knowledge of programming languages and frameworks makes him a very strong technically. He seems to be a good fit culturally too. He is a widely known person in the software development community. His strong object oriented skills with deep knowledge of programming languages and frameworks makes him a very strong technically. He seems to be a good fit culturally too. He is a widely known person in the software development community. His strong object oriented skills with deep knowledge of programming languages and frameworks makes him a very strong technically. He seems to be a good fit culturally too. He is a widely known person in the software development community. His strong object oriented skills with deep knowledge of programming languages and frameworks makes him a very strong technically. He seems to be a good fit culturally too."
+  end
+  
 	def comments
 		"Candidate prefers to be interviewed between 1pm to 3pm on a weekday. Also he is on leave next week. Expected compensation needs to be negotiated. Travel may need to be arranged for an office interview."
 	end

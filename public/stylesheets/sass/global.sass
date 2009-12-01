@@ -277,11 +277,10 @@ ul, ol
 	.events
 		margin: 20px 0px 0px 30px
 	#upcoming-event-detail
-		padding-top: 10px
 		background-color= !content_background
 		border= "#{!light_yellow} solid 4px"
 		+round-corner(10px)	
-		margin: 20px 20px 20px 20px
+		margin: 10px 20px 20px 0px
 
 .recruitment-activities
 	margin: 20px 30px 20px 20px
@@ -302,3 +301,21 @@ ul, ol
 			text-align: right
 			font-size: 50%
 			color: gray
+			
+.feedbacks
+	margin: 20px 0 0 10px
+	.feedback
+		background-color= !content_background
+		padding: 10px 20px 10px 20px
+		border= "#{!light_yellow} solid 4px"
+		+round-corner(10px)
+		margin: 5px 20px 20px 5px
+		.interviewer
+			color= !dark_red
+		.timestamp
+			font-size: 60%
+			color: gray
+			font-style: italic
+			text-align: right
+		.recruitment-step
+			font-size: 90%

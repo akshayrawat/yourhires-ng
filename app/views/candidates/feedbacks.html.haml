@@ -1,0 +1,12 @@
+.content-section.span-16
+	.title
+		%span Feedback &nbsp;	
+		=render :partial=> "navigation"
+				
+	.feedbacks.span-14
+		=render :partial => "feedback", :collection => @candidate.feedbacks
+		
+-content_for :sidebar do
+	.sidebar-section
+		%center
+			=link_to "New Feedback", "#", :class => "bold-button"

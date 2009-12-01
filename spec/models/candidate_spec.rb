@@ -85,7 +85,7 @@ describe Candidate do
 
 				candidate.schedule(recruitment_step_for_type(candidate, @pairing_step), pairing_event)
 				candidate.schedule(recruitment_step_for_type(candidate, @interview_step), interview_event)
-				
+
 				candidate.recruitment_steps_upcoming.should have(1).thing
 				candidate.recruitment_steps_upcoming.first.recruitment_step_type = @pairing_step
 			end
@@ -100,6 +100,7 @@ describe Candidate do
 				candidate.recruitment_steps_pending.should have(2).things
 			end
 		end
+
 		describe "recruitment_steps_scheduled" do
 			it "should be all steps which have an event" do
 				candidate = CandidateFactory.create(:recruitment_step_selections => [@pairing_step, @interview_step])
@@ -121,6 +122,25 @@ describe Candidate do
 
 				candidate.recruitment_steps_unscheduled.should have(1).things
 				candidate.recruitment_steps_unscheduled.first.recruitment_step_type = @interview_step				
+			end
+		end
+
+		describe "feedbacks" do
+			it "show be all feedbacks given" do
+				pairing = RecruitmentStepFactory.pairing
+				pairing_event = EventFactory.create_in_future
+				candidate = CandidateFactory.create(:recruitment_steps => [pairing])
+				candidate.schedule(pairing, pairing_event)
+
+				Interviewer.create!(:event => pairing_event, :participant => Participant.create!,
+														:feedbacks => [Feedback.create(:comment => "Good Candidate")])
+
+				Interviewer.create!(:event => pairing_event, :participant => Participant.create!,
+														:feedbacks => [Feedback.create(:comment => "Very Good Candidate")])
+				
+				candidate.reload.feedbacks.should have(2).things
+				candidate.feedbacks.first.comment.should eql("Good Candidate")
+				candidate.feedbacks.last.comment.should eql("Very Good Candidate")
 			end
 		end
 	end

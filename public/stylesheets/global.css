@@ -246,12 +246,11 @@ li {
 .dashboard .events {
   margin: 20px 0px 0px 30px; }
 .dashboard #upcoming-event-detail {
-  padding-top: 10px;
   background-color: #ffffbe;
   border: #ffff88 solid 4px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
-  margin: 20px 20px 20px 20px; }
+  margin: 10px 20px 20px 0px; }
 
 .recruitment-activities {
   margin: 20px 30px 20px 20px; }
@@ -273,3 +272,22 @@ li {
       text-align: right;
       font-size: 50%;
       color: gray; }
+
+.feedbacks {
+  margin: 20px 0 0 10px; }
+  .feedbacks .feedback {
+    background-color: #ffffbe;
+    padding: 10px 20px 10px 20px;
+    border: #ffff88 solid 4px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    margin: 5px 20px 20px 5px; }
+    .feedbacks .feedback .interviewer {
+      color: #990000; }
+    .feedbacks .feedback .timestamp {
+      font-size: 60%;
+      color: gray;
+      font-style: italic;
+      text-align: right; }
+    .feedbacks .feedback .recruitment-step {
+      font-size: 90%; }

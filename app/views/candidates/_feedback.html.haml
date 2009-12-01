@@ -1,0 +1,15 @@
+.feedback.span-14
+	.interviewer.span-11
+		%b
+			=feedback.interviewer.participant.name
+	.span-3.last.timestamp
+		=format_datetime(feedback.created_at)	
+	.span-14.recruitment-step
+		%i
+			=feedback.interviewer.event.recruitment_step.recruitment_step_type.name	
+	.span-14
+		%br
+		=feedback.comment
+	
+	.span-14
+		%br
