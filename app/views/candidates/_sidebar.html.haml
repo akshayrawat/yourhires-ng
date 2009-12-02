@@ -1,0 +1,7 @@
+-content_for :sidebar do
+	.sidebar-section
+		%center
+			%p
+				=link_to "New Feedback", "#", :class => "bold-button"
+			%p
+				=link_to "Schedule a Step", "#{new_candidate_event_url(@candidate)}", :class => "bold-button"

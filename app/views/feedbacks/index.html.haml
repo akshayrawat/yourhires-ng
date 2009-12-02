@@ -1,0 +1,9 @@
+.content-section.span-16
+	.title
+		%span Feedback &nbsp;	
+		=render :partial=> "/candidates/navigation"
+				
+	.feedbacks.span-14
+		=render :partial => "feedback", :collection => @feedbacks
+		
+=render :partial => "/candidates/sidebar"

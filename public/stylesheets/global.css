@@ -285,9 +285,12 @@ li {
     .feedbacks .feedback .interviewer {
       color: #990000; }
     .feedbacks .feedback .timestamp {
-      font-size: 60%;
+      font-size: 50%;
       color: gray;
       font-style: italic;
       text-align: right; }
     .feedbacks .feedback .recruitment-step {
-      font-size: 90%; }
+      font-size: 80%;
+      font-style: italic; }
+    .feedbacks .feedback .comment {
+      font-family: monospace; }

@@ -5,13 +5,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :events
   map.resources :candidates do |candidate_map|
     candidate_map.resources :events
+    candidate_map.resources :feedbacks
     candidate_map.resources :recruitment_steps do |recruitment_step_map|
       recruitment_step_map.resources :events
     end
   end
 	
   map.candidate_schedule '/candidate/:id/schedule', :controller => "candidates", :action => 'schedule'
-  map.candidate_feedbacks '/candidate/:id/feedbacks',:controller => "candidates",:action => 'feedbacks'
   map.dashboard '/dashboard', :controller => "dashboard", :action => 'index'
 
   map.root :controller => :dashboard
