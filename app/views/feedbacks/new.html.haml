@@ -1,12 +1,12 @@
 .content-section.span-16
 	.title
-		%span New Feedback
-	-form_for @feedback, :url => candidate_feedbacks_path(@candidate) do |form|
+		%span Your Feedback
+	-form_for([@candidate, @feedback]) do |form|
 		.new-candidate.span-14
 			.span-14
 				=form.label "Interviewer"
 				&nbsp;
-				=form.select :interviewer, select_interviewer_options(@candidate)
+				=form.select :interviewer_id, select_interviewer_options(@candidate)
 				%br
 				%br
 				=form.text_area :comment, :rows=> "100"
@@ -14,17 +14,3 @@
 		%center
 			=form.submit "Save", :class => "bold-button"
 		%br
-
-:javascript 
-	$('#feedback_comment').wysiwyg({
-	    controls: {
-	        underline: { visible: true },
-					insertOrderedList: { visible: true},
-					insertUnorderedList: {visible: true},
-					increaseFontSize: {visible: false},
-					decreaseFontSize: {visible: false},
-					insertImage: {visible: false},
-					removeFormat: {visible: false}
-	    },
-			css: '/stylesheets/wysiwyg.css'
-	});

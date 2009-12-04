@@ -47,7 +47,7 @@ class Candidate < ActiveRecord::Base
 	   recruitment_step.event.interviewers.collect do |interviewer|
 	     interviewer.feedbacks
      end
-   end.flatten
+   end.flatten.sort
 	end 
   
   def recruitment_step_selections=(recruitment_step_types)

@@ -2,6 +2,7 @@
 	.interviewer.span-11
 		%b
 			=feedback.interviewer.participant.name
+		=link_to "[edit]", edit_candidate_feedback_url(@candidate, feedback)
 	.span-3.last.timestamp
 		=format_datetime(feedback.created_at)	
 	.span-14.recruitment-step

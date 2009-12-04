@@ -145,23 +145,22 @@ describe Candidate do
 				candidate.schedule(recruitment_step_for_type(candidate, @pairing_step), pairing_event)
 
 				candidate.recruitment_steps_unscheduled.should have(1).things
-				candidate.recruitment_steps_unscheduled.first.recruitment_step_type = @interview_step				
+				candidate.recruitment_steps_unscheduled.first.recruitment_step_type = @interview_step
 			end
 		end
 
 		describe "feedbacks" do
-			it "show be all feedbacks given" do
+			it "show be all feedbacks given in the order of updated_at descending" do
 				pairing = RecruitmentStepFactory.pairing
 				pairing_event = EventFactory.create_in_future
 				candidate = CandidateFactory.create(:recruitment_steps => [pairing])
 				candidate.schedule(pairing, pairing_event)
 
-				Interviewer.create!(:event => pairing_event, :participant => Participant.create!,
-				:feedbacks => [Feedback.create(:comment => "Good Candidate")])
-
-				Interviewer.create!(:event => pairing_event, :participant => Participant.create!,
-				:feedbacks => [Feedback.create(:comment => "Very Good Candidate")])
-
+				one = Interviewer.create!(:event => pairing_event, :participant => Participant.create!)
+				two = Interviewer.create!(:event => pairing_event, :participant => Participant.create!)
+				Feedback.create(:updated_at => 1.hour.ago, :comment => "Very Good Candidate", :interviewer => one)
+				Feedback.create(:updated_at => 1.minute.ago, :comment => "Good Candidate", :interviewer => two)
+				
 				candidate.reload.feedbacks.should have(2).things
 				candidate.feedbacks.first.comment.should eql("Good Candidate")
 				candidate.feedbacks.last.comment.should eql("Very Good Candidate")
