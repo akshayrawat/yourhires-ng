@@ -2,6 +2,6 @@
 	.sidebar-section
 		%center
 			%p
-				=link_to "New Feedback", "#", :class => "bold-button"
+				=link_to "New Feedback", "#{new_candidate_feedback_url(@candidate)}", :class => "bold-button"
 			%p
 				=link_to "Schedule a Step", "#{new_candidate_event_url(@candidate)}", :class => "bold-button"

@@ -8,9 +8,13 @@ class Candidate < ActiveRecord::Base
   validates_presence_of :name, :phone, :email, :source, :role_id, :recruitment_steps, :recruiters
       
   def participants
+		interviewers.collect{|interviewer|interviewer.participant}.uniq
+  end
+
+  def interviewers
     recruitment_steps.select(&:scheduled?).collect do |recruitment_step|
-      recruitment_step.event.interviewers.collect{|interviewer|interviewer.participant}
-    end.flatten.uniq
+      recruitment_step.event.interviewers
+    end.flatten
   end
   
   def schedule(recruitment_step, event)

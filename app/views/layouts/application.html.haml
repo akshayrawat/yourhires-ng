@@ -1,7 +1,8 @@
 %html
 	%head
-		=stylesheet_link_tag("blueprint/screen.css", "global.css")
-		=javascript_include_tag("jquery", "jrails", "application", "jquery.qtip-1.0.0-rc3.min")
+		=stylesheet_link_tag("blueprint/screen.css", "global.css", "jquery.wysiwyg.css")
+		=javascript_include_tag("jquery", "jrails", "application", "jquery.qtip-1.0.0-rc3.min", "jquery.wysiwyg.js")
+		
 		=yield :head
 	%body
 		.page

@@ -4,6 +4,11 @@ class FeedbacksController < ApplicationController
 		@feedbacks = current_candidate.feedbacks
 	end
 
+	def new
+		current_candidate
+		@feedback = Feedback.new
+	end
+
 	private
 
 	def current_candidate

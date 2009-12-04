@@ -27,27 +27,51 @@ describe Candidate do
 		candidate.should have(1).error_on(:recruitment_steps)
 	end
 
-	it "should know participants involved" do
-		candidate = CandidateFactory.create_registered_with_pairing_and_interview_steps
+	context "participants" do
+		it "should be all interviewer participants in all events" do
+			candidate = CandidateFactory.create_registered_with_pairing_and_interview_steps
 
-		pairing = EventFactory.create_in_future
-		interview = EventFactory.create_in_future
+			pairing = EventFactory.create_in_future
+			interview = EventFactory.create_in_future
 
-		candidate.schedule(candidate.recruitment_steps[0], pairing)
-		candidate.schedule(candidate.recruitment_steps[1], interview)
+			candidate.schedule(candidate.recruitment_steps[0], pairing)
+			candidate.schedule(candidate.recruitment_steps[1], interview)
 
-		one= Interviewer.create!(:event => pairing, :participant => Participant.create!)
-		two= Interviewer.create!(:event => pairing, :participant => Participant.create!)
-		three= Interviewer.create!(:event => interview, :participant => Participant.create!)
+			Interviewer.create!(:event => pairing, :participant => (one = Participant.create!))
+			Interviewer.create!(:event => pairing, :participant => (two = Participant.create!))
+			Interviewer.create!(:event => interview, :participant => (three = Participant.create!))
 
-		candidate.participants.should have(3).things
+			candidate.participants.should have(3).things
+			candidate.participants.should eql([one, two, three])
+		end
 	end
 
-	it "should know recruiters involved" do
-		recruiter = RecruiterFactory.reshmi
-		candidate= CandidateFactory.create(:recruiters => [recruiter])
-		candidate.save!
-		candidate.recruiters.should eql([recruiter])
+	context "interviewers" do
+		it "should be all interviewers in all events" do
+			candidate = CandidateFactory.create_registered_with_pairing_and_interview_steps
+
+			pairing = EventFactory.create_in_future
+			interview = EventFactory.create_in_future
+
+			candidate.schedule(candidate.recruitment_steps[0], pairing)
+			candidate.schedule(candidate.recruitment_steps[1], interview)
+
+			one= Interviewer.create!(:event => pairing, :participant => Participant.create!)
+			two= Interviewer.create!(:event => pairing, :participant => Participant.create!)
+			three= Interviewer.create!(:event => interview, :participant => Participant.create!)
+
+			candidate.interviewers.should have(3).things
+			candidate.interviewers.should eql([one, two, three])
+		end
+	end
+
+	context "recruiters" do
+		it "should be ones assigned" do
+			recruiter = RecruiterFactory.reshmi
+			candidate= CandidateFactory.create(:recruiters => [recruiter])
+			candidate.save!
+			candidate.recruiters.should eql([recruiter])
+		end
 	end
 
 	describe "recruitment steps" do
@@ -133,11 +157,11 @@ describe Candidate do
 				candidate.schedule(pairing, pairing_event)
 
 				Interviewer.create!(:event => pairing_event, :participant => Participant.create!,
-														:feedbacks => [Feedback.create(:comment => "Good Candidate")])
+				:feedbacks => [Feedback.create(:comment => "Good Candidate")])
 
 				Interviewer.create!(:event => pairing_event, :participant => Participant.create!,
-														:feedbacks => [Feedback.create(:comment => "Very Good Candidate")])
-				
+				:feedbacks => [Feedback.create(:comment => "Very Good Candidate")])
+
 				candidate.reload.feedbacks.should have(2).things
 				candidate.feedbacks.first.comment.should eql("Good Candidate")
 				candidate.feedbacks.last.comment.should eql("Very Good Candidate")

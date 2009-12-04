@@ -175,7 +175,7 @@ li {
   .events .event {
     padding: 5px;
     border-bottom: #eeeeee solid 1px;
-    margin: 5px 20px 0px 5px; }
+    margin: 5px 20px 5px 10px; }
     .events .event label {
       color: #990000; }
     .events .event ul {
@@ -294,3 +294,12 @@ li {
       font-style: italic; }
     .feedbacks .feedback .comment {
       font-family: monospace; }
+
+#feedback_comment {
+  font-size: 8px;
+  width: 95%;
+  height: 400px; }
+
+div.wysiwyg {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px; }
