@@ -74,7 +74,7 @@ describe CandidatesController do
 
 			it "should render activity section" do
 				candidate = CandidateFactory.create(:name => "arnab", :skillset => "RoR", :comments => "claims to be a Rockstar")
-				activity = RecruitmentActivity.create(:candidate => candidate, :message => "Code pairing done", :recruiter => candidate.recruiters.first)
+				activity = RecruitmentActivity.create(:candidate => candidate, :message => "Code pairing done", :posted_by => candidate.recruiters.first.name)
 				
 				get :show, :id => candidate.id
 				

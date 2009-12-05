@@ -53,7 +53,7 @@ describe DashboardController do
 		describe "recent activities section" do
 			it "should list recent recruitment activities" do
 				candidate = CandidateFactory.create(:recruiters => [@maria])
-			  RecruitmentActivity.create(:candidate => candidate,:recruiter => @maria, :message => "candidate was created")
+			  RecruitmentActivity.create(:candidate => candidate, :posted_by => @maria.name, :message => "candidate was created")
 			
 				get :index
 				

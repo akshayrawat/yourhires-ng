@@ -1,28 +1,34 @@
-class RecruitmentActivity < ActiveRecord::Base
-
+class RecruitmentActivity < ActiveRecord::Base	
   belongs_to :candidate
-  belongs_to :recruiter
+	xss_terminate :except => [:message]
 
-  def self.new_candidate(candidate)
-    RecruitmentActivity.create(:candidate => candidate, :recruiter => RecruiterSession.find.recruiter,
-                  :message => "New candidate #{candidate_url(candidate)} was created.")
+  def self.candidate_event(params)
+		candidate = params[:record]
+		operation = params[:operation]
+		recruiter = RecruiterSession.find.recruiter
+				
+    RecruitmentActivity.create(:candidate => candidate, :posted_by => recruiter.name,
+                  :message => "Candidate #{candidate_url(candidate)} was #{operation}.")
   end
 
-  def self.candidate_updated(candidate)
-    RecruitmentActivity.create(:candidate => candidate, :recruiter => RecruiterSession.find.recruiter,
-                  :message => "Candidate #{candidate_url(candidate)} was updated.")
+  def self.feedback_event(params)
+		feedback = params[:record]
+		operation = params[:operation]
+		recruiter = RecruiterSession.find.recruiter
+    candidate= feedback.interviewer.event.recruitment_step.candidate
+
+    RecruitmentActivity.create(:candidate => candidate, :posted_by => recruiter.name,
+                  :message => "#{feedbacks_url(candidate)} for #{candidate_url(candidate)} was #{operation}.")
   end
 
-  def self.new_event(event)
-    candidate= event.recruitment_step.candidate    
-    RecruitmentActivity.create(:candidate => candidate, :recruiter => RecruiterSession.find.recruiter,
-                  :message => "New event #{event_url(event, candidate)} for #{candidate_url(candidate)} was scheduled.")
-  end
-
-  def self.event_updated(event)
-    candidate= event.recruitment_step.candidate    	
-    RecruitmentActivity.create(:candidate => event.recruitment_step.candidate, :recruiter => RecruiterSession.find.recruiter,
-                          :message => "#{event_url(event, candidate)} for #{candidate_url(candidate)} was updated.")
+  def self.event_event(params)
+		event = params[:record]
+		operation = params[:operation]
+    candidate= event.recruitment_step.candidate
+		recruiter = RecruiterSession.find.recruiter
+		
+    RecruitmentActivity.create(:candidate => candidate, :posted_by => recruiter.name,
+                  :message => "Event #{event_url(event, candidate)} for #{candidate_url(candidate)} was #{operation}.")
   end
 
   def self.recent(candidate=nil)
@@ -38,6 +44,10 @@ class RecruitmentActivity < ActiveRecord::Base
 	
 	def self.event_url(event, candidate)
 		"<a href='/events/#{event.id}'>#{event.recruitment_step.recruitment_step_type.name}</a>"
+	end
+	
+	def self.feedbacks_url(candidate)
+		"<a href='/candidates/#{candidate.id}/feedbacks'>Feedback</a>"		
 	end
 
 end

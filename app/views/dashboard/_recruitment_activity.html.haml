@@ -2,6 +2,6 @@
 	%span.message 
 		=recruitment_activity.message 
 	%span.recruiter 
-		=recruitment_activity.recruiter.name
+		=recruitment_activity.posted_by
 	%span.timestamp
 		="#{time_ago_in_words(recruitment_activity.updated_at)} ago"

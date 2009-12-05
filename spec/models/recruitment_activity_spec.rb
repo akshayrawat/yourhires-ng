@@ -3,31 +3,20 @@ require File.dirname(__FILE__) + '/../spec_helper'
 describe RecruitmentActivity do
 
 	describe "for candidates" do
-		it "should create a new instance for a new candidate activity" do
+		it "should create a new instance for a candidate create/update event" do
 			candidate = CandidateFactory.create
 			recruiter = candidate.recruiters.first
 			RecruiterSession.expects(:find).returns(stub(:recruiter => recruiter))
-			RecruitmentActivity.new_candidate(candidate)
+			RecruitmentActivity.candidate_event({:record => candidate})
 
 			activity = RecruitmentActivity.find_by_candidate_id(candidate)
-			activity.recruiter.should eql(recruiter)
-			activity.message.should_not be_blank
-		end
-
-		it "should create a new instance for a update candidate activity" do
-			candidate = CandidateFactory.create
-			recruiter = candidate.recruiters.first
-			RecruiterSession.expects(:find).returns(stub(:recruiter => recruiter))
-			RecruitmentActivity.candidate_updated(candidate)
-
-			activity = RecruitmentActivity.find_by_candidate_id(candidate)
-			activity.recruiter.should eql(recruiter)
+			activity.posted_by.should eql(recruiter.name)
 			activity.message.should_not be_blank
 		end
 	end
 
 	describe "for events" do
-		it "should create a new instance for a new event activity" do
+		it "should create a new instance for a event create/update event" do
 			event = EventFactory.create
 			pairing = RecruitmentStepFactory.pairing(:event => event)
 			candidate= CandidateFactory.create
@@ -35,27 +24,31 @@ describe RecruitmentActivity do
 
 			recruiter = candidate.recruiters.first
 			RecruiterSession.expects(:find).returns(stub(:recruiter => recruiter))
-			RecruitmentActivity.new_event(event)
+			RecruitmentActivity.event_event({:record => event})
 
 			activity = RecruitmentActivity.find_by_candidate_id(candidate)
-			activity.recruiter.should eql(recruiter)
+			activity.posted_by.should eql(recruiter.name)
 			activity.message.should_not be_blank			
 		end	
+	end
 
-		it "should create a new instance for a update event activity" do
-			event = EventFactory.create
-			pairing = RecruitmentStepFactory.pairing(:event => event)
-			candidate= CandidateFactory.create
-			candidate.recruitment_steps = [pairing]
-
+	describe "for feedbacks" do
+		it "should create a new instance for a feedback create/update event" do
+			pairing_event = EventFactory.create
+			pairing = RecruitmentStepFactory.pairing(:event => pairing_event)
+			candidate = CandidateFactory.create(:recruitment_steps => [pairing])
 			recruiter = candidate.recruiters.first
+			feedback = Feedback.create
+
+			Interviewer.create!(:event => pairing_event, :participant => Participant.create!, :feedbacks=> [feedback])
 			RecruiterSession.expects(:find).returns(stub(:recruiter => recruiter))
-			RecruitmentActivity.event_updated(event)
+
+			RecruitmentActivity.feedback_event({:record => feedback})
 
 			activity = RecruitmentActivity.find_by_candidate_id(candidate)
-			activity.recruiter.should eql(recruiter)
+			activity.posted_by.should eql(recruiter.name)
 			activity.message.should_not be_blank			
-		end
+		end	
 	end
 
 	describe "recent" do
@@ -74,6 +67,14 @@ describe RecruitmentActivity do
 			twos_activites= 5.times.collect { RecruitmentActivity.create!(:candidate => two)}
 
 			RecruitmentActivity.recent(one).should eql(ones_activites)
+		end
+	end
+
+	describe "html sanitization" do
+		it "is skipped for message because it has links" do
+			link = "<a href='#'>Candidate</a>"
+			recruitment_activity = RecruitmentActivity.create(:message => "#{link}")
+			recruitment_activity.message.should eql(link)
 		end
 	end
 

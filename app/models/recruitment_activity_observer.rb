@@ -1,12 +1,14 @@
 class RecruitmentActivityObserver < ActiveRecord::Observer
-  observe :candidate, :event
+  observe :candidate, :event, :feedback
   
   def after_create record
-    RecruitmentActivity.send "new_#{record.class.to_s.downcase}", record
+    RecruitmentActivity.send "#{record.class.name.downcase}_event", {:operation => :created,
+		:record => record}		
   end
   
   def after_update record
-    RecruitmentActivity.send "#{record.class.to_s.downcase}_updated", record
+    RecruitmentActivity.send "#{record.class.name.downcase}_event", {:operation => :updated,
+		:record => record}
   end
 
 end
