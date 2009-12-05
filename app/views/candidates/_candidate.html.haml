@@ -5,7 +5,7 @@
 				=link_to(candidate.name, candidate_url(candidate))
 		=render :partial=> 'candidate_profile', :locals=> {:candidate => candidate}
 		
-	.recruitment_steps
+	.recruitment-steps
 		-candidate.recruitment_steps_completed.each do |recruitment_step|
 			%span.completed
 				=link_to recruitment_step.recruitment_step_type.name, event_url(recruitment_step.event), :class=> "event-clicktip", :id=> "/events/#{recruitment_step.event.id}"

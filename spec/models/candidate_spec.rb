@@ -27,7 +27,7 @@ describe Candidate do
 		candidate.should have(1).error_on(:recruitment_steps)
 	end
 
-	context "participants" do
+	describe "participants" do
 		it "should be all interviewer participants in all events" do
 			candidate = CandidateFactory.create_registered_with_pairing_and_interview_steps
 
@@ -46,7 +46,7 @@ describe Candidate do
 		end
 	end
 
-	context "interviewers" do
+	describe "interviewers" do
 		it "should be all interviewers in all events" do
 			candidate = CandidateFactory.create_registered_with_pairing_and_interview_steps
 
@@ -65,7 +65,7 @@ describe Candidate do
 		end
 	end
 
-	context "recruiters" do
+	describe "recruiters" do
 		it "should be ones assigned" do
 			recruiter = RecruiterFactory.reshmi
 			candidate= CandidateFactory.create(:recruiters => [recruiter])

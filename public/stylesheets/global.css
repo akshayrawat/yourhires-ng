@@ -16,7 +16,7 @@ li {
   background-color: #990000;
   height: 79px;
   padding: 20px 10px 5px 0px; }
-  .page .title {
+  .page .company-title {
     font-size: 30px;
     color: #ffcc00; }
   .page .user {
@@ -99,11 +99,10 @@ li {
         text-transform: uppercase; }
         .candidates .candidate ul .action-links a a {
           padding-right: 5px; }
-    .candidates .candidate .recruitment_steps {
+    .candidates .candidate .recruitment-steps {
       margin: 0px 0px 10px 15px; }
-      .candidates .candidate .recruitment_steps a {
-        color: white;
-        text-decoration: underline; }
+      .candidates .candidate .recruitment-steps a {
+        color: white; }
     .candidates .candidate .completed {
       padding: 3px 7px 3px 7px;
       background-color: #6bba70;
@@ -218,21 +217,20 @@ li {
   width: 80px; }
 
 .scheduled-event-title {
+  font-weight: normal;
   background-color: #6bba70;
   padding: 2px 5px 2px 5px;
   text-align: center;
   width: 25%;
   color: white;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px; }
+  font-size: 85%; }
 
 .unscheduled-event-title {
+  font-weight: normal;
   background-color: #444343;
   padding: 2px 5px 2px 5px;
-  text-align: center;
   color: white;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px; }
+  font-size: 85%; }
 
 .dashboard a {
   font-weight: bold; }

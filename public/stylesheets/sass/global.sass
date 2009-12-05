@@ -47,12 +47,13 @@ ul, ol
 	background-color= !dark_red
 	height: 79px
 	padding: 20px 10px 5px 0px
-	.title
+	.company-title
 		font-size: 30px
 		color= !dark_yellow
 	.user
 		font-size: 22px
 		color= !white
+	.global-candidate-selection
 		
 .navigation
 	margin-top: 15px
@@ -130,11 +131,10 @@ ul, ol
 				a 
 					padding-right: 5px
 				
-		.recruitment_steps
+		.recruitment-steps
 			margin: 0px 0px 10px 15px
 			a
 				color= !white
-				text-decoration: underline
 		.completed
 			padding: 3px 7px 3px 7px
 			background-color= !green
@@ -250,20 +250,20 @@ ul, ol
 	width: 80px 
 
 .scheduled-event-title
+	font-weight: normal
 	background-color= !green
 	padding: 2px 5px 2px 5px
 	text-align: center
 	width: 25%
 	color: white
-	+round-corner(5px)
+	font-size: 85%		
 	
 .unscheduled-event-title
+	font-weight: normal
 	background-color= !dark_gray
 	padding: 2px 5px 2px 5px
-	text-align: center
 	color: white
-	+round-corner(5px)
-		
+	font-size: 85%		
 .dashboard
 	a
 		font-weight: bold

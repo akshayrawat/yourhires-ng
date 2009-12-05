@@ -1,11 +1,10 @@
 class FeedbacksController < ApplicationController  
-
+	
 	def index
 		@feedbacks = current_candidate.feedbacks
 	end
 
 	def new
-		current_candidate
 		@feedback = Feedback.new
 	end
 
@@ -15,7 +14,6 @@ class FeedbacksController < ApplicationController
 	end
 
 	def edit
-		current_candidate
 		current_feedback
 		render :action => :new
 	end
@@ -26,10 +24,6 @@ class FeedbacksController < ApplicationController
 	end
 
 	private
-
-	def current_candidate
-		@candidate = Candidate.find(params[:candidate_id])
-	end
 	
 	def current_feedback
 		@feedback = Feedback.find(params[:id])		

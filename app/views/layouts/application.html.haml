@@ -7,10 +7,13 @@
 	%body
 		.page
 			.container
-				%span.title
+				%span.company-title
 					ThoughtWorks
 				%span.user
 					=current_recruiter.name
+				%span.global-candidate-selection
+					=select "candidate", "id", recruiter_candidate_options(current_recruiter), {:include_blank=> "Select Candidate"}, :id=> "global-candidate-selection"
+					
 				.navigation
 					.navigation-item{:id=> 'dashboard-navigation-item'}
 						=link_to("Dashboard", dashboard_url)
@@ -24,5 +27,15 @@
 					=yield
 				.sidebar.span-6
 					=yield :sidebar
-		:javascript
-			$("##{controller_name}-navigation-item").addClass("selected");
+
+:javascript
+	$("##{controller_name}-navigation-item").addClass("selected");
+
+	$("#global-candidate-selection").change(function(){
+		selected_candidate_id = $('#global-candidate-selection :selected').val();
+		if(selected_candidate_id == "") {
+			window.location = '#{candidates_url}';
+		}else {
+			window.location = '/candidates/' + selected_candidate_id;
+		}
+	});

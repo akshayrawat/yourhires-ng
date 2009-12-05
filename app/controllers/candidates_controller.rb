@@ -18,7 +18,6 @@ class CandidatesController < ApplicationController
 	end
 
 	def show
-		@candidate = current_candidate
 	end
 
 	def schedule
@@ -27,12 +26,6 @@ class CandidatesController < ApplicationController
 
 	def feedbacks
 		@candidate = current_candidate
-	end
-
-	private
-
-	def current_candidate
-		@candidate = Candidate.find(params[:id])
 	end
 
 end

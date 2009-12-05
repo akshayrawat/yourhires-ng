@@ -8,7 +8,7 @@ describe FeedbacksController do
 		login_as RecruiterFactory.maria
 	end
 
-	context "index" do
+	describe "index" do
 		it "should render feedbacks" do
 			candidate= CandidateFactory.create(:recruitment_step_selections => [RecruitmentStepTypeFactory.pairing])
 
@@ -28,7 +28,7 @@ describe FeedbacksController do
 				end
 			end
 
-			context "new" do
+			describe "new" do
 				it "should render form for feedback creation" do
 					candidate= CandidateFactory.create(:recruitment_step_selections => [RecruitmentStepTypeFactory.pairing])
 
@@ -50,7 +50,7 @@ describe FeedbacksController do
 					end
 				end
 
-				context "update" do
+				describe "update" do
 					it "should render form for feedback updation" do
 						candidate= CandidateFactory.create(:recruitment_step_selections => [RecruitmentStepTypeFactory.pairing])
 						feedback = Feedback.create(:comment => "Good Candidate")
@@ -72,7 +72,7 @@ describe FeedbacksController do
 						end
 					end
 
-					context "create" do
+					describe "create" do
 						it "should save a new feedback" do
 							post :create, :candidate_id => CandidateFactory.create, 
 							:feedback => {:interviewer_id => (interviewer = Interviewer.create!).id, :comment => "My Honest Feedback"}
@@ -88,7 +88,7 @@ describe FeedbacksController do
 						end
 					end
 
-					context "update" do
+					describe "update" do
 						it "should update feedback" do
 							feedback = Feedback.create(:comment => "Good Candidate", :interviewer => (interviewer = Interviewer.create))
 							post :update, :candidate_id => CandidateFactory.create, :id => feedback.id,

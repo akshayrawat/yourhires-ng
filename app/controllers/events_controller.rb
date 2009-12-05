@@ -11,7 +11,7 @@ class EventsController < ApplicationController
 
 	def new
 		@selected_candidate= 
-		params[:candidate_id].blank? ? Candidate.new : Candidate.find(params[:candidate_id])
+		current_candidate.nil? ? Candidate.new : current_candidate
 
 		if params[:recruitment_step_id].blank?
 			@recruitment_steps = @selected_candidate.recruitment_steps
