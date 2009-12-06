@@ -79,6 +79,9 @@ li {
   font-weight: bold;
   margin: 10px; }
 
+.edit-record {
+  font-size: 40%; }
+
 .candidates {
   margin: 20px 0 0 10px; }
   .candidates .candidate {
@@ -195,6 +198,11 @@ li {
     color: #990000;
     font-weight: bold; }
 
+.schedule-selection .view-profile {
+  font-weight: normal;
+  font-size: 40%;
+  font-style: italic; }
+
 #recruitment-steps .scheduled_true {
   background-color: #6bba70; }
 #recruitment-steps .scheduled_false {
@@ -282,8 +290,6 @@ li {
     margin: 5px 20px 20px 5px; }
     .feedbacks .feedback .interviewer {
       color: #990000; }
-      .feedbacks .feedback .interviewer a {
-        font-size: 40%; }
     .feedbacks .feedback .timestamp {
       font-size: 50%;
       color: gray;

@@ -1,6 +1,7 @@
 .content-section.span-16
 	.title
-		%span Your Feedback
+		%span 
+			="#{action_name.camelcase} Feedback"
 	-form_for([@candidate, @feedback]) do |form|
 		.new-candidate.span-14
 			.span-14
@@ -13,4 +14,7 @@
 				%br
 		%center
 			=form.submit "Save", :class => "bold-button"
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			=link_to "Cancel", "#", :onclick => "window.back()", :class => "bold-button"
+			
 		%br

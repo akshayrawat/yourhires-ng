@@ -8,6 +8,7 @@
 				%li 
 					%b 
 						=@candidate.name
+					=link_to "[edit]", edit_candidate_url(@candidate), :class=> "edit-record"
 				=render :partial=> 'candidate_profile', :locals=> {:candidate => @candidate}
 				%br
 			

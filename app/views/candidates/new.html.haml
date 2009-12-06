@@ -1,6 +1,7 @@
 .content-section.span-16
 	.title
-		%span New Candidate
+		%span 
+			="#{action_name.camelcase} Candidate"
 	-form_for @candidate, :html => { :multipart => true } do |form|
 		.new-candidate.span-14
 			.title-subheader Candidate Profile
@@ -32,7 +33,10 @@
 				=form.label :resume
 				%br
 				=form.file_field :resume
-
+				%p 
+					%i
+						=@candidate.resume.original_filename if @candidate.resume?
+				
 			.span-12
 				=form.label :skillset
 				%br
@@ -60,7 +64,12 @@
 				=form.label :comments
 				%br
 				=form.text_area :comments
-
-		%center
-			=form.submit "Save", :class => "bold-button"
-		%br
+		.span-14
+			%br
+		.span-14			
+			%center
+				=form.submit "Save", :class => "bold-button"
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				=link_to "Cancel", "#", :onclick => "window.back()", :class => "bold-button"
+		.span-14
+			%br

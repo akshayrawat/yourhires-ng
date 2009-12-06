@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ApplicationController do
 
-	context "current_candidate" do
+	context "current_candidate for top level navigation" do
 		
 		ApplicationController.instance_eval do
 			define_method(:index) {}

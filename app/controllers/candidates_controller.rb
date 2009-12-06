@@ -7,11 +7,23 @@ class CandidatesController < ApplicationController
 	def new
 		@candidate = Candidate.new
 	end
+	
+	def edit
+		render :action => :new
+	end
 
 	def create
 		@candidate = Candidate.new(params[:candidate])
 		if @candidate.save
-			redirect_to candidates_url
+			redirect_to candidate_url(@candidate)
+		else
+			render :new
+		end
+	end
+	
+	def update
+		if @candidate.update_attributes(params[:candidate])
+			redirect_to candidate_url(@candidate)
 		else
 			render :new
 		end
@@ -25,7 +37,6 @@ class CandidatesController < ApplicationController
 	end
 
 	def feedbacks
-		@candidate = current_candidate
 	end
 
 end

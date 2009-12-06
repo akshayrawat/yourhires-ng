@@ -1,4 +1,4 @@
-.content-section.span-16
+.schedule-selection.content-section.span-16
 	.title
 		=label :selected_candidate_id, "Select Candidate"
 		&nbsp;
@@ -6,6 +6,7 @@
 
 		-unless @selected_candidate.recruitment_steps.empty?
 			=select "selected_recruitment_step", "id", @selected_candidate.recruitment_steps.map{|recruitment_step| [recruitment_step.recruitment_step_type.name, recruitment_step.id]},{:include_blank => "All"}
+			=link_to_unless @selected_candidate.nil?, "View Profile", candidate_url(@selected_candidate), :class=> "view-profile"
 		
 		#recruitment_steps
 			=render :partial => "recruitment_step", :collection => @recruitment_steps
