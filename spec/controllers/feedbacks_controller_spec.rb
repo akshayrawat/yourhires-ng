@@ -10,7 +10,7 @@ describe FeedbacksController do
 
 	describe "index" do
 		it "should render feedbacks" do
-			candidate= CandidateFactory.create(:recruitment_step_selections => [RecruitmentStepTypeFactory.pairing])
+			candidate= CandidateFactory.create(:recruitment_step_type_selections => [RecruitmentStepTypeFactory.pairing])
 
 			pairing_event= EventFactory.create(
 			:interviewers => [Interviewer.create!(:participant => Participant.create!,
@@ -30,7 +30,7 @@ describe FeedbacksController do
 
 			describe "new" do
 				it "should render form for feedback creation" do
-					candidate= CandidateFactory.create(:recruitment_step_selections => [RecruitmentStepTypeFactory.pairing])
+					candidate= CandidateFactory.create(:recruitment_step_type_selections => [RecruitmentStepTypeFactory.pairing])
 
 					pairing_event= EventFactory.create(
 					:interviewers => [Interviewer.create!(:participant => Participant.create!(:name => "Suresh")),
@@ -52,7 +52,7 @@ describe FeedbacksController do
 
 				describe "update" do
 					it "should render form for feedback updation" do
-						candidate= CandidateFactory.create(:recruitment_step_selections => [RecruitmentStepTypeFactory.pairing])
+						candidate= CandidateFactory.create(:recruitment_step_type_selections => [RecruitmentStepTypeFactory.pairing])
 						feedback = Feedback.create(:comment => "Good Candidate")
 						pairing_event= EventFactory.create(
 						:interviewers => [Interviewer.create!(:participant => Participant.create!(:name => "Suresh")),

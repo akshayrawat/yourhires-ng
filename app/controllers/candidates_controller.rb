@@ -38,5 +38,10 @@ class CandidatesController < ApplicationController
 
 	def feedbacks
 	end
-
+	
+	def recruitment_step_type_selection
+		recruitment_step_type = RecruitmentStepType.find(params[:recruitment_step_type_id])
+		render :partial => "recruitment_step_type_selection", :locals => {:recruitment_step => RecruitmentStep.new(:recruitment_step_type => recruitment_step_type)}
+	end
+	
 end

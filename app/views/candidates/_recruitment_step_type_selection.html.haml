@@ -1,0 +1,9 @@
+.recruitment_step_type_selection
+	-if(recruitment_step.new_record?)
+		=hidden_field_tag "candidate[recruitment_step_type_selections][]", recruitment_step.recruitment_step_type.id
+		=recruitment_step.recruitment_step_type.name
+		=link_to_function "Remove", "$(this).parent(\"div\").remove()", :class => "form-button"
+	-else
+		=recruitment_step.recruitment_step_type.name
+		-deselection_element= hidden_field_tag("candidate[recruitment_step_deselections][]", recruitment_step.id)
+		=link_to_function "Remove", "if(confirm('Are you sure you want to remove this step?')) $(this).parent().html('#{deselection_element}')", :class => "form-button"

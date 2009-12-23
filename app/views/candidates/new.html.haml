@@ -56,9 +56,13 @@
 				=form.label :recruitment_steps, "Recruitment Steps*"	
 				%br
 				=select "recruitment_step","selection", RecruitmentStepType.all.collect{|r|[r.name, r.id]},{}, :class=> ('field-error' unless @candidate.errors.on(:recruitment_steps).blank?)
-				%span.form-button				
-					=link_to_function "Add", "add_selected_element('candidate',  'recruitment_step_selection')"
+				%span.form-button
+				
+				=link_to_remote "Add", {:url=> {:action => "recruitment_step_type_selection"}, :with => "'recruitment_step_type_id='+$('#recruitment_step_selection :selected').val()", :update => {:success => "recruitment_step_selections"}, :position => :top}, :class=> "form-button"
+								
 				#recruitment_step_selections
+					-@candidate.recruitment_steps.each do |recruitment_step|
+						=render :partial=> "recruitment_step_type_selection",:locals =>{:recruitment_step=> recruitment_step}
 				
 			.span-12
 				=form.label :comments

@@ -82,14 +82,14 @@ describe Candidate do
 
 		describe "recruitment_steps" do
 			it "should be all steps" do
-				candidate = CandidateFactory.create(:recruitment_step_selections => [@pairing_step, @interview_step])
+				candidate = CandidateFactory.create(:recruitment_step_type_selections => [@pairing_step, @interview_step])
 				candidate.recruitment_steps.map(&:recruitment_step_type).should == [@pairing_step, @interview_step]
 			end
 		end
 
 		describe "recruitment_steps_completed" do
 			it "should be all past steps" do
-				candidate = CandidateFactory.create(:recruitment_step_selections => [@pairing_step, @interview_step])
+				candidate = CandidateFactory.create(:recruitment_step_type_selections => [@pairing_step, @interview_step])
 
 				pairing_event= EventFactory.create_in_past
 				interview_event= EventFactory.create_in_future
@@ -103,7 +103,7 @@ describe Candidate do
 
 		describe "recruitment_steps_upcoming" do
 			it "should be all future steps" do
-				candidate = CandidateFactory.create(:recruitment_step_selections => [@pairing_step, @interview_step])
+				candidate = CandidateFactory.create(:recruitment_step_type_selections => [@pairing_step, @interview_step])
 				pairing_event = EventFactory.create_in_future
 				interview_event = EventFactory.create_in_past
 
@@ -117,7 +117,7 @@ describe Candidate do
 
 		describe "recruitment_steps_pending" do
 			it "should be all future and unscheduled steps" do
-				candidate = CandidateFactory.create(:recruitment_step_selections => [@pairing_step, @interview_step])
+				candidate = CandidateFactory.create(:recruitment_step_type_selections => [@pairing_step, @interview_step])
 				pairing_event = EventFactory.create_in_future
 
 				candidate.schedule(recruitment_step_for_type(candidate, @pairing_step), pairing_event)
@@ -127,7 +127,7 @@ describe Candidate do
 
 		describe "recruitment_steps_scheduled" do
 			it "should be all steps which have an event" do
-				candidate = CandidateFactory.create(:recruitment_step_selections => [@pairing_step, @interview_step])
+				candidate = CandidateFactory.create(:recruitment_step_type_selections => [@pairing_step, @interview_step])
 				pairing_event = EventFactory.create_in_future
 
 				candidate.schedule(recruitment_step_for_type(candidate, @pairing_step), pairing_event)
@@ -139,7 +139,7 @@ describe Candidate do
 
 		describe "recruitment_steps_unscheduled" do
 			it "should be all steps which do not have an event" do
-				candidate = CandidateFactory.create(:recruitment_step_selections => [@pairing_step, @interview_step])
+				candidate = CandidateFactory.create(:recruitment_step_type_selections => [@pairing_step, @interview_step])
 				pairing_event = EventFactory.create_in_future
 
 				candidate.schedule(recruitment_step_for_type(candidate, @pairing_step), pairing_event)
@@ -160,11 +160,21 @@ describe Candidate do
 				two = Interviewer.create!(:event => pairing_event, :participant => Participant.create!)
 				Feedback.create(:updated_at => 1.hour.ago, :comment => "Very Good Candidate", :interviewer => one)
 				Feedback.create(:updated_at => 1.minute.ago, :comment => "Good Candidate", :interviewer => two)
-				
+
 				candidate.reload.feedbacks.should have(2).things
 				candidate.feedbacks.first.comment.should eql("Good Candidate")
 				candidate.feedbacks.last.comment.should eql("Very Good Candidate")
 			end
+		end
+	end
+
+	describe "recruitment_step_deselections" do
+		it "removes recruitment step registered for" do
+			pairing = RecruitmentStepFactory.pairing
+			candidate = CandidateFactory.create(:recruitment_step_type_selections => [pairing])
+			candidate.recruitment_steps.should have(1).thing
+			candidate.recruitment_step_deselections= pairing.id
+			RecruitmentStep.exists?(pairing.id).should be_false
 		end
 	end
 

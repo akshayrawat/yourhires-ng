@@ -1,6 +1,7 @@
 class Candidate < ActiveRecord::Base
 
-	has_many :recruitment_steps, :include => ["event"], :order => "events.start_time ASC"
+	has_many :recruitment_steps, :include => ["event"], :order => "events.start_time ASC", :dependent => :destroy
+	
 	has_and_belongs_to_many :recruiters
 	belongs_to :role
 	has_attached_file :resume
@@ -50,8 +51,12 @@ class Candidate < ActiveRecord::Base
 		end.flatten.sort
 	end 
 
-	def recruitment_step_selections=(recruitment_step_types)
-		register_for_steps(RecruitmentStepType.find(recruitment_step_types))
+	def recruitment_step_type_selections=(recruitment_step_types)
+		register_for_steps(RecruitmentStepType.find_all_by_id(recruitment_step_types))
+	end
+
+	def recruitment_step_deselections=(recruitment_steps)
+		self.recruitment_steps.delete(RecruitmentStep.find_all_by_id(recruitment_steps))
 	end
 
 	def recruiter_selections=(*recruiters)
