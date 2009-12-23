@@ -12,13 +12,13 @@
 				=render :partial=> 'candidate_profile', :locals=> {:candidate => @candidate}
 				%br
 			
-				-if @candidate.skillset
+				-unless @candidate.skillset.blank?
 					%li
 						%p
 							=label_tag "Skillset:"
 							=@candidate.skillset
 					
-				-if @candidate.comments
+				-unless @candidate.comments.blank?
 					%li
 						%p
 							=label_tag "Comments:"
