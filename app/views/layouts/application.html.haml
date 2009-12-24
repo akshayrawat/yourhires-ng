@@ -11,7 +11,7 @@
 					ThoughtWorks
 				%span.user
 					=current_recruiter.name
-				%span.global-candidate-selection
+				%span.global-candidate-selection.prepend-9
 					=select "candidate", "id", recruiter_candidate_options(current_recruiter), {:include_blank=> "Select Candidate"}, :id=> "global-candidate-selection"
 					
 				.navigation
