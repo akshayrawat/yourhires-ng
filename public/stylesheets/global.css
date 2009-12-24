@@ -190,17 +190,24 @@ li {
       margin-top: 10px; }
     .events .event .event-title {
       font-weight: bold; }
+    .events .event .edit-link {
+      font-size: 70%;
+      font-weight: normal; }
 
 .new-event {
   background-color: #ffffbe;
-  margin: 15px 20px 5px 15px;
-  padding: 10px 10px 10px 10px;
+  margin: 20px 20px 5px 20px;
+  padding: 10px 0px 10px 25px;
   border: #ffff88 solid 4px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px; }
   .new-event label {
     color: #990000;
     font-weight: bold; }
+  .new-event textarea {
+    height: 120px;
+    width: 90%;
+    font-size: 90%; }
 
 .schedule-selection .view-profile {
   font-weight: normal;

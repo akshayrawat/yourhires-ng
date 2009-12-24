@@ -87,7 +87,7 @@ class Seeds
       candidate.recruitment_steps[0..-2].each do |recruitment_step|
         start_time = random_time
         candidate.schedule(recruitment_step, Event.new(
-        :start_time => start_time, :end_time => start_time + 3600, :venue=> "Room 201"))
+        :start_time => start_time, :end_time => start_time + 3600, :venue=> "Room 201", :comment => event_comment))
       end
     end
   end
@@ -125,11 +125,15 @@ class Seeds
   end
   
 	def comments
-		"Candidate prefers to be interviewed between 1pm to 3pm on a weekday. Also he is on leave next week. Expected compensation needs to be negotiated. Travel may need to be arranged for an office interview."
+		"He is on leave next week. Expected compensation needs to be negotiated. Travel may need to be arranged for an office interview."
 	end
 	
 	def skillset
 		"Java, Spring, Hibernate, Struts2, Tomcat. Ruby on Rails related technologies.Advanced profiency in XP methodologies and tools"
+	end
+	
+	def event_comment
+		"Candidate prefers to be interviewed between 1pm to 3pm on a weekday. Use his mobile phone number to contact him"
 	end
 
 end

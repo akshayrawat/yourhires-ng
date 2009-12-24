@@ -43,7 +43,7 @@ class RecruitmentActivity < ActiveRecord::Base
 	end
 	
 	def self.event_url(event, candidate)
-		"<a href='/events/#{event.id}'>#{event.recruitment_step.recruitment_step_type.name}</a>"
+		"<a href='/events/#{event.id}/detail'>#{event.recruitment_step.recruitment_step_type.name}</a>"
 	end
 	
 	def self.feedbacks_url(candidate)

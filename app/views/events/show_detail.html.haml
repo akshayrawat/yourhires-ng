@@ -1,0 +1,11 @@
+.content-section.span-16
+	.title
+		%span Event &nbsp;
+	.events
+		=render :partial => 'event', :locals => {:event => @event }
+		-unless @event.comment.nil?
+			.event.span-14
+				%b
+					Comments
+				%p
+					=@event.comment

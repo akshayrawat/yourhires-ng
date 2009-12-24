@@ -8,45 +8,40 @@ class EventsController < ApplicationController
 		@event= Event.find(params[:id])
 		render :partial => 'event', :locals => {:event => @event} and return if request.xhr?
 	end
-
-	def new
-		@selected_candidate= 
-		current_candidate.nil? ? Candidate.new : current_candidate
-
-		if params[:recruitment_step_id].blank?
-			@recruitment_steps = @selected_candidate.recruitment_steps
-		else
-			@selected_recruitment_step= RecruitmentStep.find(params[:recruitment_step_id])
-			@recruitment_steps = [@selected_recruitment_step]
-		end
+	
+	def show_detail
+		@event= Event.find(params[:id])
 	end
 
+	def new
+		@event = Event.new(:recruitment_step => RecruitmentStep.find(params[:recruitment_step_id]))
+	end
+	
+	def edit
+		@event = Event.find(params[:id])
+		render :new
+	end
+	
 	def create
-		handle_action(Event.new(params[:event]), "Event was Created") do |event|
-			event.save
+		@event = Event.new(params[:event])
+		if @event.save
+			redirect_to candidate_schedule_url(@event.recruitment_step.candidate)
+		else
+			render :new
 		end
 	end
 
 	def update
-		handle_action(Event.find(params[:id]), "Event was Updated") do |event|
-			event.update_attributes(params[:event])
+		@event = Event.find(params[:id])
+		if @event.update_attributes(params[:event])
+			redirect_to candidate_schedule_url(@event.recruitment_step.candidate)
+		else
+			render :edit
 		end
 	end
-
-	private
-
-	def handle_action(event, success_message)
-		render :update do |page|
-			if yield(event)
-				@message= success_message
-			else          
-				event.recruitment_step.event = event #HACK
-				@message = "Please enter the highlighted fields"
-			end
-			page.replace dom_id(event.recruitment_step), 
-			:partial => "recruitment_step", 
-			:locals => {:recruitment_step => event.recruitment_step, :message => @message}
-		end
+	
+	def schedule_step
+		render :text => "todo"
 	end
-
+	
 end

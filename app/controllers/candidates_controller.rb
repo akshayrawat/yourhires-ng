@@ -9,7 +9,7 @@ class CandidatesController < ApplicationController
 	end
 	
 	def edit
-		render :action => :new
+		render :new
 	end
 
 	def create

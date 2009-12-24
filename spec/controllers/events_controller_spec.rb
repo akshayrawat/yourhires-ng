@@ -25,31 +25,19 @@ describe EventsController do
 	end
 
 	describe "new" do
-		it "should list all recruitment steps for specified candidate" do
-			candidate= CandidateFactory.create(:name => "Arnab", :recruiters => [@maria])
-			CandidateFactory.create(:name => "Karan", :recruiters => [@maria], 
+		it "should render fields for create" do
+			candidate = CandidateFactory.create(:name => "Karan", :recruiters => [@maria], 
 			:recruitment_steps => [RecruitmentStepFactory.phone_interview])
-
-			pairing = RecruitmentStepFactory.pairing
-			interview = RecruitmentStepFactory.interview
-
-			candidate.recruitment_steps = [pairing, interview]
-
-			get :new, :candidate_id=> candidate.id
-
-			response.should have_tag("span", interview.recruitment_step_type.name)
-			response.should have_tag("span", pairing.recruitment_step_type.name)
-			response.should_not have_tag("span", RecruitmentStepTypeFactory.phone_interview.name)
-		end
-
-		it "should list current recruiter`s candidates in select box" do
-			candidate_one = CandidateFactory.create(:name => "Arnab", :recruiters => [@maria])
-			candidate_two= CandidateFactory.create(:name=> "Karan",:recruiters=> [RecruiterFactory.reshmi])
-
-			get :new
-
-			response.should have_tag("select#selected_candidate_id option", candidate_one.name)
-			response.should_not have_tag("select#selected_candidate_id option", candidate_two.name)
+			
+			recruitment_step = candidate.recruitment_steps.first
+			get :new, :candidate_id=> candidate.id, :recruitment_step_id => recruitment_step.id
+			
+			response.body.should include(recruitment_step.recruitment_step_type.name)
+			response.should have_tag("input[type=hidden][value=?]", recruitment_step.id)
+			response.should have_tag("input[type=text][name='event[venue]']")
+			response.should have_tag("select[name='event[start_time(3i)]']")
+			response.should have_tag("select[name='event[end_time(3i)]']")
+			response.should have_tag("textarea[name='event[comment]']")
 		end
 	end
 

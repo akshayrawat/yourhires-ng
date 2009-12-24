@@ -11,9 +11,11 @@ ActionController::Routing::Routes.draw do |map|
     end
   end
 	
-  map.candidate_schedule '/candidate/:id/schedule', :controller => "candidates", :action => 'schedule'
+  map.candidate_schedule '/candidates/:id/schedule', :controller => "candidates", :action => 'schedule'
+	map.candidate_schedule_step '/candidates/:id/schedule_step', :controller => "events", :action => "schedule_step"
+	map.event_detail '/events/:id/detail', :controller => "events", :action => "show_detail"
   map.dashboard '/dashboard', :controller => "dashboard", :action => 'index'
-
+	
   map.root :controller => :dashboard
   
   map.connect ':controller/:action/:id'

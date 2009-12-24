@@ -1,32 +1,33 @@
 .schedule-selection.content-section.span-16
 	.title
-		=label :selected_candidate_id, "Select Candidate"
+		="Event: #{@candidate.name}"
 		&nbsp;
-		=select "selected_candidate", "id", current_recruiter.candidates.map{|candidate| [candidate.name, candidate.id]},{:prompt => "Select"}
 
-		-unless @selected_candidate.recruitment_steps.empty?
-			=select "selected_recruitment_step", "id", @selected_candidate.recruitment_steps.map{|recruitment_step| [recruitment_step.recruitment_step_type.name, recruitment_step.id]},{:include_blank => "All"}
-			=link_to_unless @selected_candidate.nil?, "View Profile", candidate_url(@selected_candidate), :class=> "view-profile"
-		
-		#recruitment_steps
-			=render :partial => "recruitment_step", :collection => @recruitment_steps
+	.new-event.span-14
+		-form_for(@event) do |form|
+			%span{:class=> event_title_class(@event.recruitment_step)}
+				=@event.recruitment_step.recruitment_step_type.name 
+			%br
+			%br
+			=form.label :venue
+			=form.text_field :venue
+			%br
 
-:javascript
-	$("#selected_candidate_id").change(function() {
-		selected_candidate_id = $('#selected_candidate_id :selected').val();
-		if(selected_candidate_id == "") {
-			window.location = '/events/new';
-		}else {
-			window.location = '/candidates/' + selected_candidate_id + '/events/new';
-		}
-	});	
-	
-	$("#selected_recruitment_step_id").change(function() {
-		selected_candidate_id = $('#selected_candidate_id :selected').val();	
-		recruitment_step_id = $('#selected_recruitment_step_id :selected').val();
-		if(recruitment_step_id == "") {
-			window.location = '/candidates/' + selected_candidate_id + '/events/new';
-		}else {
-			window.location = '/candidates/' + selected_candidate_id + '/recruitment_steps/' + recruitment_step_id+'/events/new';
-		}
-	});
+			=form.hidden_field :recruitment_step_id
+
+			=form.label :start_time
+			=form.datetime_select :start_time, {:include_blank => true, :minute_step => 15, :order => [:hour, :minute, :day, :month, :year], :date_separator => '/', :datetime_separator => ' at '}
+			%br
+			=form.label :end_time
+			&nbsp;
+
+			=form.datetime_select :end_time, {:include_blank => true, :minute_step => 15, :order => [:hour, :minute, :day, :month, :year], :date_separator => '/', :datetime_separator => ' at '}
+
+			%br
+			=form.label :comments
+			%p
+				=form.text_area :comment
+			%center
+				=form.submit "Save", :class => "bold-button"
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;				
+				=link_to "Cancel", candidate_schedule_url(@candidate), :class => "bold-button"

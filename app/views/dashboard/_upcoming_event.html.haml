@@ -12,9 +12,9 @@
 		%ul{:class=> "event"}
 			%li{:class=> "event-title", :id=> upcoming_event.id}
 				%b
-					="#{upcoming_event.recruitment_step.recruitment_step_type.name} :  #{link_to( upcoming_event.recruitment_step.candidate.name, candidate_url(upcoming_event.recruitment_step.candidate))}"
+					="#{link_to(upcoming_event.recruitment_step.recruitment_step_type.name, event_detail_url(upcoming_event))} :  #{link_to( upcoming_event.recruitment_step.candidate.name, candidate_url(upcoming_event.recruitment_step.candidate))}"
 			%li
-				=label_tag "Time:"			
+				=label_tag "Time:"
 				="#{format_time(upcoming_event.start_time)} - #{format_time(upcoming_event.end_time)}"
 			%li
 				=label_tag "Venue:"
