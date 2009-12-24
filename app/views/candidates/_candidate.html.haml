@@ -6,10 +6,15 @@
 		=render :partial=> 'candidate_profile', :locals=> {:candidate => candidate}
 		
 	.recruitment-steps
+	
 		-candidate.recruitment_steps_completed.each do |recruitment_step|
 			%span.completed
 				=link_to recruitment_step.recruitment_step_type.name, event_url(recruitment_step.event), :class=> "event-clicktip", :id=> "/events/#{recruitment_step.event.id}"
 					
-		-candidate.recruitment_steps_pending.each do |recruitment_step|
-			%span.pending
+		-candidate.recruitment_steps_upcoming.each do |recruitment_step|
+			%span.upcoming
+				=link_to recruitment_step.recruitment_step_type.name, event_url(recruitment_step.event), :class=> "event-clicktip", :id=> "/events/#{recruitment_step.event.id}"
+
+		-candidate.recruitment_steps_unscheduled.each do |recruitment_step|
+			%span.unscheduled
 				=link_to recruitment_step.recruitment_step_type.name, new_candidate_recruitment_step_event_url(candidate, recruitment_step), :class=> "unscheduled-event-clicktip"

@@ -25,15 +25,5 @@ describe RecruitmentStep do
     recruitment_step = RecruitmentStep.create!(:recruitment_step_type => RecruitmentStepType.create, :event => EventFactory.create_in_future)
     recruitment_step.should be_scheduled    
   end
-
-  it "should be pending when it does not have an event" do
-    recruitment_step = RecruitmentStep.create!(:recruitment_step_type => RecruitmentStepType.create, :event => nil)
-    recruitment_step.should be_pending
-  end
-
-  it "should be pending when it has an event in future" do
-    recruitment_step = RecruitmentStep.create!(:recruitment_step_type => RecruitmentStepType.create, :event => EventFactory.create_in_future)
-    recruitment_step.should be_pending
-  end
   
 end

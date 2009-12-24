@@ -27,10 +27,6 @@ class Candidate < ActiveRecord::Base
 		recruitment_steps.select(&:completed?)
 	end
 
-	def recruitment_steps_pending
-		recruitment_steps.select(&:pending?)
-	end
-
 	def recruitment_steps_upcoming
 		recruitment_steps.select(&:upcoming?)
 	end

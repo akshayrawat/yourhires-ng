@@ -115,16 +115,6 @@ describe Candidate do
 			end
 		end
 
-		describe "recruitment_steps_pending" do
-			it "should be all future and unscheduled steps" do
-				candidate = CandidateFactory.create(:recruitment_step_type_selections => [@pairing_step, @interview_step])
-				pairing_event = EventFactory.create_in_future
-
-				candidate.schedule(recruitment_step_for_type(candidate, @pairing_step), pairing_event)
-				candidate.recruitment_steps_pending.should have(2).things
-			end
-		end
-
 		describe "recruitment_steps_scheduled" do
 			it "should be all steps which have an event" do
 				candidate = CandidateFactory.create(:recruitment_step_type_selections => [@pairing_step, @interview_step])

@@ -110,7 +110,11 @@ li {
       padding: 3px 7px 3px 7px;
       background-color: #6bba70;
       font-size: 85%; }
-    .candidates .candidate .pending {
+    .candidates .candidate .upcoming {
+      padding: 3px 7px 3px 7px;
+      background-color: #ffcc00;
+      font-size: 85%; }
+    .candidates .candidate .unscheduled {
       padding: 3px 7px 3px 7px;
       background-color: #444343;
       font-size: 85%; }
@@ -224,21 +228,35 @@ li {
 .calendar {
   width: 80px; }
 
-.scheduled-event-title {
+.completed-event-title {
   font-weight: normal;
   background-color: #6bba70;
   padding: 2px 5px 2px 5px;
   text-align: center;
-  width: 25%;
   color: white;
-  font-size: 85%; }
+  font-size: 85%;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px; }
+
+.upcoming-event-title {
+  font-weight: normal;
+  background-color: #ffcc00;
+  text-align: center;
+  padding: 2px 5px 2px 5px;
+  color: white;
+  font-size: 85%;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px; }
 
 .unscheduled-event-title {
   font-weight: normal;
   background-color: #444343;
+  text-align: center;
   padding: 2px 5px 2px 5px;
   color: white;
-  font-size: 85%; }
+  font-size: 85%;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px; }
 
 .dashboard a {
   font-weight: bold; }

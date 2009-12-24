@@ -6,7 +6,7 @@
 			%li{:class=> "event-title", :id=> event.id}
 				="#{event.recruitment_step.recruitment_step_type.name} : #{link_to(event.recruitment_step.candidate.name, candidate_url(event.recruitment_step.candidate))}"
 			%li
-				=label_tag "Time:"			
+				=label_tag "Time:"
 				="#{format_time(event.start_time)} - #{format_time(event.end_time)}"
 			%li
 				=label_tag "Venue:"

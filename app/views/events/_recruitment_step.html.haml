@@ -1,6 +1,6 @@
 .new-event.span-14{:id=> dom_id(recruitment_step)}
 	-remote_form_for(recruitment_step.event || Event.new(:recruitment_step=> recruitment_step)) do |form|
-		%span{:class=>recruitment_step.scheduled? ? "scheduled-event-title" : "unscheduled-event-title"}
+		%span{:class=> event_title_class(recruitment_step)}
 			=recruitment_step.recruitment_step_type.name 
 		%span{:class=> "prepend-1", :id=> "#{dom_id(recruitment_step)}_message" }
 			=@message

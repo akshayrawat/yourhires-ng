@@ -4,13 +4,9 @@ class RecruitmentStep < ActiveRecord::Base
   belongs_to :recruitment_step_type  
   
   def completed?
-    !pending?
+    scheduled? && !upcoming?
   end
-  
-  def pending?
-    unscheduled? || upcoming?
-  end
-  
+    
   def upcoming?
     scheduled? && self.event.in_future?
   end

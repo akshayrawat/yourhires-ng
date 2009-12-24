@@ -142,7 +142,11 @@ ul, ol
 			padding: 3px 7px 3px 7px
 			background-color= !green
 			font-size: 85%
-		.pending
+		.upcoming
+			padding: 3px 7px 3px 7px
+			background-color= !dark_yellow
+			font-size: 85%
+		.unscheduled
 			padding: 3px 7px 3px 7px
 			background-color= !dark_gray
 			font-size: 85%
@@ -258,21 +262,33 @@ ul, ol
 .calendar
 	width: 80px 
 
-.scheduled-event-title
+.completed-event-title
 	font-weight: normal
 	background-color= !green
 	padding: 2px 5px 2px 5px
 	text-align: center
-	width: 25%
 	color: white
-	font-size: 85%		
+	font-size: 85%
+	+round-corner(3px)
+
+.upcoming-event-title
+	font-weight: normal
+	background-color= !dark_yellow
+	text-align: center
+	padding: 2px 5px 2px 5px
+	color: white
+	font-size: 85%
+	+round-corner(3px)
 	
 .unscheduled-event-title
 	font-weight: normal
 	background-color= !dark_gray
+	text-align: center
 	padding: 2px 5px 2px 5px
 	color: white
-	font-size: 85%		
+	font-size: 85%
+	+round-corner(3px)
+
 .dashboard
 	a
 		font-weight: bold
