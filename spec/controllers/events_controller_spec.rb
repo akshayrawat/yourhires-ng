@@ -40,7 +40,7 @@ describe EventsController do
 			response.should have_tag("textarea[name='event[comment]']")
 		end
 	end
-
+	
 	describe "show" do
 		it "should render event details template when request is non xhr" do
 			event = EventFactory.create(:venue => "Room 301")
