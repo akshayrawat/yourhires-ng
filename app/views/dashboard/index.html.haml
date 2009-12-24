@@ -6,8 +6,8 @@
 		
 		-unless @upcoming_events.empty?
 			#upcoming-event-detail.span-14
-				:javascript
-					$('#upcoming-event-detail').html($(detail_event_#{@upcoming_events.first.id}).html());
+			:javascript
+				$('#upcoming-event-detail').html($(detail_event_#{@upcoming_events.first.id}).html());
 		
 .dashboard.content-section.span-16
 	.title
@@ -27,4 +27,5 @@
 	$(".upcoming-event").click(function(){
 		upcoming_event_detail_id = "detail_" + this.id;
 		$('#upcoming-event-detail').html($('#'+upcoming_event_detail_id).html());
+		$('#upcoming-event-detail').animate({opacity: "0.7"}).animate({opacity: "1.0"});
 	})
