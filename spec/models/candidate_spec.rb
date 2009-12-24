@@ -150,7 +150,7 @@ describe Candidate do
 		end
 
 		describe "feedbacks" do
-			it "show be all feedbacks given in the order of updated_at descending" do
+			it "show be all feedbacks in the order of updated_at descending" do
 				pairing = RecruitmentStepFactory.pairing
 				pairing_event = EventFactory.create_in_future
 				candidate = CandidateFactory.create(:recruitment_steps => [pairing])
@@ -169,13 +169,31 @@ describe Candidate do
 	end
 
 	describe "recruitment_step_deselections" do
-		it "removes recruitment step registered for" do
+		it "removes recruitment step" do
 			pairing = RecruitmentStepFactory.pairing
 			candidate = CandidateFactory.create(:recruitment_step_type_selections => [pairing])
 			candidate.recruitment_steps.should have(1).thing
 			candidate.recruitment_step_deselections= pairing.id
 			RecruitmentStep.exists?(pairing.id).should be_false
 		end
+	end
+	
+	describe "recruiter_step_selection" do
+	  it "adds recruiter" do
+			recruiter = RecruiterFactory.maria
+			candidate = CandidateFactory.build(:recruiters => [])
+			candidate.recruiter_selections = [recruiter]
+			candidate.recruiters.should == [recruiter]
+	  end
+	end
+	
+	describe "recruiter_step_deselection" do
+	  it "removes recruiter" do
+			recruiter = RecruiterFactory.maria
+			candidate = CandidateFactory.build(:recruiters => [recruiter])
+			candidate.recruiter_deselections = [recruiter]
+			candidate.recruiters.should be_empty
+	  end
 	end
 
 	def recruitment_step_for_type(candidate, type)

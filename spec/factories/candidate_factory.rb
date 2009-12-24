@@ -4,6 +4,10 @@ class CandidateFactory
     Candidate.create!(valid_params(params).merge(params))
   end
   
+	def self.build(params = {})
+  	Candidate.new(valid_params(params).merge(params))		
+	end
+	
   def self.valid_params(params = {})
     {
       :name => "Arnab Mandal",:phone => "+98 1234 5643", :email => "arnab@mandal.com", :source => "referral", :role => RoleFactory.developer, :recruiters => params[:recruiters] || [RecruiterFactory.maria], :recruitment_step_type_selections => params[:recruitment_step_type_selections] || [RecruitmentStepTypeFactory.interview.id]

@@ -48,15 +48,16 @@
 				=form.label :recruiters, "Recruiters*"
 				%br
 				=select "recruiter","selection", Recruiter.all.collect{|r|[r.name, r.id]},{} ,:class=> ('field-error' unless @candidate.errors.on(:recruiters).blank?)
-				%span.form-button 
-					=link_to_function "Add", "add_selected_element('candidate', 'recruiter_selection')"
+
+				=link_to_remote "Add", {:url=> {:action => "recruiter_selection"}, :with => "'recruiter_id='+$('#recruiter_selection :selected').val() + '&new_record=true'", :update => {:success => "recruiter_selections"}, :position => :top}, :class=> "form-button"
 				#recruiter_selections
+					-@candidate.recruiters.each do |recruiter|
+						=render :partial=> "recruiter_selection",:locals =>{:recruiter=> recruiter, :new_record => false}
 				
 			.span-6.last
 				=form.label :recruitment_steps, "Recruitment Steps*"	
 				%br
 				=select "recruitment_step","selection", RecruitmentStepType.all.collect{|r|[r.name, r.id]},{}, :class=> ('field-error' unless @candidate.errors.on(:recruitment_steps).blank?)
-				%span.form-button
 				
 				=link_to_remote "Add", {:url=> {:action => "recruitment_step_type_selection"}, :with => "'recruitment_step_type_id='+$('#recruitment_step_selection :selected').val()", :update => {:success => "recruitment_step_selections"}, :position => :top}, :class=> "form-button"
 								

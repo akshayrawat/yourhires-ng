@@ -111,7 +111,26 @@ describe CandidatesController do
 				candidate= CandidateFactory.create(:name => "Karan", :recruitment_steps => [pairing])
 				get :schedule, :id=> candidate.id
 				response.should have_tag("li", "#{pairing.recruitment_step_type.name} : #{candidate.name}")
+			end		  
+		end
+		
+		describe "recruiter_selection" do
+		  it "should render partial for selected recruiter" do
+				recruiter = RecruiterFactory.maria
+		    post :recruiter_selection, :recruiter_id => recruiter.id
+				response.body.should match(/#{recruiter.name}/)
+		  end
+		
+			it "should render hidden field when recruiter selection is new" do
+				recruiter = RecruiterFactory.maria
+		    post :recruiter_selection, :recruiter_id => recruiter.id, :new_record => true
+				response.should have_tag("input[type=hidden][value=?]", recruiter.id)
 			end
-		  
+			
+			it "should not render hidden field when recruiter selection is old" do
+				recruiter = RecruiterFactory.maria
+		    post :recruiter_selection, :recruiter_id => recruiter.id, :new_record => false
+				response.should_not have_tag("input[type=hidden]")
+			end
 		end
 	end

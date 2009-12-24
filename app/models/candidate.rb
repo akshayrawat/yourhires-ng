@@ -51,16 +51,20 @@ class Candidate < ActiveRecord::Base
 		end.flatten.sort
 	end 
 
-	def recruitment_step_type_selections=(recruitment_step_types)
-		register_for_steps(RecruitmentStepType.find_all_by_id(recruitment_step_types))
+	def recruitment_step_type_selections=(*recruitment_step_types)
+		register_for_steps(RecruitmentStepType.find(recruitment_step_types))
 	end
 
-	def recruitment_step_deselections=(recruitment_steps)
-		self.recruitment_steps.delete(RecruitmentStep.find_all_by_id(recruitment_steps))
+	def recruitment_step_deselections=(*recruitment_steps)
+		self.recruitment_steps.delete(RecruitmentStep.find(recruitment_steps))
 	end
 
 	def recruiter_selections=(*recruiters)
-		self.recruiters = Recruiter.find(recruiters.uniq)
+		self.recruiters << Recruiter.find(recruiters.uniq)
+	end
+
+	def recruiter_deselections=(*recruiters)
+		self.recruiters.delete(Recruiter.find(recruiters))
 	end
 
 	def register_for_steps(step_types)
