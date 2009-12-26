@@ -1,0 +1,9 @@
+.interviewer_selection
+	-if(interviewer.new_record?)
+		=hidden_field_tag "event[interviewer_selections][]", interviewer.participant.id
+		=interviewer.participant.name
+		=link_to_function "x", "$(this).parent(\"div\").remove()", :class => "form-button"
+	-else
+		=interviewer.participant.name
+		-deselection_element= hidden_field_tag("event[interviewer_deselections][]", interviewer.id)
+		=link_to_function "x", "$(this).parent().html('#{deselection_element}')", :class => "form-button"

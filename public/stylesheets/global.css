@@ -208,6 +208,8 @@ li {
     height: 120px;
     width: 90%;
     font-size: 90%; }
+  .new-event .interviewer_selection {
+    font-size: 90%; }
 
 .schedule-selection .view-profile {
   font-weight: normal;

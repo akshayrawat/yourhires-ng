@@ -2,8 +2,8 @@
 	-if(new_record)
 		=hidden_field_tag "candidate[recruiter_selections][]", recruiter.id
 		=recruiter.name
-		=link_to_function "Remove", "$(this).parent(\"div\").remove()", :class => "form-button"
+		=link_to_function "x", "$(this).parent(\"div\").remove()", :class => "form-button"
 	-else
 		=recruiter.name
 		-deselection_element= hidden_field_tag("candidate[recruiter_deselections][]", recruiter.id)
-		=link_to_function "Remove", "$(this).parent().html('#{deselection_element}')", :class => "form-button"
+		=link_to_function "x", "$(this).parent().html('#{deselection_element}')", :class => "form-button"

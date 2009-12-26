@@ -44,4 +44,9 @@ class EventsController < ApplicationController
 		render :text => "todo"
 	end
 	
+	def interviewer_selection
+		interviewer = Interviewer.new(:participant_id => params[:participant_id])
+		render :partial => 'interviewer_selection', :locals => {:interviewer => interviewer}
+	end
+	
 end

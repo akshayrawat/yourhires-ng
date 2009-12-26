@@ -24,10 +24,14 @@
 			=form.datetime_select :end_time, {:prompt => true, :minute_step => 15, :order => [:hour, :minute, :day, :month, :year], :date_separator => '/', :datetime_separator => ' at '}
 			
 			%br
-			=label_tag :participants
 			%br
 			=text_field :participant, :name
 			=hidden_field :participant, :id
+
+			=link_to_remote "Add Participant", {:url=> {:action => "interviewer_selection"}, :with => "'participant_id='+$('#participant_id').val()", :update => {:success => "interviewer_selections"}, :position => :top, :complete => '$("input#participant_name").val("")'}, :class=> "form-button"
+			#interviewer_selections
+				-@event.interviewers.each do |interviewer|
+					=render :partial=> "interviewer_selection",:locals =>{:interviewer=> interviewer}
 			
 			%br
 			=form.label :comments
@@ -48,7 +52,7 @@
 					return data[1];
 				}
 		}).result(function(event, data) {
-				$('#participant_id').val(data[0]);
+				$('input##participant_id').val(data[0]);
 		})
 	});
 
