@@ -1,7 +1,7 @@
 %html
 	%head
-		=stylesheet_link_tag("blueprint/screen.css", "global.css")
-		=javascript_include_tag("jquery", "jrails", "application", "jquery.qtip-1.0.0-rc3.min")
+		=stylesheet_link_tag("blueprint/screen.css", "global.css", "jquery.autocomplete.css")
+		=javascript_include_tag("jquery", "jrails", "application", "jquery.qtip-1.0.0-rc3.min", "jquery.bgiframe.min", "jquery.autocomplete.min")
 		
 		=yield :head
 	%body
@@ -11,7 +11,7 @@
 					ThoughtWorks
 				%span.user
 					=current_recruiter.name
-				%span.global-candidate-selection.prepend-9
+				%span.prepend-9
 					=select "candidate", "id", recruiter_candidate_options(current_recruiter), {:include_blank=> "Select Candidate"}, :id=> "global-candidate-selection"
 					
 				.navigation

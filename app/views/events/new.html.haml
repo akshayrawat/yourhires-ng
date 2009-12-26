@@ -22,7 +22,13 @@
 			&nbsp;
 
 			=form.datetime_select :end_time, {:prompt => true, :minute_step => 15, :order => [:hour, :minute, :day, :month, :year], :date_separator => '/', :datetime_separator => ' at '}
-
+			
+			%br
+			=label_tag :participants
+			%br
+			=text_field :participant, :name
+			=hidden_field :participant, :id
+			
 			%br
 			=form.label :comments
 			%p
@@ -31,3 +37,18 @@
 				=form.submit "Save", :class => "bold-button"
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;				
 				=link_to "Cancel", candidate_schedule_url(@candidate), :class => "bold-button"
+
+:javascript
+	 $(document).ready(function() {
+	   $("input#participant_name").autocomplete('#{auto_complete_for_participant_path}', {
+				formatItem: function(data, position, length) {
+					return data[1];
+				},
+				formatResult: function(data, position, length) {
+					return data[1];
+				}
+		}).result(function(event, data) {
+				$('#participant_id').val(data[0]);
+		})
+	});
+
