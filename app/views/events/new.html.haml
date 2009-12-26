@@ -1,6 +1,6 @@
 .schedule-selection.content-section.span-16
 	.title
-		="Event: #{@candidate.name}"
+		="Event: #{@event.recruitment_step.candidate.name}"
 		&nbsp;
 
 	.new-event.span-14
@@ -16,12 +16,12 @@
 			=form.hidden_field :recruitment_step_id
 
 			=form.label :start_time
-			=form.datetime_select :start_time, {:include_blank => true, :minute_step => 15, :order => [:hour, :minute, :day, :month, :year], :date_separator => '/', :datetime_separator => ' at '}
+			=form.datetime_select :start_time, {:prompt => true, :minute_step => 15, :order => [:hour, :minute, :day, :month, :year], :date_separator => '/', :datetime_separator => ' at '}
 			%br
 			=form.label :end_time
 			&nbsp;
 
-			=form.datetime_select :end_time, {:include_blank => true, :minute_step => 15, :order => [:hour, :minute, :day, :month, :year], :date_separator => '/', :datetime_separator => ' at '}
+			=form.datetime_select :end_time, {:prompt => true, :minute_step => 15, :order => [:hour, :minute, :day, :month, :year], :date_separator => '/', :datetime_separator => ' at '}
 
 			%br
 			=form.label :comments

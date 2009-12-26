@@ -1,17 +1,22 @@
-%li
-	%i
-		=candidate.role.name
-%li 
-	=label_tag "Email:"
-	=mail_to candidate.email, candidate.email
-%li
-	=label_tag "Phone:"
-	=candidate.phone
-%li
-	=label_tag "Recruiters:"
-	=candidate.recruiters.collect(&:name).join(", ")
-%li
-	=label_tag "Participants:"
-	=candidate.participants.collect{|participant|participant.name}.join(", ")
-%li.action-links
-	=link_to_if(candidate.resume?, "DOWNLOAD RESUME", candidate.resume.url){}
+%ul
+	%li 
+		%b 
+			=link_to(candidate.name, candidate_url(candidate))
+			=link_to "[edit]", edit_candidate_url(candidate), :class=> "edit-record"			
+	%li
+		%i
+			=candidate.role.name
+	%li 
+		=label_tag "Email:"
+		=mail_to candidate.email, candidate.email
+	%li
+		=label_tag "Phone:"
+		=candidate.phone
+	%li
+		=label_tag "Recruiters:"
+		=candidate.recruiters.collect(&:name).join(", ")
+	%li
+		=label_tag "Participants:"
+		=candidate.participants.collect{|participant|participant.name}.join(", ")
+	%li.action-links
+		=link_to_if(candidate.resume?, "DOWNLOAD RESUME", candidate.resume.url){}

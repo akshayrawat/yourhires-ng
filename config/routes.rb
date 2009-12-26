@@ -13,7 +13,9 @@ ActionController::Routing::Routes.draw do |map|
 	
   map.candidate_schedule '/candidates/:id/schedule', :controller => "candidates", :action => 'schedule'
 	map.candidate_schedule_step '/candidates/:id/schedule_step', :controller => "events", :action => "schedule_step"
-	map.event_detail '/events/:id/detail', :controller => "events", :action => "show_detail"
+	
+	map.event_detail 'candidates/:candidate_id/events/:id/detail', :controller => "events", :action => "show_detail"
+	
   map.dashboard '/dashboard', :controller => "dashboard", :action => 'index'
 	
   map.root :controller => :dashboard

@@ -4,20 +4,14 @@
 		=render :partial=> "navigation"
 	.candidates	
 		.candidate.span-14 
+			=render :partial=> 'candidate_profile', :locals=> {:candidate => @candidate}
 			%ul
-				%li 
-					%b 
-						=@candidate.name
-					=link_to "[edit]", edit_candidate_url(@candidate), :class=> "edit-record"
-				=render :partial=> 'candidate_profile', :locals=> {:candidate => @candidate}
-				%br
-			
 				-unless @candidate.skillset.blank?
 					%li
 						%p
 							=label_tag "Skillset:"
 							=@candidate.skillset
-					
+				
 				-unless @candidate.comments.blank?
 					%li
 						%p

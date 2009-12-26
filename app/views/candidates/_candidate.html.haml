@@ -1,19 +1,13 @@
 .candidate 
-	%ul
-		%li 
-			%b 
-				=link_to(candidate.name, candidate_url(candidate))
-		=render :partial=> 'candidate_profile', :locals=> {:candidate => candidate}
-		
+	=render :partial=> 'candidate_profile', :locals=> {:candidate => candidate}
 	.recruitment-steps
-	
 		-candidate.recruitment_steps_completed.each do |recruitment_step|
 			%span.completed
-				=link_to recruitment_step.recruitment_step_type.name, event_detail_url(recruitment_step.event), :class=> "event-clicktip", :id=> "/events/#{recruitment_step.event.id}"
+				=link_to recruitment_step.recruitment_step_type.name, event_detail_url(candidate, recruitment_step.event), :class=> "event-clicktip", :id=> "/events/#{recruitment_step.event.id}"
 					
 		-candidate.recruitment_steps_upcoming.each do |recruitment_step|
 			%span.upcoming
-				=link_to recruitment_step.recruitment_step_type.name, event_detail_url(recruitment_step.event), :class=> "event-clicktip", :id=> "/events/#{recruitment_step.event.id}"
+				=link_to recruitment_step.recruitment_step_type.name, event_detail_url(candidate, recruitment_step.event), :class=> "event-clicktip", :id=> "/events/#{recruitment_step.event.id}"
 
 		-candidate.recruitment_steps_unscheduled.each do |recruitment_step|
 			%span.unscheduled
