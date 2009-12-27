@@ -4,4 +4,6 @@ Now -
 
 
 Later - 
-- Push rails - jquery autocomplete plugin changes to master
+- Push rails-jquery autocomplete plugin changes to master repo
+- Support for VALARMs in ics.
+- Page cache mechanism for /calendar.ics
