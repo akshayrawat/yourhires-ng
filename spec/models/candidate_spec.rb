@@ -37,9 +37,9 @@ describe Candidate do
 			candidate.schedule(candidate.recruitment_steps[0], pairing)
 			candidate.schedule(candidate.recruitment_steps[1], interview)
 
-			Interviewer.create!(:event => pairing, :participant => (one = Participant.create!))
-			Interviewer.create!(:event => pairing, :participant => (two = Participant.create!))
-			Interviewer.create!(:event => interview, :participant => (three = Participant.create!))
+			Interviewer.create!(:event => pairing, :participant => (one = ParticipantFactory.create))
+			Interviewer.create!(:event => pairing, :participant => (two = ParticipantFactory.create))
+			Interviewer.create!(:event => interview, :participant => (three = ParticipantFactory.create))
 
 			candidate.participants.should have(3).things
 			candidate.participants.should eql([one, two, three])
@@ -56,9 +56,9 @@ describe Candidate do
 			candidate.schedule(candidate.recruitment_steps[0], pairing)
 			candidate.schedule(candidate.recruitment_steps[1], interview)
 
-			one= Interviewer.create!(:event => pairing, :participant => Participant.create!)
-			two= Interviewer.create!(:event => pairing, :participant => Participant.create!)
-			three= Interviewer.create!(:event => interview, :participant => Participant.create!)
+			one= Interviewer.create!(:event => pairing, :participant => ParticipantFactory.create)
+			two= Interviewer.create!(:event => pairing, :participant => ParticipantFactory.create)
+			three= Interviewer.create!(:event => interview, :participant => ParticipantFactory.create)
 
 			candidate.interviewers.should have(3).things
 			candidate.interviewers.should eql([one, two, three])
@@ -146,8 +146,8 @@ describe Candidate do
 				candidate = CandidateFactory.create(:recruitment_steps => [pairing])
 				candidate.schedule(pairing, pairing_event)
 
-				one = Interviewer.create!(:event => pairing_event, :participant => Participant.create!)
-				two = Interviewer.create!(:event => pairing_event, :participant => Participant.create!)
+				one = Interviewer.create!(:event => pairing_event, :participant => ParticipantFactory.create)
+				two = Interviewer.create!(:event => pairing_event, :participant => ParticipantFactory.create)
 				Feedback.create(:updated_at => 1.hour.ago, :comment => "Very Good Candidate", :interviewer => one)
 				Feedback.create(:updated_at => 1.minute.ago, :comment => "Good Candidate", :interviewer => two)
 

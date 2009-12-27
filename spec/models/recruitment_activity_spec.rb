@@ -40,7 +40,7 @@ describe RecruitmentActivity do
 			recruiter = candidate.recruiters.first
 			feedback = Feedback.create
 
-			Interviewer.create!(:event => pairing_event, :participant => Participant.create!, :feedbacks=> [feedback])
+			Interviewer.create!(:event => pairing_event, :participant => ParticipantFactory.create, :feedbacks=> [feedback])
 			RecruiterSession.expects(:find).returns(stub(:recruiter => recruiter))
 
 			RecruitmentActivity.feedback_event({:record => feedback})

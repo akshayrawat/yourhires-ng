@@ -1,0 +1,9 @@
+You are invited to a recruitment event.
+
+Step: <%= @event.recruitment_step.recruitment_step_type.name %>
+Candidate: <%= @event.recruitment_step.candidate.name %>
+Venue: <%= @event.venue %>
+Start: <%= format_datetime(@event.start_time) %>
+End: <%= format_datetime(@event.end_time)%>
+Comments: <%= @event.comment %>
+

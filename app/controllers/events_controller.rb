@@ -25,6 +25,7 @@ class EventsController < ApplicationController
 	def create
 		@event = Event.new(params[:event])
 		if @event.save
+			Notifier.deliver_event_invitation(@event)
 			redirect_to candidate_schedule_url(@event.recruitment_step.candidate)
 		else
 			render :new
@@ -48,5 +49,5 @@ class EventsController < ApplicationController
 		interviewer = Interviewer.new(:participant_id => params[:participant_id])
 		render :partial => 'interviewer_selection', :locals => {:interviewer => interviewer}
 	end
-	
+
 end

@@ -13,7 +13,7 @@ describe FeedbacksController do
 			candidate= CandidateFactory.create(:recruitment_step_type_selections => [RecruitmentStepTypeFactory.pairing])
 
 			pairing_event= EventFactory.create(
-			:interviewers => [Interviewer.create!(:participant => Participant.create!,
+			:interviewers => [Interviewer.create!(:participant => ParticipantFactory.create,
 				:feedbacks => [
 					Feedback.create(:comment => "First good comment"),
 					Feedback.create(:comment => "Second good comment")
@@ -33,8 +33,8 @@ describe FeedbacksController do
 					candidate= CandidateFactory.create(:recruitment_step_type_selections => [RecruitmentStepTypeFactory.pairing])
 
 					pairing_event= EventFactory.create(
-					:interviewers => [Interviewer.create!(:participant => Participant.create!(:name => "Suresh")),
-						Interviewer.create!(:participant => Participant.create!(:name => "Nilakanta"))])
+					:interviewers => [Interviewer.create!(:participant => ParticipantFactory.create(:name => "Suresh")),
+						Interviewer.create!(:participant => ParticipantFactory.create(:name => "Nilakanta"))])
 
 						candidate.schedule(candidate.recruitment_steps.first, pairing_event)
 
@@ -55,8 +55,8 @@ describe FeedbacksController do
 						candidate= CandidateFactory.create(:recruitment_step_type_selections => [RecruitmentStepTypeFactory.pairing])
 						feedback = Feedback.create(:comment => "Good Candidate")
 						pairing_event= EventFactory.create(
-						:interviewers => [Interviewer.create!(:participant => Participant.create!(:name => "Suresh")),
-							Interviewer.create!(:participant => Participant.create!(:name => "Nilakanta"), :feedbacks => [feedback])])
+						:interviewers => [Interviewer.create!(:participant => ParticipantFactory.create(:name => "Suresh")),
+							Interviewer.create!(:participant => ParticipantFactory.create(:name => "Nilakanta"), :feedbacks => [feedback])])
 
 							candidate.schedule(candidate.recruitment_steps.first, pairing_event)
 

@@ -5,9 +5,9 @@ describe Event do
 	describe "interviewers" do
 		it "should be all assigned interviewers" do
 			event = EventFactory.create_in_future
-			one = Participant.create!
-			two = Participant.create!
-			three = Participant.create!
+			one = ParticipantFactory.create
+			two = ParticipantFactory.create
+			three = ParticipantFactory.create
 
 			Interviewer.create!(:event => event, :participant => one)
 			Interviewer.create!(:event => event, :participant => two)
@@ -35,8 +35,8 @@ describe Event do
 	describe "interviewer_selections" do
 		it "should add participants " do
 			event = EventFactory.create_in_future
-			one = Participant.create!
-			two = Participant.create!
+			one = ParticipantFactory.create
+			two = ParticipantFactory.create
 			event.interviewer_selections = [one, two]
 			event.interviewers.map(&:participant).should == [one, two]
 		end
@@ -45,8 +45,8 @@ describe Event do
 	describe "interviewer_deselections" do
 		it "should add participants " do
 			event = EventFactory.create_in_future
-			one = Participant.create!
-			two = Participant.create!
+			one = ParticipantFactory.create
+			two = ParticipantFactory.create
 			event.interviewer_selections = [one, two]
 			event.save
 			event.interviewer_deselections = event.interviewers.collect(&:id)
