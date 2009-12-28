@@ -35,6 +35,7 @@ class EventsController < ApplicationController
 	def update
 		@event = Event.find(params[:id])
 		if @event.update_attributes(params[:event])
+			Notifier.deliver_event_invitation_update(@event)			
 			redirect_to candidate_schedule_url(@event.recruitment_step.candidate)
 		else
 			render :edit
