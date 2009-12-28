@@ -4,6 +4,6 @@ class ParticipantFactory
 	end
 	
 	def self.valid_params
-		{:email => "foo@bar.com"}
+		{:name => "foobar", :email => "foo@bar.com"}
 	end
 end
