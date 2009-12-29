@@ -18,5 +18,9 @@ class RecruitmentStep < ActiveRecord::Base
 	def unscheduled?
 		self.event.nil?
 	end
+	
+	def name
+		recruitment_step_type.name
+	end
   
 end

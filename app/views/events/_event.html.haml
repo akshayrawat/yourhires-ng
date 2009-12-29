@@ -4,7 +4,7 @@
 	.span-10.last
 		%ul
 			%li{:class=> "event-title", :id=> event.id}
-				="#{link_to(event.recruitment_step.recruitment_step_type.name, event_detail_url(event.recruitment_step.candidate, event.id))} : #{link_to(event.recruitment_step.candidate.name, candidate_url(event.recruitment_step.candidate))} #{link_to '[edit]', edit_candidate_recruitment_step_event_url(event.recruitment_step.candidate, event.recruitment_step, event), :class => 'edit-link'}"
+				="#{link_to(event.recruitment_step.name, event_detail_url(event.recruitment_step.candidate, event.id))} : #{link_to(event.recruitment_step.candidate.name, candidate_url(event.recruitment_step.candidate))} #{link_to '[edit]', edit_candidate_recruitment_step_event_url(event.recruitment_step.candidate, event.recruitment_step, event), :class => 'edit-link'}"
 			%li
 				=label_tag "Time:"
 				="#{format_time(event.start_time)} - #{format_time(event.end_time)}"

@@ -32,7 +32,7 @@ describe EventsController do
 			recruitment_step = candidate.recruitment_steps.first
 			get :new, :candidate_id=> candidate.id, :recruitment_step_id => recruitment_step.id
 			
-			response.body.should include(recruitment_step.recruitment_step_type.name)
+			response.body.should include(recruitment_step.name)
 			response.should have_tag("input[type=hidden][value=?]", recruitment_step.id)
 			response.should have_tag("input[type=text][name='event[venue]']")
 			response.should have_tag("select[name='event[start_time(3i)]']")

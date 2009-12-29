@@ -1,12 +1,12 @@
 .schedule-selection.content-section.span-16
 	.title
-		="Event: #{@event.recruitment_step.candidate.name}"
-		&nbsp;
+		Event:
+		=@event.recruitment_step.candidate.name
 
 	.new-event.span-14
 		-form_for(@event) do |form|
 			%span{:class=> event_title_class(@event.recruitment_step)}
-				=@event.recruitment_step.recruitment_step_type.name 
+				=@event.recruitment_step.name
 			%br
 			%br
 			=form.label :venue

@@ -17,6 +17,6 @@ module EventIcalGeneration
 	
 	private
 	def summary(event)
-		"#{event.recruitment_step.recruitment_step_type.name} - #{event.recruitment_step.candidate.name}"	
+		"#{event.recruitment_step.name} - #{event.recruitment_step.candidate.name}"	
 	end
 end

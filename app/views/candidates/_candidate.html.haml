@@ -3,12 +3,12 @@
 	.recruitment-steps
 		-candidate.recruitment_steps_completed.each do |recruitment_step|
 			%span.completed
-				=link_to recruitment_step.recruitment_step_type.name, event_detail_url(candidate, recruitment_step.event), :class=> "#{feedback_result_class(recruitment_step.event)} event-clicktip", :id=> "/events/#{recruitment_step.event.id}"
+				=link_to recruitment_step.name, event_detail_url(candidate, recruitment_step.event), :class=> "#{feedback_result_class(recruitment_step.event)} event-clicktip", :id=> "/events/#{recruitment_step.event.id}"
 					
 		-candidate.recruitment_steps_upcoming.each do |recruitment_step|
 			%span.upcoming
-				=link_to recruitment_step.recruitment_step_type.name, event_detail_url(candidate, recruitment_step.event), :class=> "event-clicktip", :id=> "/events/#{recruitment_step.event.id}"
+				=link_to recruitment_step.name, event_detail_url(candidate, recruitment_step.event), :class=> "event-clicktip", :id=> "/events/#{recruitment_step.event.id}"
 
 		-candidate.recruitment_steps_unscheduled.each do |recruitment_step|
 			%span.unscheduled
-				=link_to recruitment_step.recruitment_step_type.name, new_candidate_recruitment_step_event_url(candidate, recruitment_step), :class=> "unscheduled-event-clicktip"
+				=link_to recruitment_step.name, new_candidate_recruitment_step_event_url(candidate, recruitment_step), :class=> "unscheduled-event-clicktip"

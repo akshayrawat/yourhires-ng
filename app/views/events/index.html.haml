@@ -4,7 +4,7 @@
 		%span.title-links
 			=link_to("Upcoming", "#", :class=> "selected")
 			=link_to("Past", "#")
-			=link_to("Incomplete", "#")
+			=link_to("Unscheduled", "#")
 	
 	.events
 		=render(@events) || (render(:partial  => "/shared/empty_collection", :locals => {:message => "No upcoming events"}))

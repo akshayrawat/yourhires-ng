@@ -5,7 +5,7 @@ class Notifier < ActionMailer::Base
 	def event_invitation(event)
 		recipients event.interviewers.collect{|i|i.participant.email}
 		from       "yourhires@gmail.com"
-		subject    "Recruitment Invitation: #{event.recruitment_step.recruitment_step_type.name} - #{event.recruitment_step.candidate.name}"
+		subject    "Recruitment Invitation: #{event.recruitment_step.name} - #{event.recruitment_step.candidate.name}"
 		content_type    "text/plain"
 		body				render_message("event_invitation.text.plain", :event => event)
 
@@ -15,7 +15,7 @@ class Notifier < ActionMailer::Base
 	def event_invitation_update(event)
 		recipients event.interviewers.collect{|i|i.participant.email}
 		from       "yourhires@gmail.com"
-		subject    "Recruitment Invitation Update: #{event.recruitment_step.recruitment_step_type.name} - #{event.recruitment_step.candidate.name}"
+		subject    "Recruitment Invitation Update: #{event.recruitment_step.name} - #{event.recruitment_step.candidate.name}"
 		content_type    "text/plain"
 		body				render_message("event_invitation_update.text.plain", :event => event)
 
