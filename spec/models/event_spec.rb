@@ -53,5 +53,16 @@ describe Event do
 			event.interviewers.should be_empty
 		end
 	end
+	
+	describe "feedbacks" do
+	  it "should be all feedbacks from interviewers" do
+			event = EventFactory.create_in_future
+			Interviewer.create!(:event => event, :participant => ParticipantFactory.create, 
+													:feedbacks => [one = FeedbackFactory.create])
+			Interviewer.create!(:event => event, :participant => ParticipantFactory.create, 
+													:feedbacks => [two = FeedbackFactory.create])
+			event.feedbacks.should eql([one, two])
+	  end
+	end
 
 end

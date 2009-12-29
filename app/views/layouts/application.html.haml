@@ -15,13 +15,13 @@
 					=select "candidate", "id", recruiter_candidate_options(current_recruiter), {:include_blank=> "Select Candidate"}, :id=> "global-candidate-selection"
 					
 				.navigation
-					.navigation-item{:id=> 'dashboard-navigation-item'}
+					.navigation-item{:class=> 'dashboard-navigation-item'}
 						=link_to("Dashboard", dashboard_url)
-					.navigation-item{:id=> 'candidates-navigation-item'}
+					.navigation-item{:class=> 'candidates-navigation-item feedbacks-navigation-item'}
 						=link_to("Candidates", candidates_url)
-					.navigation-item{:id=> 'events-navigation-item'}
+					.navigation-item{:class=> 'events-navigation-item'}
 						=link_to("Schedules", events_url)
-					.navigation-item{:id=> 'inbox-navigation-item'}
+					.navigation-item{:class=> 'inbox-navigation-item'}
 						=link_to("Settings", "#")
 				.content.span-16
 					=yield
@@ -29,7 +29,7 @@
 					=yield :sidebar
 
 :javascript
-	$("##{controller_name}-navigation-item").addClass("selected");
+	$(".#{controller_name}-navigation-item").addClass("selected");
 
 	$("#global-candidate-selection").change(function(){
 		selected_candidate_id = $('#global-candidate-selection :selected').val();

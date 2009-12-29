@@ -17,5 +17,9 @@ class Event < ActiveRecord::Base
 	def interviewer_deselections=(interviewer_ids)
 		self.interviewers.delete(Interviewer.find_all_by_id(interviewer_ids))
 	end
+		
+	def feedbacks
+		self.interviewers.collect{|interviewer| interviewer.feedbacks}.flatten
+	end
 
 end

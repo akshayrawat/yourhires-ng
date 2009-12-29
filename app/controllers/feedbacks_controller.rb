@@ -1,7 +1,11 @@
 class FeedbacksController < ApplicationController  
 	
 	def index
-		@feedbacks = current_candidate.feedbacks
+		if params[:event_id].blank?
+			@feedbacks = current_candidate.feedbacks
+		else
+			@feedbacks = Event.find(params[:event_id]).feedbacks
+		end
 	end
 
 	def new
