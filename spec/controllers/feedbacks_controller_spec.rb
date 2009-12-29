@@ -15,8 +15,8 @@ describe FeedbacksController do
 			pairing_event= EventFactory.create(
 			:interviewers => [Interviewer.create!(:participant => ParticipantFactory.create,
 				:feedbacks => [
-					Feedback.create(:comment => "First good comment"),
-					Feedback.create(:comment => "Second good comment")
+					FeedbackFactory.create(:comment => "First good comment"),
+					FeedbackFactory.create(:comment => "Second good comment")
 					])])
 
 					candidate.schedule(candidate.recruitment_steps.first, pairing_event)
@@ -53,7 +53,7 @@ describe FeedbacksController do
 				describe "update" do
 					it "should render form for feedback updation" do
 						candidate= CandidateFactory.create(:recruitment_step_type_selections => [RecruitmentStepTypeFactory.pairing])
-						feedback = Feedback.create(:comment => "Good Candidate")
+						feedback = FeedbackFactory.create(:comment => "Good Candidate")
 						pairing_event= EventFactory.create(
 						:interviewers => [Interviewer.create!(:participant => ParticipantFactory.create(:name => "Suresh")),
 							Interviewer.create!(:participant => ParticipantFactory.create(:name => "Nilakanta"), :feedbacks => [feedback])])
@@ -75,7 +75,7 @@ describe FeedbacksController do
 					describe "create" do
 						it "should save a new feedback" do
 							post :create, :candidate_id => CandidateFactory.create, 
-							:feedback => {:interviewer_id => (interviewer = Interviewer.create!).id, :comment => "My Honest Feedback"}
+							:feedback => {:interviewer_id => (interviewer = Interviewer.create!).id, :comment => "My Honest Feedback", :feedback_result => Feedback::FeedbackResult::PASS}
 
 							interviewer.reload.feedbacks.should have(1).thing
 							interviewer.feedbacks.first.comment.should eql("My Honest Feedback")
@@ -83,23 +83,23 @@ describe FeedbacksController do
 
 						it "should redirect to index" do
 							post :create, :candidate_id => (candidate = CandidateFactory.create), 
-							:feedback => {:interviewer_id => Interviewer.create!.id, :comment => "My Honest Feedback"}
+							:feedback => {:interviewer_id => Interviewer.create!.id, :comment => "My Honest Feedback", :feedback_result => Feedback::FeedbackResult::PASS}
 							response.should redirect_to(candidate_feedbacks_url())
 						end
 					end
 
 					describe "update" do
 						it "should update feedback" do
-							feedback = Feedback.create(:comment => "Good Candidate", :interviewer => (interviewer = Interviewer.create))
+							feedback = FeedbackFactory.create(:comment => "Good Candidate", :interviewer => (interviewer = Interviewer.create))
 							post :update, :candidate_id => CandidateFactory.create, :id => feedback.id,
-							:feedback => {:interviewer_id => interviewer.id, :comment => "My Honest Feedback"}
+							:feedback => {:interviewer_id => interviewer.id, :comment => "My Honest Feedback", :feedback_result => Feedback::FeedbackResult::PASS}
 
 							interviewer.reload.feedbacks.should have(1).thing
 							interviewer.feedbacks.first.comment.should eql("My Honest Feedback")
 						end
 
 						it "should redirect to index" do
-							feedback = Feedback.create(:comment => "Good Candidate", :interviewer => (interviewer = Interviewer.create))
+							feedback = FeedbackFactory.create(:comment => "Good Candidate", :interviewer => (interviewer = Interviewer.create))
 							post :update, :candidate_id => CandidateFactory.create, :id => feedback.id,
 							:feedback => {:interviewer_id => interviewer.id, :comment => "My Honest Feedback"}
 

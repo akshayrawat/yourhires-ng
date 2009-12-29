@@ -159,6 +159,9 @@ li {
 .field-error input, .field-error select, select.field-error {
   border: #cc0000 solid 2px; }
 
+.field-error-group {
+  border: #cc0000 solid 2px; }
+
 .time {
   text-transform: uppercase;
   text-align: center; }
@@ -325,6 +328,10 @@ li {
     .feedbacks .feedback .recruitment-step {
       font-size: 80%;
       font-style: italic; }
+    .feedbacks .feedback .feedback-result {
+      font-size: 80%;
+      font-style: italic;
+      font-weight: bold; }
     .feedbacks .feedback .comment {
       font-family: monospace; }
 

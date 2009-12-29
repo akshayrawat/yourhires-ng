@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(:version => 1) do
   create_table "feedbacks", :force => true do |t|
     t.integer  "interviewer_id"
     t.text     "comment"
+		t.string	 "feedback_result"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,7 +1,7 @@
 .content-section.span-16
 	.title
 		%span 
-			="#{action_name.camelcase} Feedback"
+			="Feedback for #{@candidate.name}"
 	-form_for([@candidate, @feedback]) do |form|
 		.new-candidate.span-14
 			.span-14
@@ -12,9 +12,17 @@
 				%br
 				=form.text_area :comment, :rows=> "100"
 				%br
+				%br
+				%div{:class=> @feedback.errors.on(:feedback_result).blank? ? "" : "field-error-group"}
+					=form.label "Result:"
+					&nbsp;
+					-Feedback::FeedbackResult.values.each do |feedback_result|
+						=form.radio_button :feedback_result, feedback_result
+						=feedback_result.description
+						&nbsp;
 		%center
 			=form.submit "Save", :class => "bold-button"
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			=link_to "Cancel", "#", :onclick => "window.back()", :class => "bold-button"
+			=link_to "Cancel", candidate_feedbacks_url(@candidate), :class => "bold-button"
 			
 		%br

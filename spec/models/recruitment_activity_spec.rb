@@ -38,7 +38,7 @@ describe RecruitmentActivity do
 			pairing = RecruitmentStepFactory.pairing(:event => pairing_event)
 			candidate = CandidateFactory.create(:recruitment_steps => [pairing])
 			recruiter = candidate.recruiters.first
-			feedback = Feedback.create
+			feedback = FeedbackFactory.create
 
 			Interviewer.create!(:event => pairing_event, :participant => ParticipantFactory.create, :feedbacks=> [feedback])
 			RecruiterSession.expects(:find).returns(stub(:recruiter => recruiter))

@@ -9,18 +9,25 @@ class FeedbacksController < ApplicationController
 	end
 
 	def create
-		Feedback.create(params[:feedback])
-		redirect_to candidate_feedbacks_url(current_candidate)
+		@feedback= Feedback.new(params[:feedback])
+		if @feedback.save
+			redirect_to candidate_feedbacks_url(current_candidate)
+		else
+			render :new
+		end
 	end
 
 	def edit
 		current_feedback
-		render :action => :new
+		render :new
 	end
 
 	def update
-		current_feedback.update_attributes(params[:feedback])
-		redirect_to candidate_feedbacks_url(current_candidate)
+		if current_feedback.update_attributes(params[:feedback])
+			redirect_to candidate_feedbacks_url(current_candidate)
+		else
+			render :new
+		end
 	end
 
 	private

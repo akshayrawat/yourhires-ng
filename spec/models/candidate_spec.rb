@@ -148,8 +148,8 @@ describe Candidate do
 
 				one = Interviewer.create!(:event => pairing_event, :participant => ParticipantFactory.create)
 				two = Interviewer.create!(:event => pairing_event, :participant => ParticipantFactory.create)
-				Feedback.create(:updated_at => 1.hour.ago, :comment => "Very Good Candidate", :interviewer => one)
-				Feedback.create(:updated_at => 1.minute.ago, :comment => "Good Candidate", :interviewer => two)
+				FeedbackFactory.create(:updated_at => 1.hour.ago, :comment => "Very Good Candidate", :interviewer => one)
+				FeedbackFactory.create(:updated_at => 1.minute.ago, :comment => "Good Candidate", :interviewer => two)
 
 				candidate.reload.feedbacks.should have(2).things
 				candidate.feedbacks.first.comment.should eql("Good Candidate")

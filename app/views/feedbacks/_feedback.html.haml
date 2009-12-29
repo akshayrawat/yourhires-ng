@@ -7,6 +7,9 @@
 		=format_datetime(feedback.created_at)	
 	.span-14.recruitment-step
 		=feedback.interviewer.event.recruitment_step.recruitment_step_type.name
+	.span-14.feedback-result
+		=feedback.feedback_result.description
+
 	.span-14.comment
 		%br
 		=feedback.comment

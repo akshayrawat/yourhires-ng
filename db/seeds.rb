@@ -105,7 +105,7 @@ class Seeds
 			def provide_feedback
 				@all_candidates[0..-1].collect{|candidate| candidate.recruitment_steps_completed }.flatten.each do |recruitment_step|
 					recruitment_step.event.interviewers.each do |interviewer|
-						interviewer.feedbacks.create!(:comment => feedback_comment)
+						interviewer.feedbacks.create!(:comment => feedback_comment, :feedback_result => random_feedback_result)
 					end
 				end
 			end
@@ -119,6 +119,11 @@ class Seeds
 				hour_shift = [-1,-2,-3,-4,1,2,3,4][rand(8)]
 				Time.now + (day_shift * 24 * hour_shift * 60 * 60)
 			end 
+			
+			def random_feedback_result
+				feedback_results = Feedback::FeedbackResult.values
+				feedback_results[rand(feedback_results.size)]
+			end
 
 			def feedback_comment
 				"He is a widely known person in the software development community. His strong object oriented skills with deep knowledge of programming languages and frameworks makes him a very strong technically. He seems to be a good fit culturally too. He is a widely known person in the software development community. His strong object oriented skills with deep knowledge of programming languages and frameworks makes him a very strong technically. He seems to be a good fit culturally too. He is a widely known person in the software development community. His strong object oriented skills with deep knowledge of programming languages and frameworks makes him a very strong technically. He seems to be a good fit culturally too. He is a widely known person in the software development community. His strong object oriented skills with deep knowledge of programming languages and frameworks makes him a very strong technically. He seems to be a good fit culturally too. He is a widely known person in the software development community. His strong object oriented skills with deep knowledge of programming languages and frameworks makes him a very strong technically. He seems to be a good fit culturally too."
