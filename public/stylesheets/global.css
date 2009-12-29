@@ -110,6 +110,12 @@ li {
       padding: 3px 7px 3px 7px;
       background-color: #6bba70;
       font-size: 85%; }
+      .candidates .candidate .completed .pass {
+        border-bottom: 2px solid #cc0000; }
+      .candidates .candidate .completed .pursue {
+        border-bottom: 2px solid #bde0bf; }
+      .candidates .candidate .completed .undecided {
+        border-bottom: 2px solid #ffcc00; }
     .candidates .candidate .upcoming {
       padding: 3px 7px 3px 7px;
       background-color: #ffcc00;
