@@ -11,5 +11,10 @@
 				
 =content_for :sidebar do
 	.sidebar-section
-		%center
-			=link_to "Schedule a Step", new_event_url, :class => "bold-button"
+		.schedule-a-step
+			%center
+				=link_to "Schedule a Step", new_event_url, :class => "bold-button"
+		%br
+		.subscribe-to-ical
+			%center
+				=link_to "Subscribe to Calendar", calendar_url(:format => :ics), :class  => "bold-button"
