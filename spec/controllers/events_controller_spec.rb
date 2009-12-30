@@ -19,8 +19,8 @@ describe EventsController do
 
 			get :index
 
-			response.should have_tag("*[id=?]", interview.event.id)
-			response.should_not have_tag("*[id=?]", pairing.event.id)
+			response.body.should match(/#{interview.name}/)
+			response.body.should_not match(/#{pairing.name}/)
 		end
 	end
 

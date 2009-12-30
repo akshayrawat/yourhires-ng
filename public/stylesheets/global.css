@@ -169,9 +169,9 @@ li {
   border: #cc0000 solid 2px; }
 
 .time {
-  text-transform: uppercase;
   text-align: center; }
   .time .month-time {
+    text-transform: uppercase;
     font-size: 90%;
     background: #990000;
     border: #990000 2px solid;

@@ -3,6 +3,8 @@
 		%span Candidate
 		=render :partial=> "navigation"
 	.events
-		=render :partial => '/events/event', :collection => @events
-
+		=render @events
+		=render :partial => 'unscheduled_recruitment_step', :collection => @unscheduled_recruitment_steps
+			
 =render :partial => "/candidates/sidebar"
+

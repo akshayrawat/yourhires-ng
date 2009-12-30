@@ -112,6 +112,21 @@ describe CandidatesController do
 				get :schedule, :id=> candidate.id
 				response.body.should match(/#{pairing.recruitment_step_type.name}/)
 			end		  
+
+			it "show render all scheduled event" do
+				pairing = RecruitmentStepFactory.pairing(:event => EventFactory.create_in_past)
+				candidate= CandidateFactory.create(:name => "Karan", :recruitment_steps => [pairing])
+				get :schedule, :id=> candidate.id
+				response.body.should match(/#{pairing.recruitment_step_type.name}/)
+			end
+			
+			it "show render all unscheduled events" do
+				pairing = RecruitmentStepFactory.pairing
+				candidate= CandidateFactory.create(:name => "Karan", :recruitment_steps => [pairing])
+				get :schedule, :id=> candidate.id
+				response.body.should match(/#{pairing.recruitment_step_type.name}/)
+			end
+
 		end
 		
 		describe "recruiter_selection" do
