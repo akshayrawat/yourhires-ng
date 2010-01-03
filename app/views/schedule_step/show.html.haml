@@ -1,0 +1,8 @@
+.content-section.span-16
+	.title
+		Select Candidate:
+		=select :candidate, :id, Candidate.all.collect{|c|[c.name, c.id]},{:include_blank => true}, :onchange=> remote_function(:update => 'recruitment_step_selection', :url => {:action => :recruitment_steps}, :with =>"'candidate_id='+$('#candidate_id :selected').val()")
+		&nbsp;&nbsp;
+		%span{:id=> 'recruitment_step_selection'}
+			-unless @recruitment_steps.empty?
+				=render :partial => "recruitment_steps"

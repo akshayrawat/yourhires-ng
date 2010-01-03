@@ -4,4 +4,4 @@
 			%p
 				=link_to "New Feedback", "#{new_candidate_feedback_url(@candidate)}", :class => "bold-button"
 			%p
-				=link_to "Schedule a Step", "#", :class => "bold-button"
+				=link_to "Schedule a Step", schedule_step_url(:candidate_id => @candidate.id), :class => "bold-button"

@@ -14,6 +14,7 @@ ActionController::Routing::Routes.draw do |map|
 	end
 
 	map.candidate_schedule '/candidates/:id/schedule', :controller => "candidates", :action => 'schedule'
+	map.schedule_step '/schedule_step', :controller => "schedule_step", :action => "show"
 	map.event_detail 'candidates/:candidate_id/events/:id/detail', :controller => "events", :action => "show_detail"
 	map.dashboard '/dashboard', :controller => "dashboard", :action => 'index'
 	map.auto_complete_for_participant '/participants', :controller => 'participants' , :action => "auto_complete_for_participant_name"

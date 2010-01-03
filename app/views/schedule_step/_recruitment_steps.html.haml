@@ -1,0 +1,2 @@
+Select Step:
+=select :recruitment_step, :id, @recruitment_steps.collect{|rs|[rs.name, rs.id]}, {:include_blank => true}, :onchange => remote_function(:url => {:action => :navigate_to_recruitment_step}, :with => "'recruitment_step_id=' + $('#recruitment_step_id :selected').val()")

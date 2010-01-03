@@ -1,7 +1,8 @@
 .schedule-selection.content-section.span-16
 	.title
-		Event:
-		=@event.recruitment_step.candidate.name
+		=@controller.action_name.humanize
+		Step:
+		=link_to(@event.recruitment_step.candidate.name, candidate_url(@event.recruitment_step.candidate))
 
 	.new-event.span-14
 		-form_for(@event) do |form|
