@@ -4,11 +4,10 @@ h2. Developer Setup
 * Install sqlite3. Used in development and test environments.
 * Install the Ruby Haml TextMate bundle for syntax highlighting on HAML files.
 * @rake commit@ to run all tests & push changes to master.
-* @rake db:setup@ to recreate and seed db.
-* @cap deploy@ to deploy to yourhires.com.This will wipe all saved data.
+* @rake deploy@ to deploy 'master' to yourhires.heroku.com.
 
 h2. First time bootstrap
 * Install sqlite3. Used in development and test environments.
-* Run @rake db:setup@ to create and seed db.
+* @rake db:setup@ to setup and seed the database.
 * Run @ruby script/server@ from app to start the application.
 
