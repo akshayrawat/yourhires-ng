@@ -9,5 +9,5 @@ ActionMailer::Base.smtp_settings = {
 	:port           => 587,
 	:authentication => :plain,
 	:user_name      => 'yourhires@gmail.com',
-	:password       => File.read("/etc/rails/mail_passwd")
+	:password       => "foobarbaz"
 }
