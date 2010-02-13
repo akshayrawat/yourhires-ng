@@ -1,10 +1,5 @@
 .content-section.span-16
-	.title
-		%span Candidates &nbsp;
-		%span.title-links
-			=link_to("Assigned to me", "#", :class => "selected")
-			=link_to("All", "#")
-	
+	=render :partial=> "candidate_listing_navigation"	
 	.candidates
 		=render @candidates
 

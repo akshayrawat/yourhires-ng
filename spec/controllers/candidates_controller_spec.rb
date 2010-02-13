@@ -9,7 +9,7 @@ describe CandidatesController do
 	end
 
 	describe "index" do
-		it "should list candidates assigned to recruiter" do
+		it "should list all candidates" do
 			maria = RecruiterFactory.maria
 
 			CandidateFactory.create(:name => "Arnab", :recruiters => [maria])
@@ -17,6 +17,23 @@ describe CandidatesController do
 			CandidateFactory.create(:name => "Dilkash", :recruiters => [@reshmi])
 
 			get :index
+
+			response.should render_template("index")
+			response.should have_tag("a", "Karan")
+			response.should have_tag("a", "Dilkash")
+			response.should have_tag("a", "Arnab")
+		end
+	end
+
+	describe "assigned" do
+		it "should list candidates assigned to recruiter" do
+			maria = RecruiterFactory.maria
+
+			CandidateFactory.create(:name => "Arnab", :recruiters => [maria])
+			CandidateFactory.create(:name => "Karan", :recruiters => [@reshmi])
+			CandidateFactory.create(:name => "Dilkash", :recruiters => [@reshmi])
+
+			get :assigned
 
 			response.should render_template("index")
 			response.should have_tag("a", "Karan")

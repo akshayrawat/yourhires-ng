@@ -1,7 +1,8 @@
 class CandidatesController < ApplicationController  
-
+	auto_complete_for :candidate, :name, :limit => 20		
+	
 	def index
-		@candidates = current_recruiter.candidates
+		@candidates = Candidate.all
 	end
 
 	def new
@@ -38,6 +39,11 @@ class CandidatesController < ApplicationController
 	end
 
 	def feedbacks
+	end
+	
+	def assigned
+		@candidates = current_recruiter.candidates
+		render :action =>  :index
 	end
 	
 	def recruiter_selection

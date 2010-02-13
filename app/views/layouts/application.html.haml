@@ -1,20 +1,18 @@
 %html
 	%head
 		=stylesheet_link_tag("blueprint/screen.css", "global.css", "jquery.autocomplete.css")
-		=javascript_include_tag("jquery", "jrails", "application", "jquery.qtip-1.0.0-rc3.min", "jquery.bgiframe.min", "jquery.autocomplete.min")
+		=javascript_include_tag("jquery", "jrails", "application", "jquery.qtip-1.0.0-rc3.min", "jquery.bgiframe.min", "jquery.autocomplete.min", "jquery.ezpz_hint.min.js")
 		
 		=yield :head
 	%body
 		.page
 			.container
-				%span.company-title
+				.company-title.span-18
 					ThoughtWorks
-				%span.user
-					=current_recruiter.name
-				%span.prepend-9
-					=select "candidate", "id", recruiter_candidate_options(current_recruiter), {:include_blank=> "Select Candidate"}, :id=> "global-candidate-selection"
+				.span-4
+					=render :partial=> "/candidates/candidate_search"
 					
-				.navigation
+				.navigation.span-16
 					.navigation-item{:class=> 'dashboard-navigation-item'}
 						=link_to("Dashboard", dashboard_url)
 					.navigation-item{:class=> 'candidates-navigation-item feedbacks-navigation-item'}
@@ -25,7 +23,7 @@
 						=link_to("Settings", "#")
 				.content.span-16
 					=yield
-				.sidebar.span-6
+				.sidebar.span-6.last
 					=yield :sidebar
 
 :javascript

@@ -1,0 +1,19 @@
+=text_field :candidate, :name, {:id=> "candidate_search", :size=> 15, :title => "search"}
+=hidden_field :candidate, :id
+
+:javascript
+	$(document).ready(function() {
+	$("input#candidate_search").ezpz_hint();
+		$("input#candidate_search").autocomplete('#{auto_complete_for_candidate_path}', {
+			formatItem: function(data, position, length) {
+				return data[1];
+				},
+				formatResult: function(data, position, length) {
+					return data[1];
+				}
+		}).result(function(event, data) {
+				window.location = '/candidates/'+ data[0];
+		})
+	});
+	
+

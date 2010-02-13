@@ -9,6 +9,10 @@ li {
   list-style-type: none; }
 
 
+.ezpz-hint {
+  font-style: italic;
+  color: #949393; }
+
 .container {
   margin-bottom: 80px; }
 

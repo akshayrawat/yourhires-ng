@@ -1,0 +1,8 @@
+.title
+	%span Candidates &nbsp;
+	%span.title-links
+		=link_to("Assigned to me", assigned_candidates_url, :id => "assigned_candidate_navigation")
+		=link_to("All", candidates_url, :id => "index_candidate_navigation")
+
+:javascript
+	$("##{action_name}_candidate_navigation").addClass("selected")

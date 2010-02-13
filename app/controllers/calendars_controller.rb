@@ -1,5 +1,5 @@
 class CalendarsController < ApplicationController
-	skip_before_filter :ensure_login
+	skip_before_filter :ensure_login	
 	include EventIcalGeneration
 	
 	def show
