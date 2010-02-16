@@ -2,7 +2,8 @@ class Event < ActiveRecord::Base
 	belongs_to :recruitment_step
 	has_many :interviewers, :dependent => :destroy
 	validates_presence_of :start_time, :end_time
-
+	has_attached_file :document
+	
 	def in_future?
 		self.start_time >= Time.now
 	end

@@ -27,6 +27,10 @@ class Schema < ActiveRecord::Migration
 			t.datetime "end_time"
 			t.string   "comment"
 			t.integer  "recruitment_step_id"
+			t.string   "document_file_name"
+			t.string   "document_content_type"
+			t.integer  "document_file_size"
+			t.datetime "document_updated_at"
 			t.datetime "created_at"
 			t.datetime "updated_at"
 		end

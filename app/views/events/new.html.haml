@@ -1,11 +1,11 @@
 .schedule-selection.content-section.span-16
 	.title
 		=@controller.action_name.humanize
-		Step:
+		Step for
 		=link_to(@event.recruitment_step.candidate.name, candidate_url(@event.recruitment_step.candidate))
 
 	.new-event.span-14
-		-form_for(@event) do |form|
+		-form_for(@event, :html => { :multipart => true }) do |form|
 			%span{:class=> event_title_class(@event.recruitment_step)}
 				=@event.recruitment_step.name
 			%br
@@ -26,6 +26,12 @@
 			
 			%br
 			%br
+			=form.label :attachment
+			=form.file_field :document
+			%p 
+				%i
+					=@event.document.original_filename if @event.document?
+
 			=text_field :participant, :name
 			=hidden_field :participant, :id
 

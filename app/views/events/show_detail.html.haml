@@ -9,3 +9,9 @@
 					Comments
 				%p
 					=@event.comment
+		-if @event.document?
+			.event.span-14
+				%b
+					Attachments
+				%p
+					=link_to(@event.document.original_filename, @event.document.url, :target => '_blank')

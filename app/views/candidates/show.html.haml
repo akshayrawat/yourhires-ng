@@ -20,7 +20,8 @@
 
 .content-section.span-16
 	.title
-		%span All Activities
+		%span Feed for
+		=@candidate.name
 	.recruitment-activities
 		=render :partial => '/dashboard/recruitment_activity', :collection => RecruitmentActivity.recent(@candidate)
 

@@ -33,7 +33,7 @@ class RecruitmentActivity < ActiveRecord::Base
 
   def self.recent(candidate=nil)
 		conditions = candidate.nil? ? [] : ["candidate_id = ?", candidate.id]
-    self.find(:all, :conditions => conditions, :order => "updated_at DESC", :limit => 15)
+    self.find(:all, :conditions => conditions, :order => "updated_at DESC", :limit => 20)
   end
 	
 	private
@@ -43,7 +43,7 @@ class RecruitmentActivity < ActiveRecord::Base
 	end
 	
 	def self.event_url(event, candidate)
-		"<a href='/events/#{event.id}/detail'>#{event.recruitment_step.name}</a>"
+		"<a href='/candidates/#{candidate.id}/events/#{event.id}/detail'>#{event.recruitment_step.name}</a>"
 	end
 	
 	def self.feedbacks_url(candidate)

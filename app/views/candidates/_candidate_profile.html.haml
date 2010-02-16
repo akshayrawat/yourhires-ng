@@ -19,4 +19,4 @@
 		=label_tag "Participants:"
 		=candidate.participants.collect{|participant|participant.name}.join(", ")
 	%li.action-links
-		=link_to_if(candidate.resume?, "DOWNLOAD RESUME", candidate.resume.url){}
+		=link_to_if(candidate.resume?, "DOWNLOAD RESUME", candidate.resume.url, :target => '_blank'){}
