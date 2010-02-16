@@ -50,19 +50,19 @@ class Seeds
 		@john= CandidateFactory.create(
 		:name => "John Lennon", :role => @software_developer, :email => "john@lennon.com",
 		:phone => "+1 435-671-3234", :recruiters => [@reena, @yewande], :comments => comments,
-		:skillset => skillset, :recruitment_step_type_selections => [@phone_interview, @pairing, @interview], :resume => resume_file)
+		:skillset => skillset, :recruitment_step_type_selections => [@phone_interview, @pairing, @interview])
 
 		@paul= CandidateFactory.create(:name => "Paul McCartney", :role => @business_analyst, :email =>
 		"paul@mccartney.com", :phone => "+1 635-443-0923", :recruiters => [@reena], 
-		:comments => comments, :skillset => skillset, :recruitment_step_type_selections => [@phone_interview, @pairing, @interview, @offer_interview], :resume => resume_file)
+		:comments => comments, :skillset => skillset, :recruitment_step_type_selections => [@phone_interview, @pairing, @interview, @offer_interview])
 
 		@ringo = CandidateFactory.create(:name => "Ringo Starr", :role => @software_developer, 
 		:email => "ringo@starr.com", :phone => "+1 635-425-1134", :recruiters => [@reena,
-			@yewande], :comments => comments, :skillset => skillset, :recruitment_step_type_selections => [@phone_interview, @pairing, @interview, @offer_interview], :resume => resume_file)
+			@yewande], :comments => comments, :skillset => skillset, :recruitment_step_type_selections => [@phone_interview, @pairing, @interview, @offer_interview])
 
 			@george = CandidateFactory.create(:name => "George Harrison", :role => @project_manager, 
 			:email => "george@harrison.com", :phone => "+1 622-425-4732", :recruiters => [@reena,
-				@yewande], :comments => comments, :skillset => skillset, :recruitment_step_type_selections => [@phone_interview, @pairing, @interview, @offer_interview], :resume => resume_file)
+				@yewande], :comments => comments, :skillset => skillset, :recruitment_step_type_selections => [@phone_interview, @pairing, @interview, @offer_interview])
 
 				@all_candidates = [@john, @paul, @ringo, @george]
 			end
@@ -81,7 +81,7 @@ class Seeds
 					candidate.recruitment_steps[0..-2].each do |recruitment_step|
 						start_time = random_time
 						candidate.schedule(recruitment_step, Event.new(
-						:start_time => start_time, :end_time => start_time + 3600, :venue=> "Room 201", :comment => event_comment, :document => event_document))
+						:start_time => start_time, :end_time => start_time + 3600, :venue=> "Room 201", :comment => event_comment))
 					end
 				end
 			end
