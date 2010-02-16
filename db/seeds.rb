@@ -144,11 +144,11 @@ class Seeds
 			end
 			
 			def resume_file
- 				File.new("#{RAILS_ROOT}/spec/files/resume.pdf")
+ 				File.new("#{RAILS_ROOT}/tmp/files/resume.pdf")
 			end
 			
 			def event_document
-				File.new("#{RAILS_ROOT}/spec/files/code_review.pdf")
+				File.new("#{RAILS_ROOT}/tmp/files/code_review.pdf")
 			end
 		end
 
