@@ -9,6 +9,8 @@
 			.container
 				.company-title.span-18
 					ThoughtWorks
+					%span.user
+						=current_recruiter.name
 				.span-4
 					=render :partial=> "/candidates/candidate_search"
 					

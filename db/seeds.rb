@@ -25,7 +25,7 @@ class Seeds
 
 	def login
 		Authlogic::Session::Base.controller = Authlogic::TestCase::MockController.new    
-		RecruiterSession.create(@maria)
+		RecruiterSession.create(@reena)
 	end
 
 	def create_roles
@@ -41,45 +41,45 @@ class Seeds
 	end
 
 	def create_recruiters
-		@maria = RecruiterFactory.create(:login => "maria", :name => "Maria Anita")
-		@reshmi = RecruiterFactory.create(:login => "reshmi", :name => "Reshmi Shenoy")
+		@reena = RecruiterFactory.create(:login => "reena", :name => "Reena Teichman")
+		@yewande = RecruiterFactory.create(:login => "yewande", :name => "Yewande Ige")
 	end
 
 	def create_candidates
-		@arnab= CandidateFactory.create(
-		:name => "Arnab Mandal", :role => @software_developer, :email => "arnab@mandal.com",
-		:phone => "+91 43567132", :recruiters => [@maria, @reshmi], :comments => comments,
+		@john= CandidateFactory.create(
+		:name => "John Lennon", :role => @software_developer, :email => "john@lennon.com",
+		:phone => "+1 435-671-3234", :recruiters => [@reena, @yewande], :comments => comments,
 		:skillset => skillset)
 
-		@karan= CandidateFactory.create(:name => "Karan Peri", :role => @business_analyst, :email =>
-		"karan@peri.com", :phone => "+91 63544139", :recruiters => [@maria], 
+		@paul= CandidateFactory.create(:name => "Paul McCartney", :role => @business_analyst, :email =>
+		"paul@mccartney.com", :phone => "+1 635-443-0923", :recruiters => [@reena], 
 		:comments => comments, :skillset => skillset)
 
-		@dilkash = CandidateFactory.create(:name => "Dilkash Sharma", :role => @software_developer, 
-		:email => "dilkash@sharma.com", :phone => "+9163542531", :recruiters => [@maria,
-			@reshmi], :comments => comments, :skillset => skillset)
+		@ringo = CandidateFactory.create(:name => "Ringo Starr", :role => @software_developer, 
+		:email => "ringo@starr.com", :phone => "+1 635-425-1134", :recruiters => [@reena,
+			@yewande], :comments => comments, :skillset => skillset)
 
-			@manandeep = CandidateFactory.create(:name => "Manandeep Singh", :role => @project_manager, 
-			:email => "manandeep@singh.com", :phone => "+9162242547", :recruiters => [@maria,
-				@reshmi], :comments => comments, :skillset => skillset)
+			@george = CandidateFactory.create(:name => "George Harrison", :role => @project_manager, 
+			:email => "george@harrison.com", :phone => "+1 622-425-4732", :recruiters => [@reena,
+				@yewande], :comments => comments, :skillset => skillset)
 
-				@all_candidates = [@arnab, @karan, @dilkash, @manandeep]
+				@all_candidates = [@john, @paul, @ringo, @george]
 			end
 
 			def create_participants
-				@nila = Participant.create(:name=> "Nilakanta Mallick",:email => "yourhires.participant@gmail.com")
-				@suresh = Participant.create(:name => "Suresh Harikrishnan", :email => "yourhires.participant@gmail.com")
-				@irfan_shah = Participant.create(:name => "Irfan Shah", :email => "yourhires.participant@gmail.com")
-				@sreeix= Participant.create(:name => "Sreekant Vadagiri", :email => "yourhires.participant@gmail.com")
+				@kris = Participant.create(:name=> "Kris Kemper",:email => "yourhires.participant@gmail.com")
+				@christopher = Participant.create(:name => "Christopher George", :email => "yourhires.participant@gmail.com")
+				@steve = Participant.create(:name => "Steve Salkin", :email => "yourhires.participant@gmail.com")
+				@james= Participant.create(:name => "James Mitchell", :email => "yourhires.participant@gmail.com")
 
-				@all_participants = [@nila, @suresh, @irfan_shah, @sreeix]
+				@all_participants = [@kris, @christopher, @steve, @james]
 			end
 
 			def candidates_get_registered_for_recruitment_steps
-				@arnab.register_for_steps([@phone_interview, @pairing, @interview])
-				@dilkash.register_for_steps([@phone_interview, @pairing, @interview])
-				@karan.register_for_steps([@phone_interview, @interview, @interview])
-				@manandeep.register_for_steps([@phone_interview, @interview, @interview])
+				@john.register_for_steps([@phone_interview, @pairing, @interview])
+				@ringo.register_for_steps([@phone_interview, @pairing, @interview])
+				@paul.register_for_steps([@phone_interview, @interview, @interview])
+				@george.register_for_steps([@phone_interview, @interview, @interview])
 			end
 
 			def recruitment_steps_get_scheduled
