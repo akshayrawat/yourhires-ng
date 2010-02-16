@@ -101,7 +101,7 @@ li {
       list-style-type: none; }
       .candidates .candidate ul .action-links a {
         padding: 2px 4px 0px 0px;
-        font-size: 8px;
+        font-size: 70%;
         font-weight: bold;
         text-transform: uppercase; }
         .candidates .candidate ul .action-links a a {
