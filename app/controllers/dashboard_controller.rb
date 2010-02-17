@@ -6,7 +6,7 @@ class DashboardController < ApplicationController
 		
 		@positions_in_pipeline= build_statistics_by_sql("select role_id, count(*) from candidates group by role_id")
 		@recruiting_sources = build_statistics_by_sql("select source, count(*) from candidates group by source")
-		@steps_pending_in_pipeline = build_statistics_by_sql("select recruitment_step_type_id, count(*) from recruitment_steps group by recruitment_step_type_id")		
+		@steps_pending_in_pipeline = build_statistics_by_sql("select recruitment_step_type_id, count(*) from recruitment_steps group by recruitment_step_type_id")
   end
 
 	def build_statistics_by_sql sql
