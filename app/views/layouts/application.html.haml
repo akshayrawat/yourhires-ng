@@ -33,12 +33,3 @@
 
 :javascript
 	$(".#{controller_name}-navigation-item").addClass("selected");
-
-	$("#global-candidate-selection").change(function(){
-		selected_candidate_id = $('#global-candidate-selection :selected').val();
-		if(selected_candidate_id == "") {
-			window.location = '#{candidates_url}';
-		}else {
-			window.location = '/candidates/' + selected_candidate_id;
-		}
-	});
