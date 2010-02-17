@@ -10,13 +10,13 @@ set :ssh_options, { :forward_agent => true }
 
 set :use_sudo, false
 set :user, "dev"
-set :domain, "yourhires.com"
+set :domain, "yourhires.ath.cx"
 set :default_env, 'production'
 set :rails_env, 'production'
 
-role :app, "www.yourhires.com"
-role :web, "www.yourhires.com"
-role :db,  "www.yourhires.com", :primary => true
+role :app, "yourhires.ath.cx"
+role :web, "yourhires.ath.cx"
+role :db,  "yourhires.ath.cx", :primary => true
 
 namespace :deploy do
   desc "Restarting mod_rails with restart.txt"
@@ -30,5 +30,6 @@ def run_remote_rake(rake_cmd)
 end
 
 before "deploy:restart" do
-  run_remote_rake("db:setup")
+  run_remote_rake("db:migrate:redo")
+  run_remote_rake("db:seed")
 end
