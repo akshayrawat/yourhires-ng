@@ -2,6 +2,9 @@
 	%head
 		=stylesheet_link_tag("blueprint/screen.css", "global.css", "jquery.autocomplete.css")
 		=javascript_include_tag("jquery", "jrails", "application", "jquery.qtip-1.0.0-rc3.min", "jquery.bgiframe.min", "jquery.autocomplete.min", "jquery.ezpz_hint.min.js")
+		%title
+			YourHires: 
+			=controller_name.humanize
 		
 		=yield :head
 	%body

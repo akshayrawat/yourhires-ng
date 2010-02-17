@@ -33,7 +33,7 @@
 			.title 
 				POSITIONS IN PIPELINE
 			%ul
-				-@positions_in_pipeline.each do |role_id, count|
+				-@roles_in_pipeline.each do |role_id, count|
 					%li 
 						="#{Role.find(role_id).name}: #{count}"
 
@@ -44,7 +44,7 @@
 				RECRUITMENT STEPS PENDING
 			%ul
 				-@steps_pending_in_pipeline.each do |step_id, count|
-					%li 
+					%li
 						="#{RecruitmentStepType.find(step_id).name}: #{count}"
 
 	%br

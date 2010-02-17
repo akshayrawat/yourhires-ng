@@ -8,8 +8,8 @@ describe DashboardController do
 		login_as @maria    
 	end
 
-	describe "index" do
-		describe "upcoming event section" do
+	context "index" do
+		context "upcoming event section" do
 			it "should list first 5 upcoming events for the recruiter" do
 				candidate= CandidateFactory.create(:name => "Arnab", :recruiters => [@maria])
 
@@ -49,16 +49,59 @@ describe DashboardController do
 				response.should have_tag("*[id=?]", "detail_event_#{one.event.id}")
 			end
 		end	
-		
-		describe "recent activities section" do
+
+		context "recent activities section" do
 			it "should list recent recruitment activities" do
 				candidate = CandidateFactory.create(:recruiters => [@maria])
-			  RecruitmentActivity.create(:candidate => candidate, :posted_by => @maria.name, :message => "candidate was created")
-			
+				RecruitmentActivity.create(:candidate => candidate, :posted_by => @maria.name, :message => "candidate was created")
+
 				get :index
-				
+
 				response.should have_tag(".recruitment-activity .message", "candidate was created")
 			end
 		end	
+
+		context "sidebar section" do
+			it "should display roles_in_pipeline statistics" do
+				developer, ba, qa = RoleFactory.developer, RoleFactory.ba, RoleFactory.qa
+			  2.times {CandidateFactory.create(:role => developer)}
+			  3.times {CandidateFactory.create(:role => ba)}
+			  5.times {CandidateFactory.create(:role => qa)}
+				
+				get :index
+				
+				response.should have_tag("li", :text => "#{RoleFactory.developer.name}: 2")
+				response.should have_tag("li", :text => "#{RoleFactory.ba.name}: 3")
+				response.should have_tag("li", :text => "#{RoleFactory.qa.name}: 5")
+			end
+
+			it "should display recruiting_sources statistics" do
+			  2.times {CandidateFactory.create(:source => "Direct")}
+			  3.times {CandidateFactory.create(:source => "Referral")}
+			  5.times {CandidateFactory.create(:source => "Monster")}
+
+				get :index
+				
+				response.should have_tag("li", :text => "Direct: 2")
+				response.should have_tag("li", :text => "Referral: 3")
+				response.should have_tag("li", :text => "Monster: 5")
+			end
+
+			it "should display steps_pending_in_pipeline statistics" do
+				pairing = RecruitmentStepTypeFactory.pairing 
+				phone_interview = RecruitmentStepTypeFactory.phone_interview
+				interview = RecruitmentStepTypeFactory.interview
+
+			  2.times {RecruitmentStepFactory.create(:recruitment_step_type => pairing)}
+			  3.times {RecruitmentStepFactory.create(:recruitment_step_type => phone_interview)}
+			  5.times {RecruitmentStepFactory.create(:recruitment_step_type => interview)}
+
+				get :index
+				
+				response.should have_tag("li", :text => "#{pairing.name}: 2")
+				response.should have_tag("li", :text => "#{phone_interview.name}: 3")
+				response.should have_tag("li", :text => "#{interview.name}: 5")
+			end
+		end
 	end
 end
