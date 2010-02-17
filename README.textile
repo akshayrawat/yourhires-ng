@@ -11,3 +11,8 @@ h2. First time bootstrap
 * @rake db:setup@ to create and seed the database.
 * Run @ruby script/server@ from app to start the application.
 
+h2 Upcoming Features 
+Wiki: http://wiki.github.com/akshayrawat/yourhires-ng/
+
+h2 Contact
+Drop mails to projectsatakshaydotcc.
