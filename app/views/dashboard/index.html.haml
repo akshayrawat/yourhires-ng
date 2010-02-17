@@ -25,6 +25,38 @@
 			%p
 				=link_to "Subscribe to Calendar", calendar_url(:format => :ics), :class  => "bold-button"
 
+	%br
+	%br
+	
+	.sidebar-section
+		%center
+			.title 
+				POSITIONS IN PIPELINE
+			%ul
+				-@positions_in_pipeline.each do |role_id, count|
+					%li 
+						="#{Role.find(role_id).name}: #{count}"
+
+	%br
+	.sidebar-section
+		%center
+			.title 
+				STEPS PENDING IN PIPELINE
+			%ul
+				-@steps_pending_in_pipeline.each do |step_id, count|
+					%li 
+						="#{RecruitmentStepType.find(step_id).name}: #{count}"
+
+	%br
+	.sidebar-section
+		%center
+			.title 
+				RECRUITING SOURCES
+			%ul
+				-@recruiting_sources.each do |source, count|
+					%li 
+						="#{source}: #{count}"
+
 :javascript
 	$(".upcoming-event").click(function(){
 		upcoming_event_detail_id = "detail_" + this.id;

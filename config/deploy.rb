@@ -32,4 +32,5 @@ end
 before "deploy:restart" do
   run_remote_rake("db:migrate:redo")
   run_remote_rake("db:seed")
+	sudo("cp #{current_path}/config/yourhires_httpd.conf /etc/apache2/conf.d/")
 end
