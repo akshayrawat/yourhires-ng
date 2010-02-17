@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|    
 
 	map.resource :recruiter_sessions
-	map.resources :events
+	map.resources :events, :collection => {:events_completed => :get, :events_unscheduled => :get}
 	map.resource :calendar, :only => :show
 
 	map.resources :candidates, :collection => {:assigned => :get} do |candidate_map|

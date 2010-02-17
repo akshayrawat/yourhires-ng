@@ -1,0 +1,9 @@
+.title
+	%span Events &nbsp;
+	%span.title-links
+		=link_to("Upcoming", events_url, :id => "events-index-navigation")
+		=link_to("Completed", events_completed_events_url, :id => "events-events_completed-navigation")
+		=link_to("Unscheduled", events_unscheduled_events_url, :id => "events-events_unscheduled-navigation")
+
+:javascript
+	$("##{controller_name}-#{action_name}-navigation").addClass('selected');

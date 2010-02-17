@@ -1,7 +1,7 @@
 .content-section.span-16
 	=render :partial => "navigation"
 	.events
-		=render(@events) || (render(:partial  => "/shared/empty_collection", :locals => {:message => "No upcoming events"}))
+		=render(:partial => "candidates/unscheduled_recruitment_step", :collection => @unscheduled_recruitment_steps) || (render(:partial  => "/shared/empty_collection", :locals => {:message => "No unscheduled events"}))
 				
 =content_for :sidebar do
 	.sidebar-section

@@ -3,6 +3,15 @@ class EventsController < ApplicationController
 	def index
 		@events = current_recruiter.upcoming_events
 	end
+	
+	def events_completed
+		@events = current_recruiter.completed_events
+		render :index
+	end
+	
+	def events_unscheduled
+		@unscheduled_recruitment_steps = current_recruiter.unscheduled_recruitment_steps
+	end
 
 	def show
 		@event= Event.find(params[:id])

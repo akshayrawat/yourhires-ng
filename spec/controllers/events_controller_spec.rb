@@ -8,7 +8,7 @@ describe EventsController do
 		login_as @maria
 	end
 
-	describe "index" do
+	context "index" do
 		it "should list upcoming events for recruiter" do
 			candidate= CandidateFactory.create(:name => "Arnab", :recruiters => [@maria])
 
@@ -19,12 +19,78 @@ describe EventsController do
 
 			get :index
 
-			response.body.should match(/#{interview.name}/)
-			response.body.should_not match(/#{pairing.name}/)
+			response.should have_tag('.event-title a', 
+																:text => "#{interview.name}:", 
+																:href => event_detail_url(interview.candidate, interview.id))
+																
+			response.should have_tag('.event-title a',
+																:text => candidate.name,
+																:href => candidate_url(candidate))
+
+			response.should have_tag('.event-title a',
+																:text => "[edit]",
+																:href => edit_candidate_recruitment_step_event_url(interview.candidate, interview, interview.event))
+																
+			response.should_not have_tag('.event-title a', :text => "#{pairing.name}:")
 		end
 	end
+	
+	context "events_completed" do
+	  it "should list events completed for recruiter" do
+			candidate= CandidateFactory.create(:name => "Arnab", :recruiters => [@maria])
 
-	describe "new" do
+			pairing = RecruitmentStepFactory.pairing(:event => EventFactory.create(:interviewers => [Interviewer.create!(:feedbacks => [Feedback.create!(:feedback_result => Feedback::FeedbackResult::PASS)], :participant => ParticipantFactory.create)], :start_time=> 10.minutes.ago))
+			interview = RecruitmentStepFactory.interview(:event => EventFactory.create_in_future)
+
+			candidate.recruitment_steps = [pairing, interview]
+			
+			get :events_completed
+
+			response.should have_tag('.event-title a', 
+																:text => "#{pairing.name}:",
+																:href => event_detail_url(pairing.candidate, pairing.id))
+																
+			response.should have_tag('.event-title a',
+																:text => candidate.name,
+																:href => candidate_url(candidate))
+
+			response.should have_tag('.event-title a',
+																:text => "[edit]",
+																:href => edit_candidate_recruitment_step_event_url(pairing.candidate, pairing, pairing.event))
+			
+			response.should have_tag("a[href=#{candidate_recruitment_step_event_feedbacks_url(candidate, pairing, pairing.event)}]", :text => "Read Feedbacks")
+																
+			response.should_not have_tag('.event-title a', :text => "#{interview.name}:")
+ 		end
+	end
+	
+	context "events_unscheduled" do
+	  it "should list unschedule recruitment steps for recruiter" do
+			candidate= CandidateFactory.create(:name => "Arnab", :recruiters => [@maria])
+
+			pairing = RecruitmentStepFactory.pairing
+			interview = RecruitmentStepFactory.interview(:event => EventFactory.create_in_future)
+
+			candidate.recruitment_steps = [pairing, interview]
+
+			get :events_unscheduled
+
+			response.should have_tag('.event-title a', 
+																:text => "#{pairing.name}:",
+																:href => event_detail_url(pairing.candidate, pairing.id))
+																
+			response.should have_tag('.event-title a',
+																:text => candidate.name,
+																:href => candidate_url(candidate))
+
+			response.should have_tag(".event-title a[href=#{new_candidate_recruitment_step_event_url(candidate, pairing)}]",
+																:text => "[schedule]")
+
+			response.should_not have_tag('.event-title a', :text => "#{interview.name}:")
+	  end
+	end
+
+	context "new" do
 		it "should render fields for create" do
 			candidate = CandidateFactory.create(:name => "Karan", :recruiters => [@maria], 
 			:recruitment_steps => [RecruitmentStepFactory.phone_interview])
@@ -41,7 +107,7 @@ describe EventsController do
 		end
 	end
 	
-	describe "show" do
+	context "show" do
 		it "should render event details template when request is non xhr" do
 			event = EventFactory.create(:venue => "Room 301")
 			CandidateFactory.create(:recruitment_steps => [RecruitmentStepFactory.pairing(
@@ -63,7 +129,6 @@ describe EventsController do
 			response.should_not have_tag('.events')
 			response.body.should match("Room 301")
 		end
-
 	end
 
 end

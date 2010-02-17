@@ -4,8 +4,9 @@
 	.span-10.last
 		%ul
 			%li{:class=> "event-title"}
-				=link_to "#{unscheduled_recruitment_step.name}", new_candidate_recruitment_step_event_url(unscheduled_recruitment_step.candidate, unscheduled_recruitment_step)
-				=link_to "[schedule]", new_candidate_recruitment_step_event_url(unscheduled_recruitment_step.candidate, unscheduled_recruitment_step), :class => 'edit-link'
+				=link_to("#{unscheduled_recruitment_step.name}: ", new_candidate_recruitment_step_event_url(unscheduled_recruitment_step.candidate, unscheduled_recruitment_step))
+				=link_to("#{unscheduled_recruitment_step.candidate.name}", candidate_url(unscheduled_recruitment_step.candidate))
+				=link_to("[schedule]", new_candidate_recruitment_step_event_url(unscheduled_recruitment_step.candidate, unscheduled_recruitment_step), :class => 'edit-link')
 			%li
 				=label_tag "Time:"
 			%li
