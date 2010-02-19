@@ -3,7 +3,7 @@ defaults: &defaults
   password: <%= File.exists?('/etc/yourhires_db_passwd') ? File.read('/etc/yourhires_db_passwd') : 'yourhires' %>
   adapter: mysql
   host: localhost
-  socket: /tmp/mysql.sock
+  socket: <%= %w(/tmp/mysql.sock /var/run/mysqld/mysqld.sock /opt/local/var/run/mysql5/mysqld.sock).select{|socket| File.exists?(socket)} %>
   database: yourhires_<%= RAILS_ENV %>
 
 development:

@@ -7,7 +7,7 @@ h2. Developer Setup
 * The source code is indented using hard tabs with a size of 2 spaces.
 
 h2. First time bootstrap
-* Needs MySQL, with a user @yourhires@ password @yourhires@. The MySQL socket should be at @/tmp/mysql.sock@
+* Needs MySQL, with a user @yourhires@ password @yourhires@.
 * @rake db:setup@ to create and seed the database.
 * Run @ruby script/server@ from app to start the application.
 
