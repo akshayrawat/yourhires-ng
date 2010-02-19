@@ -24,7 +24,7 @@ describe CalendarsController do
 			response.body.should include("BEGIN:VEVENT")
 			response.body.should include("LOCATION:#{event.venue}")
 			response.body.should include("END:VEVENT")
-			response.body.should include("END:VCALENDAR")			
+			response.body.should include("END:VCALENDAR")
 		end
 	end
 

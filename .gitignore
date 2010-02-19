@@ -1,4 +1,3 @@
-*.sqlite3
 doc
 coverage*
 .DS_Store

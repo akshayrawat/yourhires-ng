@@ -1,8 +1,9 @@
 require 'spec_helper'
 
 describe Recruiter do
+	
 	it "should know assigned recruiters" do
-		recruiter = RecruiterFactory.create(:name => "maria", :login => 'maria@tw', :email => "maria@tw.com")
+		recruiter = RecruiterFactory.maria
 		one= CandidateFactory.create(:recruiters=> [recruiter])
 		two= CandidateFactory.create(:recruiters=> [recruiter])
 
@@ -21,7 +22,7 @@ describe Recruiter do
 	end
 
 	it "should know upcoming events" do
-		maria = RecruiterFactory.create(:name => "Maria")
+		maria = RecruiterFactory.maria
 		pairing = RecruitmentStepFactory.pairing(:event => EventFactory.create_in_past)
 		interview = RecruitmentStepFactory.interview(:event => EventFactory.create_in_future)
 
@@ -33,7 +34,7 @@ describe Recruiter do
 	end
 	
 	it "should know completed events" do
-		maria = RecruiterFactory.create(:name => "Maria")
+		maria = RecruiterFactory.maria
 		pairing = RecruitmentStepFactory.pairing(:event => EventFactory.create_in_past)
 		interview = RecruitmentStepFactory.interview(:event => EventFactory.create_in_future)
 
@@ -45,7 +46,7 @@ describe Recruiter do
 	end
 
 	it "should know unscheduled recruitment steps" do
-		maria = RecruiterFactory.create(:name => "Maria")
+		maria = RecruiterFactory.maria
 		pairing = RecruitmentStepFactory.pairing
 		interview = RecruitmentStepFactory.interview(:event => EventFactory.create_in_future)
 

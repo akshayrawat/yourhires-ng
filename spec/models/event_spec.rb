@@ -11,8 +11,9 @@ describe Event do
 
 			Interviewer.create!(:event => event, :participant => one)
 			Interviewer.create!(:event => event, :participant => two)
-
-			event.interviewers.map(&:participant).should == [one, two]
+			
+			event.interviewers.should have(2).things
+			event.interviewers.map(&:participant).should include(one, two)
 		end
 	end
 
@@ -61,7 +62,8 @@ describe Event do
 													:feedbacks => [one = FeedbackFactory.create])
 			Interviewer.create!(:event => event, :participant => ParticipantFactory.create, 
 													:feedbacks => [two = FeedbackFactory.create])
-			event.feedbacks.should eql([one, two])
+			event.feedbacks.should have(2).things
+			event.feedbacks.should include(one, two)
 	  end
 	end
 

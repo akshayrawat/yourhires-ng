@@ -20,14 +20,14 @@ describe DashboardController do
 				four = RecruitmentStepFactory.pairing(:event => EventFactory.create_in_future)
 				five = RecruitmentStepFactory.interview(:event => EventFactory.create_in_future)
 				six = RecruitmentStepFactory.phone_interview(:event => EventFactory.create_in_future)
-				seven = RecruitmentStepFactory.pairing(:event => EventFactory.create_in_future)
+				seven = RecruitmentStepFactory.pairing(:event => EventFactory.create_in_past)
 
 				candidate.recruitment_steps = [one, two, three, four, five, six, seven]
 
 				get :index
 
 				assigns(:upcoming_events).should have(5).things
-
+				
 				response.should_not have_tag("*[id=?]", "event_#{one.event.id}")
 				response.should have_tag("*[id=?]", "event_#{two.event.id}")
 				response.should have_tag("*[id=?]", "event_#{three.event.id}")

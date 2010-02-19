@@ -160,7 +160,7 @@ describe Candidate do
 
 	describe "recruitment_step_deselections" do
 		it "removes recruitment step" do
-			pairing = RecruitmentStepFactory.pairing
+			pairing = RecruitmentStepTypeFactory.pairing
 			candidate = CandidateFactory.create(:recruitment_step_type_selections => [pairing])
 			candidate.recruitment_steps.should have(1).thing
 			candidate.recruitment_step_deselections= pairing.id
