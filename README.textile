@@ -3,11 +3,10 @@ h1. YOURHIRES README
 h2. Developer Setup
 * Install the Ruby Haml TextMate bundle for syntax highlighting on HAML files.
 * @rake commit@ to run all tests & push changes to github
-* @cap deploy@ to deploy to yourhires.ath.cx
 * The source code is indented using hard tabs with a size of 2 spaces.
 
 h2. First time bootstrap
-* Needs MySQL, with a user @yourhires@ password @yourhires@.
+* For MySql, look at database.mysql.yml for initial setup. Or use the default sqlite3 setup specifed by database.yml
 * @rake db:setup@ to create and seed the database.
 * Run @ruby script/server@ from app to start the application.
 
