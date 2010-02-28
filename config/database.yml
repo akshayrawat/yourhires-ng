@@ -1,17 +1,14 @@
-defaults: &defaults
-  username: yourhires
-  password: <%= File.exists?('/etc/yourhires_db_passwd') ? File.read('/etc/yourhires_db_passwd') : 'yourhires' %>
-  adapter: mysql
-  host: localhost
-  socket: <%= %w(/tmp/mysql.sock /var/run/mysqld/mysqld.sock /opt/local/var/run/mysql5/mysqld.sock).select{|socket| File.exists?(socket)} %>
-  database: yourhires_<%= RAILS_ENV %>
-
 development:
-  <<: *defaults
+  adapter: sqlite3
+  database: db/db_development
+  timeout: 5000
+  
+production:
+  adapter: sqlite3
+  database: db/db_development
+  timeout: 5000
 
 test:
-  <<: *defaults
-
-production:
-  username: yourhires
-  <<: *defaults
+  adapter: sqlite3
+  database: db/db_development
+  timeout: 5000
