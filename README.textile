@@ -1,5 +1,11 @@
 h1. YOURHIRES README
 
+h2. Sandbox
+* yourhires.heroku.com . Username: reena, Password: yourhires
+
+h2. "Brief Tour":http://vimeo.com/9515943
+
+
 h2. Developer Setup
 * Install the Ruby Haml TextMate bundle for syntax highlighting on HAML files.
 * @rake commit@ to run all tests & push changes to github
