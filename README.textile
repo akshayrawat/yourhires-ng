@@ -1,7 +1,7 @@
 h1. YOURHIRES README
 
 h2. Sandbox
-* yourhires.heroku.com . Username: reena, Password: yourhires
+* Login "here":http://yourhires.heroku.com using username: reena and password: yourhires
 
 h2. "Brief Tour":http://vimeo.com/9515943
 
