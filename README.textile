@@ -23,3 +23,5 @@ Wiki: http://wiki.github.com/akshayrawat/yourhires-ng/
 h2. Contact
 
 Drop mails to projectsatakshaydotcc.
+
+h2. While this projects works perfectly, it was done a loong time ago and is no longer use by me or others.
